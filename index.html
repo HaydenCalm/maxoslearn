@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MacBook 从 0 到 1 再到精通 · 二次元完全教程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<style>
+:root{
+  --bg:#0A0A1E; --bg2:#101030; --surface:#16163A; --surface2:#1C1C46;
+  --mag:#FF2E88; --cyan:#00E5FF; --lemon:#FFE600; --purple:#9D4EDD; --neon:#00FF9F;
+  --text:#F2F2FF; --muted:#A0A0D0; --line:rgba(255,255,255,.09);
+  --mag-soft:rgba(255,46,136,.14); --cyan-soft:rgba(0,229,255,.12); --lemon-soft:rgba(255,230,0,.12); --purple-soft:rgba(157,78,221,.14);
+  --nav-bg:rgba(10,10,30,.90); --purple-text:#C99BFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.75;padding-left:238px}
+@media(max-width:900px){body{padding-right:0}}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(ellipse 60% 40% at 12% 0%,rgba(255,46,136,.10),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 88% 12%,rgba(0,229,255,.09),transparent 60%),
+  radial-gradient(ellipse 50% 40% at 50% 100%,rgba(157,78,221,.10),transparent 60%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:52px 52px;opacity:.28;
+  mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%)}
+::selection{background:var(--mag);color:#fff}
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--mag),var(--purple));border-radius:6px}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,.font-kuai{font-family:'ZCOOL KuaiLe','Noto Sans SC',cursive;font-weight:400;letter-spacing:.02em}
+code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
+
+/* ===== 阅读进度条 ===== */
+#read-progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:1000;
+  background:linear-gradient(90deg,var(--mag),var(--cyan),var(--lemon),var(--purple));
+  box-shadow:0 0 12px rgba(255,46,136,.8)}
+
+/* ===== 左侧悬浮导航 ===== */
+#nav-toggle{position:fixed;left:16px;top:16px;z-index:1001;width:46px;height:46px;border-radius:14px;
+  cursor:pointer;border:2px solid var(--lemon);background:var(--nav-bg);color:var(--lemon);
+  font-size:1.2rem;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);box-shadow:3px 3px 0 rgba(255,46,136,.4)}
+#topnav{position:fixed;left:18px;top:50%;transform:translateY(-50%);width:198px;z-index:1000;
+  display:flex;flex-direction:column;gap:10px;padding:20px 14px;background:var(--nav-bg);
+  backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:24px;
+  box-shadow:6px 6px 0 rgba(255,46,136,.16),0 18px 50px rgba(0,0,0,.35);
+  max-height:calc(100vh - 44px);overflow-y:auto;transition:transform .3s ease,opacity .25s ease}
+#topnav .logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.1rem;color:var(--lemon);
+  text-shadow:2px 2px 0 var(--mag);text-align:center;padding-bottom:10px;border-bottom:1px solid var(--line)}
+#topnav .stage-links{display:flex;flex-direction:column;gap:7px}
+#topnav .stage-links a{padding:8px 14px;border-radius:12px;font-size:.84rem;border:1.5px solid transparent;white-space:nowrap;transition:.2s}
+#topnav .stage-links a:hover{transform:translateX(-3px);text-decoration:none}
+#topnav .stage-links a.s1{color:var(--mag);border-color:var(--mag)}
+#topnav .stage-links a.s1:hover{background:var(--mag-soft)}
+#topnav .stage-links a.s2{color:var(--cyan);border-color:var(--cyan)}
+#topnav .stage-links a.s2:hover{background:var(--cyan-soft)}
+#topnav .stage-links a.s3{color:var(--lemon);border-color:var(--lemon)}
+#topnav .stage-links a.s3:hover{background:var(--lemon-soft)}
+#theme-toggle{margin-top:4px;padding:9px 14px;border-radius:12px;cursor:pointer;font-size:.84rem;font-weight:700;font-family:inherit;
+  border:1.5px solid var(--purple);color:var(--purple-text);background:var(--purple-soft);display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+#theme-toggle:hover{transform:translateY(-2px)}
+#topnav .progress-pill{margin-top:auto;font-size:.76rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+#topnav .progress-pill b{color:var(--neon);font-size:1rem}
+#topnav .progress-bar-mini{width:100%;height:8px;background:var(--surface);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+#topnav .progress-bar-mini i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--neon));transition:width .4s}
+@media(max-width:900px){
+  #nav-toggle{display:flex}
+  #topnav{transform:translateY(-50%) translateX(-130%);opacity:0;pointer-events:none}
+  #topnav.open{transform:translateY(-50%) translateX(0);opacity:1;pointer-events:auto}
+}
+
+/* ===== 霓虹粒子 ===== */
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+#particles span{position:absolute;font-size:14px;opacity:.5;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(105vh) rotate(0deg);opacity:0}8%{opacity:.55}92%{opacity:.5}100%{transform:translateY(-8vh) rotate(360deg);opacity:0}}
+
+/* ===== HERO ===== */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:120px 20px 60px;position:relative}
+.hero .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:999px;
+  border:2px solid var(--cyan);color:var(--cyan);font-size:.85rem;letter-spacing:.14em;margin-bottom:26px;
+  background:var(--cyan-soft);animation:pulseGlow 2.6s infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(0,229,255,.45)}50%{box-shadow:0 0 0 12px rgba(0,229,255,0)}}
+.hero h1{font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.18}
+.hero h1 .line1{display:block;background:linear-gradient(90deg,var(--mag),var(--lemon));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(3px 3px 0 var(--purple))}
+.hero h1 .line2{display:block;background:linear-gradient(90deg,var(--cyan),var(--neon));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(3px 3px 0 var(--mag))}
+.hero .sub{max-width:760px;color:var(--muted);margin:26px auto 34px;font-size:1.06rem}
+.hero .chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.hero .chips .chip{padding:8px 18px;border-radius:12px;font-size:.9rem;font-weight:700;border:2px solid}
+.chip.c-mag{color:var(--mag);border-color:var(--mag);background:var(--mag-soft)}
+.chip.c-cyan{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-soft)}
+.chip.c-lemon{color:var(--lemon);border-color:var(--lemon);background:var(--lemon-soft)}
+.chip.c-purple{color:var(--purple-text);border-color:var(--purple);background:var(--purple-soft)}
+.hero .cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;padding:13px 34px;border-radius:14px;font-weight:700;font-size:1rem;
+  border:3px solid;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translate(-2px,-3px);text-decoration:none}
+.btn-main{color:#fff;background:var(--mag);border-color:var(--lemon);box-shadow:5px 5px 0 var(--lemon)}
+.btn-main:hover{box-shadow:8px 8px 0 var(--lemon)}
+.btn-ghost{color:var(--cyan);border-color:var(--cyan);background:transparent;box-shadow:5px 5px 0 rgba(0,229,255,.35)}
+.btn-ghost:hover{box-shadow:8px 8px 0 rgba(0,229,255,.35)}
+.hero .stats{display:flex;gap:0;margin-top:56px;flex-wrap:wrap;justify-content:center}
+.hero .stats .stat{padding:0 34px;border-right:1px solid var(--line);text-align:center}
+.hero .stats .stat:last-child{border-right:none}
+.hero .stats b{display:block;font-family:'ZCOOL KuaiLe',cursive;font-size:2rem;
+  background:linear-gradient(90deg,var(--mag),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .stats span{color:var(--muted);font-size:.82rem}
+
+/* ===== 阶段横幅 ===== */
+.stage{max-width:1080px;margin:0 auto;padding:30px 20px 10px}
+.stage-banner{position:relative;padding:34px 28px;border-radius:22px;border:3px solid;overflow:hidden;margin-bottom:34px}
+.stage-banner h2{font-size:clamp(1.6rem,4vw,2.5rem);position:relative;z-index:1}
+.stage-banner p{position:relative;z-index:1;color:var(--text);opacity:.85;margin-top:6px;max-width:640px}
+.stage-banner .stage-no{position:absolute;right:18px;top:-26px;font-family:'ZCOOL KuaiLe',cursive;
+  font-size:7.5rem;opacity:.12;z-index:0}
+.stage-banner.b1{border-color:var(--mag);background:linear-gradient(120deg,var(--mag-soft),transparent 70%);box-shadow:6px 6px 0 rgba(255,46,136,.35)}
+.stage-banner.b1 .stage-no{color:var(--mag)}
+.stage-banner.b2{border-color:var(--cyan);background:linear-gradient(120deg,var(--cyan-soft),transparent 70%);box-shadow:6px 6px 0 rgba(0,229,255,.3)}
+.stage-banner.b2 .stage-no{color:var(--cyan)}
+.stage-banner.b3{border-color:var(--lemon);background:linear-gradient(120deg,var(--lemon-soft),transparent 70%);box-shadow:6px 6px 0 rgba(255,230,0,.3)}
+.stage-banner.b3 .stage-no{color:var(--lemon)}
+
+/* ===== 模块卡片 ===== */
+.module{background:var(--surface);border:1px solid var(--line);border-left:6px solid;border-radius:20px;
+  padding:30px 30px 24px;margin-bottom:36px;position:relative;transition:transform .2s}
+.module:hover{transform:translateY(-3px)}
+.module.c-mag{border-left-color:var(--mag)}
+.module.c-cyan{border-left-color:var(--cyan)}
+.module.c-lemon{border-left-color:var(--lemon)}
+.module.c-purple{border-left-color:var(--purple)}
+.mod-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:18px;flex-wrap:wrap}
+.mod-num{font-family:'ZCOOL KuaiLe',cursive;font-size:2.6rem;line-height:1;padding:4px 14px;border-radius:14px;border:3px solid}
+.module.c-mag .mod-num{color:var(--mag);border-color:var(--mag);background:var(--mag-soft)}
+.module.c-cyan .mod-num{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-soft)}
+.module.c-lemon .mod-num{color:var(--lemon);border-color:var(--lemon);background:var(--lemon-soft)}
+.module.c-purple .mod-num{color:var(--purple-text);border-color:var(--purple);background:var(--purple-soft)}
+.mod-head h3{font-size:1.5rem}
+.mod-head .mod-sub{color:var(--muted);font-size:.9rem;margin-top:2px}
+.tracker{margin-left:auto;display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
+  padding:7px 16px;border-radius:999px;border:2px solid var(--line);font-size:.85rem;color:var(--muted);transition:.2s}
+.tracker input{accent-color:var(--neon);width:16px;height:16px;cursor:pointer}
+.tracker.done{border-color:var(--neon);color:var(--neon);background:rgba(0,255,159,.08)}
+.module h4{font-size:1.12rem;margin:26px 0 12px;display:flex;align-items:center;gap:10px}
+.module h4 i{font-size:.95rem}
+.module.c-mag h4 i{color:var(--mag)}
+.module.c-cyan h4 i{color:var(--cyan)}
+.module.c-lemon h4 i{color:var(--lemon)}
+.module.c-purple h4 i{color:var(--purple-text)}
+.module p{margin-bottom:12px;color:#DCDCEF}
+.module ul,.module ol{margin:0 0 14px 22px;color:#DCDCEF}
+.module li{margin-bottom:7px}
+
+/* ===== Windows vs macOS 对照 ===== */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;
+  border:2px solid var(--line);margin:16px 0}
+.compare .col{padding:16px 18px}
+.compare .col.win{background:rgba(0,229,255,.06);border-right:1px dashed var(--line)}
+.compare .col.mac{background:rgba(255,46,136,.06)}
+.compare .col h5{font-size:.95rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.compare .col.win h5{color:var(--cyan)}
+.compare .col.mac h5{color:var(--mag)}
+.compare .col ul{margin-left:18px}
+@media(max-width:640px){.compare{grid-template-columns:1fr}.compare .col.win{border-right:none;border-bottom:1px dashed var(--line)}}
+
+/* ===== 键帽 ===== */
+kbd{display:inline-block;padding:2px 9px;border-radius:7px;background:#22224E;border:1px solid #3A3A7A;
+  border-bottom:3px solid #3A3A7A;color:var(--lemon);font-size:.82rem;font-family:'JetBrains Mono',monospace;
+  box-shadow:0 2px 0 rgba(0,0,0,.4);white-space:nowrap}
+
+/* ===== 提示框 ===== */
+.tip,.warn,.danger{border-radius:14px;padding:14px 18px;margin:14px 0;font-size:.93rem;border-left:5px solid}
+.tip{background:rgba(0,255,159,.07);border-color:var(--neon)}
+.tip b{color:var(--neon)}
+.warn{background:var(--lemon-soft);border-color:var(--lemon)}
+.warn b{color:var(--lemon)}
+.danger{background:rgba(255,46,136,.09);border-color:var(--mag)}
+.danger b{color:var(--mag)}
+.tip i,.warn i,.danger i{margin-right:8px}
+
+/* ===== 步骤 ===== */
+.steps{counter-reset:step;list-style:none;margin:16px 0}
+.steps li{counter-increment:step;position:relative;padding:0 0 16px 52px}
+.steps li::before{content:counter(step);position:absolute;left:0;top:2px;width:34px;height:34px;
+  border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;
+  font-family:'ZCOOL KuaiLe',cursive;border:2px solid var(--cyan);color:var(--cyan);background:var(--cyan-soft);font-size:1.05rem}
+.steps li::after{content:"";position:absolute;left:16px;top:40px;bottom:2px;width:2px;background:var(--line)}
+.steps li:last-child::after{display:none}
+
+/* ===== 表格 ===== */
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:14px;border:1px solid var(--line)}
+table.neon{width:100%;border-collapse:collapse;font-size:.9rem;min-width:560px}
+table.neon th{background:var(--surface2);padding:11px 14px;text-align:left;font-weight:700;
+  border-bottom:2px solid var(--purple);white-space:nowrap}
+table.neon td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.neon tr:hover td{background:rgba(157,78,221,.07)}
+table.neon td:first-child{white-space:nowrap}
+.search-box{display:flex;align-items:center;gap:10px;background:var(--surface2);border:2px solid var(--line);
+  border-radius:12px;padding:9px 14px;margin:14px 0;max-width:420px}
+.search-box:focus-within{border-color:var(--cyan)}
+.search-box input{background:none;border:none;outline:none;color:var(--text);flex:1;font-size:.92rem}
+.search-box i{color:var(--muted)}
+.empty-hint{color:var(--muted);font-size:.85rem;padding:10px;display:none}
+pre.code-block{background:rgba(0,0,0,.55);border:1px solid var(--line);border-left:3px solid var(--neon);
+  border-radius:10px;padding:12px 16px;margin:10px 0;overflow-x:auto;font-size:.82rem;line-height:1.7;
+  font-family:'JetBrains Mono','Noto Sans SC',monospace;color:#DCDCEF}
+
+/* ===== 手风琴 ===== */
+.faq{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:last-child{border-bottom:none}
+.faq summary{cursor:pointer;padding:13px 18px;font-weight:500;list-style:none;display:flex;align-items:center;gap:10px;background:var(--surface2)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"▶";font-size:.7rem;color:var(--cyan);transition:transform .2s}
+.faq details[open] summary::before{transform:rotate(90deg)}
+.faq .faq-body{padding:14px 18px;color:#DCDCEF;font-size:.93rem}
+.faq details[open] summary{color:var(--lemon)}
+
+/* ===== Tabs ===== */
+.tabs{margin:16px 0}
+.tabs .tab-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0}
+.tabs .tab-btns button{padding:9px 20px;border-radius:12px 12px 0 0;border:2px solid var(--line);
+  border-bottom:none;background:var(--surface2);color:var(--muted);cursor:pointer;font-size:.9rem;font-weight:500;font-family:inherit}
+.tabs .tab-btns button.active{color:var(--bg);background:var(--cyan);border-color:var(--cyan);font-weight:700}
+.tab-panel{display:none;border:2px solid var(--line);border-radius:0 14px 14px 14px;padding:18px 20px;background:var(--bg2)}
+.tab-panel.active{display:block}
+
+/* ===== 参考来源 ===== */
+details.refs{margin-top:20px;border:2px dashed var(--line);border-radius:12px;padding:0;background:rgba(255,255,255,.02)}
+details.refs summary{cursor:pointer;padding:11px 16px;color:var(--muted);font-size:.87rem;list-style:none;display:flex;align-items:center;gap:8px}
+details.refs summary::-webkit-details-marker{display:none}
+details.refs[open] summary{color:var(--cyan)}
+details.refs ol{padding:4px 16px 14px 40px;color:var(--muted);font-size:.82rem}
+details.refs li{margin-bottom:6px}
+details.refs .ref-tag{display:inline-block;font-size:.68rem;padding:1px 8px;border-radius:99px;margin-right:6px;border:1px solid var(--cyan);color:var(--cyan)}
+
+/* ===== 模拟界面 ===== */
+.mock-menubar{display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.55);border:1px solid var(--line);
+  border-radius:10px;padding:7px 14px;font-size:.85rem;margin:14px 0;flex-wrap:wrap}
+.mock-menubar .apple{color:#fff;margin-right:6px}
+.mock-menubar .mitem{padding:3px 10px;border-radius:7px;color:#E6E6F5;cursor:pointer}
+.mock-menubar .mitem:hover{background:rgba(255,255,255,.14)}
+.mock-menubar .right{margin-left:auto;display:flex;gap:12px;color:#E6E6F5}
+.mock-dock{display:flex;align-items:flex-end;gap:10px;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);
+  border:1px solid var(--line);border-radius:18px;padding:12px 18px;margin:14px 0;justify-content:center;flex-wrap:wrap}
+.mock-dock .dicon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;cursor:pointer;transition:transform .15s;border:2px solid transparent;color:#fff}
+.mock-dock .dicon:hover{transform:translateY(-10px) scale(1.15)}
+.mock-dock .dsep{width:2px;align-self:stretch;background:var(--line);margin:0 4px}
+.dock-say{text-align:center;font-size:.88rem;color:var(--lemon);min-height:26px;margin-top:6px}
+
+/* ===== 模拟窗口按钮 ===== */
+.winlights{display:inline-flex;gap:7px;margin-right:8px}
+.winlights i{width:13px;height:13px;border-radius:50%;display:inline-block}
+.winlights .r{background:#FF5F57}.winlights .y{background:#FEBC2E}.winlights .g{background:#28C840}
+
+/* ===== 大表格(文末) ===== */
+.glossary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:18px 0}
+.term-card{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;border-top:3px solid var(--purple)}
+.term-card b{color:var(--cyan)}
+.term-card .win-term{color:var(--muted);font-size:.85rem}
+.term-card .arrow{color:var(--mag);margin:4px 0;display:block}
+
+/* ===== 时间轴 ===== */
+.roadmap{position:relative;margin:26px 0;padding-left:34px}
+.roadmap::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:3px;border-radius:3px;
+  background:linear-gradient(var(--mag),var(--cyan),var(--lemon))}
+.roadmap .rm{position:relative;margin-bottom:26px}
+.roadmap .rm::before{content:"";position:absolute;left:-30px;top:7px;width:15px;height:15px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--cyan)}
+.roadmap .rm:nth-child(1)::before{border-color:var(--mag)}
+.roadmap .rm:nth-child(2)::before{border-color:var(--cyan)}
+.roadmap .rm:nth-child(3)::before{border-color:var(--lemon)}
+.roadmap .rm:nth-child(4)::before{border-color:var(--neon)}
+.roadmap .rm h4{margin:0 0 6px;font-size:1.05rem}
+.roadmap .rm p{color:var(--muted);font-size:.92rem;margin:0}
+
+/* ===== 参考文献区 ===== */
+.ref-section ol{counter-reset:reflist;list-style:none;margin-top:14px}
+.ref-section li{counter-increment:reflist;position:relative;padding:10px 14px 10px 54px;border-bottom:1px solid var(--line);font-size:.9rem}
+.ref-section li::before{content:"["counter(reflist)"]";position:absolute;left:8px;top:10px;color:var(--lemon);font-weight:700;font-family:'JetBrains Mono',monospace;font-size:.85rem}
+.ref-section li .src-tag{display:inline-block;font-size:.7rem;padding:1px 9px;border-radius:99px;margin-right:8px}
+.src-tag.official{background:rgba(0,255,159,.12);color:var(--neon);border:1px solid var(--neon)}
+.src-tag.community{background:var(--purple-soft);color:var(--purple-text);border:1px solid var(--purple)}
+
+/* ===== 返回顶部 ===== */
+#backtop{position:fixed;right:26px;bottom:30px;width:52px;height:52px;border-radius:16px;cursor:pointer;
+  background:var(--mag);border:3px solid var(--lemon);color:#fff;font-size:1.25rem;z-index:950;
+  display:flex;align-items:center;justify-content:center;box-shadow:5px 5px 0 rgba(255,230,0,.4);
+  opacity:0;pointer-events:none;transition:.25s}
+#backtop.show{opacity:1;pointer-events:auto}
+#backtop:hover{transform:translateY(-4px)}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding:36px 20px;text-align:center;color:var(--muted);font-size:.85rem}
+footer .f-logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.4rem;color:var(--lemon);text-shadow:2px 2px 0 var(--mag);margin-bottom:8px}
+
+.mod-check{cursor:pointer}
+.section-divider{max-width:1080px;margin:44px auto;padding:0 20px;display:flex;align-items:center;gap:16px;color:var(--muted)}
+.section-divider::before,.section-divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.section-divider i{color:var(--mag)}
+@media(max-width:720px){
+  .module{padding:22px 18px}
+  .mod-head .tracker{margin-left:0}
+  .hero .stats .stat{padding:0 18px}
+}
+
+/* ===== 白天模式 · 暖色系二次元 v2（默认夜晚，body.day 切换） ===== */
+/* 配色原则：暖底 + 降饱和强调色（文字对比度均 ≥4.5:1 WCAG AA）
+   樱红(主) / 焦糖橙(辅) / 蜂蜜金(点缀) / 新海诚蓝(冷平衡) / 松石绿(成长进度) */
+body.day{
+  --bg:#FFF9F3; --bg2:#FFFDF9; --surface:#FFF2E4; --surface2:#FFE9D4;
+  --mag:#C2255C; --cyan:#C2410C; --lemon:#A16207; --purple:#1A6BC4; --neon:#0F766E;
+  --text:#44312A; --muted:#8A7360; --line:rgba(180,110,60,.22);
+  --mag-soft:rgba(194,37,92,.10); --cyan-soft:rgba(194,65,12,.10); --lemon-soft:rgba(161,98,7,.12); --purple-soft:rgba(26,107,196,.10);
+  --nav-bg:rgba(255,251,244,.92); --purple-text:#14508F;
+}
+body.day::before{background:
+  radial-gradient(ellipse 60% 40% at 12% 0%,rgba(194,37,92,.07),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 88% 12%,rgba(26,107,196,.06),transparent 60%),
+  radial-gradient(ellipse 50% 40% at 50% 100%,rgba(255,190,80,.10),transparent 60%)}
+body.day::after{opacity:.35}
+body.day .module p,body.day .module ul,body.day .module ol{color:#6B5240}
+body.day .faq .faq-body{color:#6B5240}
+body.day code{color:#8A5A2E}
+body.day kbd{background:#FFF3DD;border-color:#EAC99A;color:#7A4E1E;box-shadow:0 2px 0 rgba(180,120,60,.28)}
+body.day #topnav{box-shadow:6px 6px 0 rgba(194,37,92,.16),0 18px 50px rgba(180,120,60,.16)}
+body.day #nav-toggle{box-shadow:3px 3px 0 rgba(194,37,92,.30)}
+body.day #read-progress{box-shadow:0 0 12px rgba(194,37,92,.45)}
+body.day #backtop{box-shadow:5px 5px 0 rgba(194,37,92,.26)}
+body.day #particles{opacity:.4}
+body.day .mock-dock{background:rgba(60,40,20,.55)}
+body.day table.neon tr:hover td{background:rgba(194,65,12,.05)}
+body.day ::selection{background:var(--mag);color:#fff}
+/* 白天阴影/辉光同步暖色化 */
+body.day .btn-ghost{box-shadow:5px 5px 0 rgba(194,65,12,.25)}
+body.day .btn-ghost:hover{box-shadow:8px 8px 0 rgba(194,65,12,.25)}
+body.day .stage-banner.b1{box-shadow:6px 6px 0 rgba(194,37,92,.20)}
+body.day .stage-banner.b2{box-shadow:6px 6px 0 rgba(194,65,12,.20)}
+body.day .stage-banner.b3{box-shadow:6px 6px 0 rgba(161,98,7,.24)}
+body.day .keycap.on{box-shadow:0 0 18px rgba(194,37,92,.45)}
+body.day .osk button.sel{box-shadow:0 0 12px rgba(194,65,12,.4)}
+body.day .boss-card:hover{box-shadow:0 8px 26px rgba(194,37,92,.20)}
+
+</style>
+</head>
+<body>
+
+<div id="read-progress"></div>
+
+<div id="particles"></div>
+
+<button id="nav-toggle" aria-label="打开导航"><i class="fa-solid fa-bars"></i></button>
+
+<nav id="topnav">
+  <span class="logo"><i class="fa-solid fa-laptop-code" style="color:var(--cyan)"></i> Mac·通关手册</span>
+  <div class="stage-links">
+    <a href="#stage1" class="s1">① 新手村</a>
+    <a href="#stage2" class="s2">② 进阶</a>
+    <a href="#stage3" class="s3">③ 精通</a>
+    <a href="#arena" class="s2" style="color:var(--mag);border-color:var(--mag)">训练场</a>
+    <a href="#roadmap" class="s1" style="color:var(--neon);border-color:var(--neon)">路线图</a>
+    <a href="#refs-all" class="s2" style="color:var(--purple-text);border-color:var(--purple)">参考文献</a>
+  </div>
+  <button id="theme-toggle" title="切换到白天模式"><i class="fa-solid fa-sun"></i><span>白天模式</span></button>
+  <div class="progress-pill">
+    <span><i class="fa-solid fa-gamepad"></i> 通关进度 <b id="progress-num">0%</b></span>
+    <div class="progress-bar-mini"><i id="progress-fill"></i></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="badge"><i class="fa-solid fa-bolt"></i> macOS 26 TAHOE · 2026 EDITION</span>
+  <h1>
+    <span class="line1">MacBook 从 0 到 1</span>
+    <span class="line2">再到精通完全攻略</span>
+  </h1>
+  <p class="sub">专为 <b style="color:var(--cyan)">Windows 老玩家</b> 量身打造的二次元通关手册 —— 18 个模块、三个大关卡，把你在 Windows 上十年练就的肌肉记忆，一次性翻译成 Mac 语。每一步都有官方文档背书，拒绝道听途说。</p>
+  <div class="chips">
+    <span class="chip c-mag"><i class="fa-brands fa-apple"></i> 零基础友好</span>
+    <span class="chip c-cyan"><i class="fa-solid fa-arrows-left-right"></i> Win↔Mac 双语对照</span>
+    <span class="chip c-lemon"><i class="fa-solid fa-graduation-cap"></i> 入门→精通三阶段</span>
+    <span class="chip c-purple"><i class="fa-solid fa-book-open"></i> 官方文档考证</span>
+  </div>
+  <div class="cta">
+    <a href="#stage1" class="btn btn-main"><i class="fa-solid fa-play"></i> 开局！从零开始</a>
+    <a href="#roadmap" class="btn btn-ghost"><i class="fa-solid fa-map"></i> 先看通关路线</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>18</b><span>核心模块</span></div>
+    <div class="stat"><b>3</b><span>难度阶段</span></div>
+    <div class="stat"><b>100+</b><span>Win↔Mac 对照</span></div>
+    <div class="stat"><b>30+</b><span>考证来源</span></div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     阶段一 · 新手村
+============================================================ -->
+<section class="stage" id="stage1">
+  <div class="stage-banner b1" data-aos="fade-up">
+    <div class="stage-no">Ⅰ</div>
+    <h2><i class="fa-solid fa-seedling"></i> 阶段一 · 新手村（从 0 到 1）</h2>
+    <p>开机 → 认界面 → 手势 → 管文件 → 装软件 → 改设置。打完这 6 个模块，你就能在 Mac 上"正常生活"了。</p>
+  </div>
+
+  <!-- 模块 1 -->
+  <article class="module c-mag" id="m1" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">01</div>
+      <div>
+        <h3>开箱与首次设置</h3>
+        <p class="mod-sub">从按下电源键那一刻，到一台"完全属于你"的 Mac</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-box-open"></i> 开箱检查清单</h4>
+    <ul>
+      <li><b>核对配件</b>：MacBook 本体、USB-C 充电线（编织线）、电源适配器（部分型号为双口）</li>
+      <li><b>验证真伪</b>：在 Apple 官网「检查保障状态」页面输入包装盒上的序列号，确认激活状态与保修期<span style="color:var(--muted);font-size:.85rem">（checkcoverage.apple.com）</span></li>
+      <li><b>首次充电</b>：锂电池出厂即带电，无需"充满 12 小时"——那是镍氢电池时代的都市传说</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-list-ol"></i> 首次开机设置助理（Setup Assistant）流程</h4>
+    <ol class="steps">
+      <li>长按<b>电源键</b>（Touch ID 键）直到出现 Apple 标志，按提示选择<b>国家/地区</b>、<b>语言</b>、<b>键盘布局</b>（简体中文用户保持默认即可）</li>
+      <li>连接 <b>Wi-Fi</b> —— macOS 激活必须联网，建议连 5GHz 频段</li>
+      <li><b>数据迁移抉择点</b>：系统会问"是否从其他设备传输数据"。Windows 用户选「从 Windows PC」（详见下方），或先选「暂时不传输」稍后用迁移助理补搬</li>
+      <li>登录 <b>Apple 账户</b>（即 Apple ID）。没有就现场注册一个——它是 iCloud、App Store、查找、连续互通的总钥匙。强烈建议开启<b>双重认证</b></li>
+      <li>设置 <b>触控 ID</b>（指纹）与<b>登录密码</b>。密码是管理员密码，请务必记牢</li>
+      <li>同意条款 → 选择<b>外观</b>（浅色 / 深色 / 自动）→ 完成，进入桌面</li>
+    </ol>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 你熟悉的</h5>
+        <ul>
+          <li>微软账户可选"脱机账户"</li>
+          <li>迁移靠 U 盘 / 移动硬盘手动拷</li>
+          <li>首次更新驱动一堆弹窗</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> macOS 现在这样</h5>
+        <ul>
+          <li>Apple 账户深度绑定，但<b>不登录也能用</b>（部分功能受限）</li>
+          <li><b>迁移助理</b>一键从 PC 搬家（邮件/联系人/日历/文件/书签）</li>
+          <li>无驱动弹窗，系统自带更新（系统设置 → 通用 → 软件更新）</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4><i class="fa-solid fa-truck-fast"></i> 从 Windows 搬家的三条路</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>方案</th><th>适合</th><th>能搬什么</th><th>注意</th></tr></thead>
+      <tbody>
+        <tr><td><b>迁移助理</b><span style="color:var(--muted)">（官方推荐）</span></td><td>想省事的新手</td><td>邮件账户、联系人、日历、浏览器书签、文档/图片等个人文件、桌面壁纸</td><td>PC 端需先安装对应版本的 Windows 迁移助理；两机同网络；大文件传输需 1~3 小时</td></tr>
+        <tr><td><b>移动硬盘手动拷</b></td><td>文件不多、想借机断舍离</td><td>任意文件</td><td>硬盘建议格成 <b>exFAT</b>（双系统可读写）；NTFS 在 Mac 上<b>只读</b></td></tr>
+        <tr><td><b>云盘中转</b></td><td>文件分散、网速快</td><td>任意文件</td><td>iCloud/OneDrive/坚果云均可，注意大文件上传耗时</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>新手提示：</b>如果设置了新 Mac 时跳过了迁移，之后随时可以补搬——在「应用程序 → 实用工具」里打开<b>迁移助理</b>，或用聚焦搜索（<kbd>Cmd</kbd>+<kbd>空格</kbd>）输入"迁移"两个字。</div>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>重要：</b>Windows 上安装的应用程序（.exe）<b>无法</b>搬到 Mac 上运行——Mac 需要 Mac 版应用。搬的是"数据"，不是"软件"。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持《使用"迁移助理"从 PC 传输到 Mac》 <a href="https://support.apple.com/zh-cn/HT204087" target="_blank">support.apple.com/zh-cn/HT204087</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 主页 <a href="https://support.apple.com/zh-cn/mac" target="_blank">support.apple.com/zh-cn/mac</a></li>
+        <li><span class="ref-tag">社区</span>PCMag · Migration Assistant 指南 <a href="https://www.pcmag.com/how-to/transfer-data-from-old-to-new-mac-with-apple-migration-assistant" target="_blank">pcmag.com</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 2 -->
+  <article class="module c-cyan" id="m2" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">02</div>
+      <div>
+        <h3>认识 macOS 界面：菜单栏、程序坞与窗口</h3>
+        <p class="mod-sub">Windows 把一切塞进任务栏，macOS 把它拆成"上栏 + 下栏"两套班子</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>macOS 最大的心智模型转变：<b>菜单栏永远在屏幕顶部，且内容随当前应用切换</b>。Windows 里每个窗口自带菜单，Mac 里"文件/编辑/视图"这些菜单住在屏幕最上方——你当前点着哪个 App，菜单栏就显示哪个 App 的菜单。</p>
+
+    <h4><i class="fa-solid fa-window-maximize"></i> 模拟菜单栏（把鼠标移上去感受一下）</h4>
+    <div class="mock-menubar">
+      <span class="apple"><i class="fa-brands fa-apple"></i></span>
+      <span class="mitem" title="点按 Apple 菜单：关机、睡眠、锁定、系统设置、强制退出都在这" style="font-weight:700">访达</span>
+      <span class="mitem" title="文件菜单：新建文件夹、前往等">文件</span>
+      <span class="mitem" title="编辑菜单：复制、粘贴、剪切在此">编辑</span>
+      <span class="mitem" title="显示菜单：切换图标/列表视图">显示</span>
+      <span class="mitem" title="前往菜单：访问下载、应用程序、实用工具等">前往</span>
+      <span class="mitem" title="帮助菜单：内置使用手册入口">帮助</span>
+      <div class="right">
+        <span title="电池状态"><i class="fa-solid fa-battery-three-quarters"></i></span>
+        <span title="Wi-Fi 状态"><i class="fa-solid fa-wifi"></i></span>
+        <span title="控制中心：Wi-Fi/蓝牙/专注模式/屏幕镜像/亮度音量集中地"><i class="fa-solid fa-sliders"></i></span>
+        <span title="日期时间，点开是通知中心"><i class="fa-regular fa-clock"></i></span>
+      </div>
+    </div>
+    <p style="font-size:.85rem;color:var(--muted)">💡 把鼠标悬停在上面各项，会显示它的职责说明。最左边的 <i class="fa-brands fa-apple"></i> 菜单是全局菜单：关机、重启、睡眠、锁定屏幕（<kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>Q</kbd>）、强制退出（<kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd>）、系统设置全在这里。</p>
+
+    <h4><i class="fa-solid fa-sailboat"></i> 程序坞（Dock）：Mac 的任务栏</h4>
+    <div class="mock-dock" id="demoDock">
+      <div class="dicon" data-say="访达：永远排第一位、无法移除的文件管理器（相当于 Windows 资源管理器）" style="background:#1E90FF"><i class="fa-regular fa-folder-open"></i></div>
+      <div class="dicon" data-say="启动台：Mac 的开始菜单，一屏所有 App。四指捏合触控板即可呼出" style="background:#5E5CE6"><i class="fa-solid fa-rocket"></i></div>
+      <div class="dicon" data-say="Safari：Mac 自带浏览器。也可装 Chrome/Edge，一样用" style="background:#00C7BE"><i class="fa-brands fa-safari"></i></div>
+      <div class="dicon" data-say="信息（iMessage）：给 iPhone/iPad 用户发消息" style="background:#34C759"><i class="fa-solid fa-comment-dots"></i></div>
+      <div class="dicon" data-say="邮件：Mac 自带邮件客户端，支持 QQ 邮箱/Gmail/Exchange" style="background:#1E90FF"><i class="fa-solid fa-envelope"></i></div>
+      <div class="dicon" data-say="照片：iCloud 照片图库入口" style="background:#FF375F"><i class="fa-solid fa-image"></i></div>
+      <div class="dsep"></div>
+      <div class="dicon" data-say="分隔线右侧：最小化的窗口 + 废纸篓（相当于 Windows 回收站）" style="background:#7A7A8C"><i class="fa-solid fa-trash"></i></div>
+    </div>
+    <div class="dock-say" id="dockSay"><i class="fa-solid fa-hand-pointer"></i> 点击上面的图标，看看每个是干嘛的</div>
+
+    <h4><i class="fa-solid fa-circle-half-stroke"></i> 窗口的红黄绿三灯</h4>
+    <p><span class="winlights"><i class="r"></i><i class="y"></i><i class="g"></i></span>Mac 窗口左上角三个圆点，是新手最容易栽的坑：</p>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>按钮</th><th>作用</th><th>与 Windows 的关键差异</th></tr></thead>
+      <tbody>
+        <tr><td><span class="winlights"><i class="r"></i></span> 红色</td><td>关闭<b>窗口</b></td><td><b>≠ 退出应用！</b>很多 App 关掉窗口后仍在后台运行（Dock 图标下有小点）。真正退出是 <kbd>Cmd</kbd>+<kbd>Q</kbd></td></tr>
+        <tr><td><span class="winlights"><i class="y"></i></span> 黄色</td><td>最小化到 Dock</td><td>相当于 Windows 的最小化，但默认缩进"程序坞分隔线右侧"</td></tr>
+        <tr><td><span class="winlights"><i class="g"></i></span> 绿色</td><td>全屏 / 拖到屏幕边缘可平铺</td><td>点按进入<b>全屏空间</b>（相当于独立桌面）；长按弹出"平铺到左右"分屏菜单</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-wand-magic-sparkles"></i> 顺带认识 macOS 26 Tahoe 新设计</h4>
+    <p>2025 年发布的 macOS Tahoe（版本号直接跳到 26）带来了全新 <b>Liquid Glass（液态玻璃）</b>设计语言：菜单栏、Dock、控制中心变成半透明毛玻璃质感并随背景动态变化；图标支持深浅两套风格与自由换色；Spotlight 更强（能直接执行快捷指令、跨 App 搜索操作）；还引入了 Apple Intelligence 智能功能与全新快捷指令生态。本教程全部基于此版本编写。</p>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>肌肉记忆翻译：</b>想"显示桌面"？Windows 用 <kbd>Win</kbd>+<kbd>D</kbd>，Mac 用 <kbd>Cmd</kbd>+<kbd>F3</kbd>（调度中心摊平所有窗口后按）或设置「触发角」把鼠标甩到屏幕角落。想"最小化所有窗口"？试试 <kbd>Cmd</kbd>+<kbd>Option</kbd>+点按桌面。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple · macOS Tahoe 官方介绍 <a href="https://www.apple.com.cn/macos/" target="_blank">apple.com.cn/macos</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 使用手册（访达/菜单栏/程序坞章节） <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 3 -->
+  <article class="module c-lemon" id="m3" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">03</div>
+      <div>
+        <h3>触控板手势全解</h3>
+        <p class="mod-sub">MacBook 触控板是公认笔记本界天花板——学会手势，鼠标可以退休</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>所有手势的开关与演示都在 <b>系统设置 → 触控板</b>，分「光标与点按」「滚动缩放」「更多手势」三页，每页都有<b>动态演示视频</b>，强烈建议对着调一遍。以下是最值得练的九个：</p>
+
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>手势</th><th>动作</th><th>效果（Windows 对照）</th></tr></thead>
+      <tbody>
+        <tr><td>轻点点按</td><td>单指轻点一下</td><td>单击（默认无需按到底，力度轻柔）</td></tr>
+        <tr><td>辅助点按（右键）</td><td><b>双指轻点</b> 或 右下角角点</td><td>右键菜单，等同鼠标右键</td></tr>
+        <tr><td>双指滚动</td><td>双指上下滑</td><td>滚动页面（方向注意见下方专题）</td></tr>
+        <tr><td>智能缩放</td><td>双指<b>双击</b></td><td>放大/还原网页某一栏（无直接 Win 对照）</td></tr>
+        <tr><td>捏合缩放</td><td>双指张合</td><td>图片/网页缩放</td></tr>
+        <tr><td>调度中心</td><td><b>三指（或四指）上滑</b></td><td>≈ <kbd>Win</kbd>+<kbd>Tab</kbd>：摊平所有窗口</td></tr>
+        <tr><td>切换全屏空间</td><td><b>三指左右滑</b></td><td>≈ <kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>←/→</kbd>：切虚拟桌面</td></tr>
+        <tr><td>通知中心</td><td>双指从触控板<b>右缘向左滑</b></td><td>点开屏幕右上角时间，看通知/小组件</td></tr>
+        <tr><td>启动台</td><td><b>拇指与其他三指捏合</b></td><td>≈ 开始菜单：一屏展示所有 App</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-arrows-up-down"></i> 专题：「自然滚动」为什么是"反的"？</h4>
+    <p>用惯 Windows 鼠标滚轮的人初见 Mac 一定懵：双指下滑，页面却向上滚。这不是 bug——macOS 的逻辑是<b>手指在"推纸"</b>：内容像一张纸贴在玻璃下，手指上推，纸就跟着往上走，和 iPhone 完全一致。Windows 触摸屏也是这个逻辑，只是鼠标滚轮时代把大家训练反了。</p>
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> 接受不了？可以关</h5>
+        <p style="font-size:.9rem">系统设置 → 触控板 → 滚动缩放 → 关闭「自然滚动」，立刻回到 Windows 手感（但会连带影响鼠标滚轮方向，鱼和熊掌不可兼得）。</p>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> 建议的姿势</h5>
+        <p style="font-size:.9rem">坚持 3~7 天适应它。因为 iPhone / iPad / Mac 触控板全线统一为自然滚动，一旦适应，所有设备无缝切换，长期收益更高。</p>
+      </div>
+    </div>
+
+    <h4><i class="fa-solid fa-hand-pointer"></i> 隐藏神技：三指拖移</h4>
+    <p>默认拖拽文件要按住触控板不放，很累。开启「三指拖移」后，<b>三指轻扫即可拖动窗口/文件，再点一下释放</b>：路径为 <b>系统设置 → 辅助功能 → 指针控制 → 触控板选项 → 拖移样式 → 三指拖移</b>。这是 Mac 老玩家的标配设置。</p>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>要不要外接鼠标？</b>完全可以——Mac 对 Windows 键鼠即插即用。但手势熟练后，大多数日常操作触控板更快；写代码、剪视频时再接鼠标不迟。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 使用手册「触控板手势」 <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 三指拖移开启路径（辅助功能指南） <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+      </ol>
+    </details>
+  </article>
+<!-- 模块 4 -->
+  <article class="module c-purple" id="m4" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">04</div>
+      <div>
+        <h3>访达（Finder）与文件系统</h3>
+        <p class="mod-sub">把"资源管理器"的肌肉记忆，翻译成 Mac 的文件哲学</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p><b>访达（Finder）= Mac 的资源管理器</b>，永远待在 Dock 最左端，无法退出。快捷键 <kbd>Cmd</kbd>+<kbd>N</kbd> 新开访达窗口（对照 <kbd>Win</kbd>+<kbd>E</kbd> 打开资源管理器）。</p>
+
+    <h4><i class="fa-solid fa-sliders"></i> 新机必做的 4 项访达设置</h4>
+    <p>菜单栏 → 访达 → 设置（旧版叫"偏好设置"）：</p>
+    <ol class="steps">
+      <li><b>通用</b>：把"新访达窗口显示"改为<b>家目录</b>（默认"最近使用"很反直觉）</li>
+      <li><b>高级</b>：勾选<b>「显示所有文件扩展名」</b>——Windows 用户没有扩展名会疯</li>
+      <li><b>边栏</b>：勾选<b>家目录</b>与常用位置，它们会出现在每个访达窗口左侧</li>
+      <li>菜单栏「显示」→ <b>「显示路径栏」</b>与「显示状态栏」——窗口底部立刻多出面包屑路径与容量信息</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-folder-tree"></i> Mac 文件系统 vs Windows 的三大观念差</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>观念</th><th>Windows</th><th>macOS</th></tr></thead>
+      <tbody>
+        <tr><td><b>文件之家</b></td><td><code>C:\Users\你的名字</code></td><td><code>/Users/你的名字</code>（波浪号 <code>~</code>），下分桌面/文档/下载/图片/影片/音乐/资源库(Library)</td></tr>
+        <tr><td><b>盘符</b></td><td>C 盘、D 盘、E 盘…</td><td><b>没有盘符</b>！所有磁盘作为"宗卷"挂在 /Volumes 下，桌面上直接显示磁盘图标，即插即用</td></tr>
+        <tr><td><b>软件安装位置</b></td><td>注册表 + Program Files + AppData 到处散落</td><td>一个 App = 一个 <code>.app</code> 包（其实是特殊文件夹），删掉即卸载主体</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-eye"></i> 每天都会用的效率操作</h4>
+    <ul>
+      <li><b>快速预览（Quick Look）</b>：选中任意文件按 <kbd>空格</kbd>，秒开预览——PDF、图片、视频、Word、代码都能看，再按 <kbd>空格</kbd> 关闭。这是 Mac 杀手级功能，没有 Windows 对照物</li>
+      <li><b>四种视图</b>：<kbd>Cmd</kbd>+<kbd>1/2/3/4</kbd> 分别是图标/列表/分栏/画廊视图。分栏视图（<kbd>Cmd</kbd>+<kbd>3</kbd>）最接近资源管理器的层级导航</li>
+      <li><b>标签（Tags）</b>：右键文件 → 选颜色标签。一个文件可以同时属于"工作"+"重要"，点击边栏标签跨文件夹过滤</li>
+      <li><b>智能文件夹</b>：存储一个搜索条件（如"所有大于 1GB 的视频"）作为动态文件夹</li>
+      <li><b>剪切文件</b>：Mac 没有剪切概念，而是 <kbd>Cmd</kbd>+<kbd>C</kbd> 复制后，到目标位置按 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>V</kbd> = 移动</li>
+      <li><b>前往文件夹</b>：<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入路径直达（高级玩家入口）</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-hard-drive"></i> 文件格式速查（Windows 用户重点）</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>文件系统</th><th>Windows 读写</th><th>Mac 读写</th><th>结论</th></tr></thead>
+      <tbody>
+        <tr><td><b>APFS</b>（Mac 默认）</td><td>❌ 不识别</td><td>✅</td><td>Mac 系统盘专用</td></tr>
+        <tr><td><b>NTFS</b>（Windows 默认）</td><td>✅</td><td>读取✅ / <b>写入❌</b></td><td>Mac 只能读！写入需第三方驱动（见模块 12）</td></tr>
+        <tr><td><b>exFAT</b></td><td>✅</td><td>✅</td><td><b>双系统交换 U 盘/移动硬盘首选</b></td></tr>
+        <tr><td><b>FAT32</b></td><td>✅</td><td>✅</td><td>兼容老设备用；单文件最大 4GB</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>文件名注意：</b>Mac 允许文件名含 <code>?</code> <code>*</code> <code>|</code> 等字符，但 Windows 不允许（Windows 只禁止 <code>\ / : * ? " &lt; &gt; |</code>）。如果文件要传回 Windows，提前避开这些字符，否则会传输失败或自动改名。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 使用手册「访达」章节 <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 文件系统格式说明（磁盘工具指南） <a href="https://support.apple.com/zh-cn/guide/disk-utility/welcome/web" target="_blank">support.apple.com/zh-cn/guide/disk-utility</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 5 -->
+  <article class="module c-mag" id="m5" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">05</div>
+      <div>
+        <h3>应用的安装与卸载</h3>
+        <p class="mod-sub">告别 .exe 与控制面板——Mac 装软件的四种姿势</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-download"></i> 四种安装姿势</h4>
+    <div class="tabs">
+      <div class="tab-btns">
+        <button class="active" data-tab="t5a"><i class="fa-brands fa-app-store-ios"></i> App Store</button>
+        <button data-tab="t5b"><i class="fa-solid fa-compact-disc"></i> .dmg 镜像</button>
+        <button data-tab="t5c"><i class="fa-solid fa-box"></i> .pkg 安装器</button>
+        <button data-tab="t5d"><i class="fa-solid fa-terminal"></i> Homebrew</button>
+      </div>
+      <div class="tab-panel active" id="t5a">
+        <p>点 Dock 上的 <b>App Store</b>（蓝底 A 字图标）→ 搜索 → 「获取/安装」，用触控 ID 或 Apple 账户密码确认。和手机装 App 一样，<b>最安全省心</b>，自动更新。日常软件（微信、QQ、WPS、剪映）全都有。</p>
+      </div>
+      <div class="tab-panel" id="t5b">
+        <p>从官网下载 <code>.dmg</code> 文件（相当于虚拟光盘）→ <b>双击挂载</b> → 弹出的窗口里把 App 图标<b>拖进 Applications 文件夹</b> → 完成。用完推出 dmg（右键 → 推出，或把它拖到废纸篓）。</p>
+        <div class="tip" style="margin:8px 0"><i class="fa-solid fa-lightbulb"></i><b>首次打开提示"无法验证开发者"？</b>别慌，这是 Gatekeeper 安全机制在工作。去 <b>系统设置 → 隐私与安全性</b>，底部会出现「仍要打开」按钮；或右键 App → 「打开」也能绕过一次验证。</div>
+      </div>
+      <div class="tab-panel" id="t5c">
+        <p>少数大型软件（Adobe 全家桶、部分驱动）用 <code>.pkg</code>，长得和 Windows 安装器一样：双击 → 一路「继续」→ 输管理员密码。注意看清每一步的选项。</p>
+      </div>
+      <div class="tab-panel" id="t5d">
+        <p>命令行党最爱：<code>brew install --cask xxx</code> 一条命令装好。这是「精通阶段」的内容，详见<b>模块 16</b>。</p>
+      </div>
+    </div>
+
+    <h4><i class="fa-solid fa-trash-can"></i> 卸载：拖进废纸篓只完成了 50%</h4>
+    <p>把 App 拖进废纸篓只是删掉了<b>程序本体</b>。macOS 没有 Windows 那种"卸载向导"，App 的配置、缓存、聊天记录、登录状态全部留在 <code>~/Library</code>（用户资料库）里——重装回来会发现"设置全还在"，就是这个原因。想彻底删干净，接着往下看。</p>
+    <ol class="steps">
+      <li><b>第一步 · 删本体</b>：App Store 装的 → 启动台长按图标抖动 → 点 <b>×</b>；其他方式装的 → 「应用程序」文件夹拖进废纸篓</li>
+      <li><b>第二步 · 残留体检</b>：用下面任一方法扫描 <code>~/Library</code> 里的关联文件（见下方"四种清理姿势"）</li>
+      <li><b>第三步 · 清倒废纸篓</b>：别让"已删除"的 App 在废纸篓里继续躺尸占空间</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-magnifying-glass-location"></i> 残留数据都藏在哪？（可搜索）</h4>
+    <p>macOS 用 <b>Bundle ID</b>（形如 <code>com.tencent.xinWeChat</code>）标记每个 App 的数据。访达按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入 <code>~/Library</code> 即可进入下表这些目录：</p>
+    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="resSearch" placeholder="搜索：缓存 / 偏好设置 / 自启动 / 沙盒…"></div>
+    <div class="table-wrap"><table class="neon" id="resTable">
+      <thead><tr><th>藏匿点</th><th>装的是什么</th><th>清理优先级</th></tr></thead>
+      <tbody>
+        <tr><td><code>~/Library/Application Support/</code></td><td>应用主数据：配置、数据库、聊天记录、下载的素材包。<b>体积大头</b>，一个微信能吃几十 GB</td><td>🔴 必清</td></tr>
+        <tr><td><code>~/Library/Caches/</code></td><td>缓存文件，删了会自动重建，最安全</td><td>🔴 必清</td></tr>
+        <tr><td><code>~/Library/Preferences/</code></td><td>偏好设置 <code>.plist</code> 文件（按 Bundle ID 命名），存着你的设置和登录状态</td><td>🔴 必清</td></tr>
+        <tr><td><code>~/Library/Containers/</code></td><td><b>沙盒应用</b>（多为 App Store 应用）的全部数据都在这，整个文件夹都是它的</td><td>🔴 必清</td></tr>
+        <tr><td><code>~/Library/Group Containers/</code></td><td>应用组共享数据（如同开发商的多个 App 共享的登录态）</td><td>🟡 建议清</td></tr>
+        <tr><td><code>~/Library/LaunchAgents/</code></td><td><b>后台自启服务</b>——流氓软件重灾区！有些 App 删了本体，后台进程还在偷偷自启</td><td>🔴 必清</td></tr>
+        <tr><td><code>~/Library/Saved Application State/</code></td><td>窗口位置与恢复状态</td><td>🟡 建议清</td></tr>
+        <tr><td><code>~/Library/Logs/</code></td><td>运行日志，排错用的，日常无用</td><td>🟡 建议清</td></tr>
+        <tr><td><code>~/Library/WebKit/</code> 与 <code>~/Library/HTTPStorages/</code></td><td>Electron 应用（如各类"套壳网页"软件）的网页数据、Local Storage</td><td>🟡 建议清</td></tr>
+        <tr><td><code>~/Library/Cookies/</code></td><td>登录 Cookie，删了下次要重新登录</td><td>🟢 可选</td></tr>
+        <tr><td><code>/Library/Application Support/</code></td><td><b>系统级</b>残留（全局安装的驱动、助手类软件），需要管理员密码</td><td>🟡 谨慎</td></tr>
+        <tr><td><code>/Library/LaunchAgents/ 与 /Library/LaunchDaemons/</code></td><td><b>系统级后台服务</b>（注意开头没有 <code>~</code>），某些驱动/助手软件的服务项</td><td>🟡 谨慎</td></tr>
+      </tbody>
+    </table></div>
+    <p class="empty-hint" id="resEmpty">😵 没找到，试试"缓存""自启""沙盒"</p>
+
+    <h4><i class="fa-solid fa-broom"></i> 四种彻底清理姿势</h4>
+    <div class="tabs">
+      <div class="tab-btns">
+        <button class="active" data-tab="t5e"><i class="fa-solid fa-wand-magic-sparkles"></i> AppCleaner（推荐）</button>
+        <button data-tab="t5f"><i class="fa-solid fa-folder-open"></i> 手动清理</button>
+        <button data-tab="t5g"><i class="fa-solid fa-terminal"></i> 终端命令</button>
+        <button data-tab="t5h"><i class="fa-solid fa-file-shield"></i> 官方卸载器</button>
+      </div>
+      <div class="tab-panel active" id="t5e">
+        <p><b>AppCleaner</b>（<a href="https://freemacsoft.net/appcleaner/" target="_blank">freemacsoft.net/appcleaner</a>，免费）是 macOS 圈口碑最好的免费卸载工具：把 App 图标拖进它的窗口，它会自动扫描出上面表格里所有关联文件，勾选后一键全删。适合 99% 的场景，<b>新手首选</b>。</p>
+        <div class="tip" style="margin:8px 0"><i class="fa-solid fa-lightbulb"></i>同类免费选择：<a href="https://github.com/alienator88/Pearcleaner" target="_blank">Pearcleaner</a>（开源、国人开发、更现代）。付费的 CleanMyMac 功能更全但非必需。</div>
+      </div>
+      <div class="tab-panel" id="t5f">
+        <p>不想装任何软件？访达手动清理三连：</p>
+        <ol class="steps">
+          <li>按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入 <code>~/Library</code> 回车</li>
+          <li>用右上角搜索框搜 App 名或 Bundle ID（如 <code>xinWeChat</code>），搜索范围选"此文件夹"</li>
+          <li>把搜出来的同名文件/文件夹拖进废纸篓（<b>认准路径以 ~/Library 开头再删</b>）</li>
+        </ol>
+        <p>查 Bundle ID 技巧：右键 App → 显示简介 → "种类"下方的"标识符"就是。</p>
+      </div>
+      <div class="tab-panel" id="t5g">
+        <p>终端一行命令找出某 App 的所有残留（以微信为例，把关键词换成别的 App 名即可）：</p>
+        <pre class="code-block">find ~/Library -iname "*wechat*" 2&gt;/dev/null</pre>
+        <p>确认列表无害后批量删除（<b>先看清楚再删</b>，<code>-delete</code> 不可撤销）：</p>
+        <pre class="code-block">find ~/Library -iname "*wechat*" -maxdepth 3 -delete 2&gt;/dev/null</pre>
+        <p>清掉它的偏好设置与自启服务：</p>
+        <pre class="code-block">defaults delete com.tencent.xinWeChat 2&gt;/dev/null
+launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev/null</pre>
+        <div class="danger" style="margin:8px 0"><i class="fa-solid fa-triangle-exclamation"></i><b>红线：</b><code>com.apple.*</code> 前缀的是系统组件，<b>绝对不要删</b>；终端命令详见模块 15，看不懂的命令先别跑。</div>
+      </div>
+      <div class="tab-panel" id="t5h">
+        <p>带内核扩展、虚拟化驱动、后台服务的软件（Adobe 全家桶、Parallels Desktop、VMware、部分声卡驱动），卸不干净会留下系统级驱动。这类软件官网都提供<b>官方卸载器</b>（如 Adobe Creative Cloud Uninstaller），优先用它，删完再用 AppCleaner 扫尾。</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 卸载</h5>
+        <ul>
+          <li>控制面板/设置 → 程序 → 卸载向导</li>
+          <li>注册表残留是顽疾，第三方卸载器是刚需</li>
+          <li>残留散落 Program Files / AppData / 注册表，难枚举</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> macOS 卸载</h5>
+        <ul>
+          <li>99% 的 App：拖废纸篓即删主体</li>
+          <li>残留集中且可枚举：~/Library 下按 Bundle ID 组织（见上表）</li>
+          <li>AppCleaner 一拖即净；系统级服务才需要官方卸载器</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="danger"><i class="fa-solid fa-shield-halved"></i><b>安全提醒：</b>只从 App Store 或软件<b>官网</b>下载。搜索引擎排名靠前的"高速下载器"是重灾区。Gatekeeper 已帮你挡掉未签名应用，别习惯性右键绕过——每次绕过前想一下这软件从哪来的。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 在 Mac 上安装应用与安全设置 <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+        <li><span class="ref-tag">官方</span>Apple 平台安全指南（Gatekeeper 章节） <a href="https://support.apple.com/guide/security/welcome/web" target="_blank">support.apple.com/guide/security</a></li>
+        <li><span class="ref-tag">社区</span>AppCleaner 官网（FreeMacSoft） <a href="https://freemacsoft.net/appcleaner/" target="_blank">freemacsoft.net/appcleaner</a></li>
+        <li><span class="ref-tag">社区</span>Pearcleaner（开源卸载工具） <a href="https://github.com/alienator88/Pearcleaner" target="_blank">github.com/alienator88/Pearcleaner</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 6 -->
+  <article class="module c-cyan" id="m6" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">06</div>
+      <div>
+        <h3>系统设置与个性化</h3>
+        <p class="mod-sub">把这台 Mac 调教成"你的"电脑</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>Mac 的设置入口：菜单栏 <i class="fa-brands fa-apple"></i> → <b>系统设置</b>（对照 Windows 的 <kbd>Win</kbd>+<kbd>I</kbd>）。macOS Ventura 后改成了类似 iPhone 的左侧分类列表，Windows 用户反而会觉得眼熟。</p>
+
+    <h4><i class="fa-solid fa-palette"></i> 新机推荐逐项设置</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>设置项</th><th>路径</th><th>推荐</th></tr></thead>
+      <tbody>
+        <tr><td><b>外观模式</b></td><td>系统设置 → 外观</td><td>浅色 / 深色 / 自动（随日落切换）。macOS 深色模式适配质量远高于 Windows，放心开</td></tr>
+        <tr><td><b>程序坞行为</b></td><td>系统设置 → 桌面与程序坞</td><td>调大图标、开启「放大」鼠标悬停效果；追求极简可开「自动显示和隐藏程序坞」</td></tr>
+        <tr><td><b>触发角</b></td><td>桌面与程序坞 → 触发角（右下角按钮）</td><td>四角触发：左上=桌面、右上=通知中心、左下=锁定屏幕、右下=启动台。一秒变高手</td></tr>
+        <tr><td><b>显示器缩放</b></td><td>系统设置 → 显示器</td><td>视网膜屏默认"看起来像"分辨率偏大字偏小，可切换更大文本档位（对照 Windows 缩放 125%/150%）</td></tr>
+        <tr><td><b>夜览 Night Shift</b></td><td>显示器 → 夜览</td><td>日落后自动降蓝光（对照 Windows 夜间模式）</td></tr>
+        <tr><td><b>专注模式</b></td><td>系统设置 → 专注模式</td><td>勿扰模式可按时段/按 App 自动开启，比 Windows 安静时间更细</td></tr>
+        <tr><td><b>键盘按键重复</b></td><td>键盘 → 按键重复速率</td><td>拉到最快 + 延迟拉到最短，长按删除爽快一倍</td></tr>
+        <tr><td><b>热键打开终端</b></td><td>键盘 → 键盘快捷键 → 服务</td><td>勾选"新建位于文件夹窗口的终端标签页"，进阶期再用</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-desktop"></i> 桌面小组件与多桌面壁纸</h4>
+    <ul>
+      <li>macOS Sonoma 起，桌面可放<b>小组件</b>（天气/日历/待办），iPhone 上的小组件也能搬过来</li>
+      <li>每个<b>全屏空间</b>（桌面）可以有独立壁纸：先 <kbd>Ctrl</kbd>+<kbd>↑</kbd> 进入调度中心，点顶部 <b>+</b> 新建桌面，右键桌面缩略图单独设壁纸</li>
+      <li>macOS Sequoia 起「iPhone 镜像」直接把手机画面投到 Mac 上操作，Windows 上没有对应功能</li>
+    </ul>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>找不到设置项？</b>系统设置左上角有<b>搜索框</b>，输入关键词直接定位——和 Windows 设置搜索一样好用。别在层层菜单里硬翻。</div>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>别装的"优化"软件：</b>Windows 时代的老习惯是装个"管家"清内存、清垃圾。macOS <b>不需要</b>：内存由系统统一调度（详见模块 18"内存压缩"），缓存会自动管理。各类"清理大师"反而是负优化，有些甚至是流氓软件。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 使用手册「系统设置」章节 <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+        <li><span class="ref-tag">官方</span>Apple · macOS Tahoe 新功能（小组件/壁纸/iPhone 镜像） <a href="https://www.apple.com.cn/macos/" target="_blank">apple.com.cn/macos</a></li>
+      </ol>
+    </details>
+  </article>
+
+</section>
+
+<!-- ============================================================
+     阶段二 · 进阶
+============================================================ -->
+<section class="stage" id="stage2">
+  <div class="stage-banner b2" data-aos="fade-up">
+    <div class="stage-no">Ⅱ</div>
+    <h2><i class="fa-solid fa-gauge-high"></i> 阶段二 · 进阶（效率起飞）</h2>
+    <p>键盘心法 → 多任务 → 聚焦搜索 → 截图录屏 → 快捷键大全 → 双系统协同。打完这 6 个模块，你的操作速度将反超 Windows 时期。</p>
+  </div>
+
+  <!-- 模块 7 -->
+  <article class="module c-lemon" id="m7" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">07</div>
+      <div>
+        <h3>键盘心法与中文输入</h3>
+        <p class="mod-sub">Command 键是新的 Ctrl —— 一次心智模型移植手术</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-keyboard"></i> 第一课：修饰键翻译表</h4>
+    <p>Mac 键盘上 Windows 键的位置是 <kbd>⌘ Command</kbd>，Alt 的位置是 <kbd>⌥ Option</kbd>，另有 <kbd>⌃ Control</kbd>。90% 的场合，<b>Windows 里的 Ctrl 对应 Mac 里的 Command</b>。菜单里那些奇怪符号对照如下：</p>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>符号</th><th>按键</th><th>Windows 对照</th><th>记忆法</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>⌘</kbd></td><td>Command（花键）</td><td>Ctrl</td><td>主力键，一切快捷键的核心</td></tr>
+        <tr><td><kbd>⌥</kbd></td><td>Option</td><td>Alt</td><td>"可选/额外"操作，常做快捷键变体</td></tr>
+        <tr><td><kbd>⌃</kbd></td><td>Control</td><td>Ctrl（但戏份少）</td><td>多用于右键菜单替代与终端快捷键</td></tr>
+        <tr><td><kbd>⇧</kbd></td><td>Shift</td><td>Shift</td><td>不变</td></tr>
+        <tr><td><kbd>⌫</kbd></td><td>Delete</td><td>Backspace</td><td>Mac 的"Delete"是向后删</td></tr>
+        <tr><td><kbd>fn</kbd>+<kbd>⌫</kbd></td><td>向前删除</td><td>Delete</td><td>笔记本无独立前删键的组合</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-language"></i> 中文输入法</h4>
+    <ul>
+      <li><b>系统自带</b>：系统设置 → 键盘 → 输入法 → 编辑 → <b>+</b> → 简体中文 → 选「拼音-简体」。自带输入法无广告、和系统深度集成（如听写、听写实时转文字）</li>
+      <li><b>第三方</b>：搜狗输入法 Mac 版、微信键盘功能大同小异，按习惯选</li>
+      <li><b>中英切换</b>：<kbd>Ctrl</kbd>+<kbd>空格</kbd> 或 <kbd>Caps Lock</kbd>（单按切中英，长按还是大写锁定）——对照 Windows 的 <kbd>Win</kbd>+<kbd>空格</kbd>/<kbd>Shift</kbd></li>
+      <li><b>颜文字/生僻字</b>：输入 <code>haha</code> 会出现 (＾▽＾)，<code>jiuchi</code> 能打出乜都可以试——系统拼音内置大量颜文字词库</li>
+    </ul>
+
+    <h4><i class="fa-regular fa-face-smile"></i> 表情与特殊符号面板</h4>
+    <p>任意输入位置按 <kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>空格</kbd>，弹出 <b>表情与符号检视器</b>：emoji、箭头、数学符号、货币符号全都有，还能自定义常用列表。对照 Windows 的 <kbd>Win</kbd>+<kbd>.</kbd>。</p>
+
+    <h4><i class="fa-solid fa-wand-sparkles"></i> 文本替换：你的私人短语库</h4>
+    <p>系统设置 → 键盘 → 文本替换：输入 <code>@@</code> 自动变邮箱、<code>dz</code> 变常用地址。替换项通过 iCloud <b>全设备同步</b>——iPhone 上加的短语，Mac 立刻能用。Windows 没有原生对应（要靠输入法自定义短语）。</p>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>听写：</b>按两下 <kbd>Fn</kbd> 键开始语音输入（需在键盘设置里开启"听写"），中文识别率很高，长文打字累时救场。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 键盘快捷键大全 <a href="https://support.apple.com/zh-cn/HT201236" target="_blank">support.apple.com/zh-cn/HT201236</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 在 Mac 上键入重音符号与表情 <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 8 -->
+  <article class="module c-purple" id="m8" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">08</div>
+      <div>
+        <h3>多任务与窗口管理</h3>
+        <p class="mod-sub">调度中心、分屏、舞台管理器——Mac 的窗口宇宙</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-layer-group"></i> 核心概念：空间（Spaces）</h4>
+    <p>Mac 的"虚拟桌面"叫<b>空间</b>。每个全屏应用独占一个空间，你也可以手动建空桌面。按 <kbd>Ctrl</kbd>+<kbd>↑</kbd> 或触控板三指上滑进入<b>调度中心</b>，俯瞰所有空间与窗口，<kbd>Ctrl</kbd>+<kbd>←/→</kbd> 或三指左右滑切换。</p>
+
+    <h4><i class="fa-solid fa-table-columns"></i> 分屏（Split View）：Mac 原生贴靠</h4>
+    <ol class="steps">
+      <li>鼠标移到窗口左上角<b>绿色按钮</b>上，稍等弹出菜单</li>
+      <li>选「将窗口拼贴到屏幕左侧」（或右侧）</li>
+      <li>当前窗口占半屏，其余窗口化为缩略图，点选另一个窗口完成配对</li>
+      <li>中间分隔条可拖动调整比例；顶部小横条可交换左右位置</li>
+      <li>窗口滑到最顶部退出分屏（或按 <kbd>Esc</kbd>）</li>
+    </ol>
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>想拖窗口到边缘自动分屏</b>（像 Windows 的 Snap Layouts）？macOS Tahoe 已支持把窗口<b>拖到屏幕左右边缘</b>触发平铺提示。要更强的三等分、网格布局，进阶装免费开源的 <b>Rectangle</b>（见模块 16）。</div>
+
+    <h4><i class="fa-solid fa-masks-theater"></i> 舞台管理器（Stage Manager）</h4>
+    <p>系统设置 → 桌面与程序坞 → 开启「舞台管理器」：屏幕左侧收纳缩略图、中央聚焦当前窗口，窗口自动成组。<b>适合小屏 + 窗口爆炸</b>的场景；外接大屏建议关掉用传统模式。这是 Windows 11 没有的组织方式，试一周再决定去留。</p>
+
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>需求</th><th>Windows</th><th>macOS</th></tr></thead>
+      <tbody>
+        <tr><td>鸟瞰所有窗口</td><td><kbd>Win</kbd>+<kbd>Tab</kbd> / 任务视图</td><td>调度中心 <kbd>Ctrl</kbd>+<kbd>↑</kbd> / 三指上滑</td></tr>
+        <tr><td>切虚拟桌面</td><td><kbd>Ctrl</kbd>+<kbd>Win</kbd>+<kbd>←/→</kbd></td><td><kbd>Ctrl</kbd>+<kbd>←/→</kbd> / 三指左右滑</td></tr>
+        <tr><td>看同 App 所有窗口</td><td>任务栏图标悬停预览</td><td><kbd>Cmd</kbd>+<kbd>`</kbd> 同 App 窗口轮换 / 下滑 App 图标</td></tr>
+        <tr><td>显示桌面</td><td><kbd>Win</kbd>+<kbd>D</kbd></td><td><kbd>F11</kbd>（或触发角）</td></tr>
+        <tr><td>强制退出</td><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></td><td><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd></td></tr>
+        <tr><td>切换应用</td><td><kbd>Alt</kbd>+<kbd>Tab</kbd></td><td><kbd>Cmd</kbd>+<kbd>Tab</kbd>（松开前按 <kbd>`</kbd> 可在同 App 窗口间下钻）</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>全屏应用的坑：</b>全屏后菜单栏会隐藏，鼠标移到屏幕顶端才出现。新手常以为菜单"丢了"——其实只是躲起来了。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 调度中心/分屏/舞台管理器使用手册 <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+        <li><span class="ref-tag">社区</span>Rectangle（开源窗口管理器） <a href="https://github.com/rxhanson/Rectangle" target="_blank">github.com/rxhanson/Rectangle</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 9 -->
+  <article class="module c-mag" id="m9" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">09</div>
+      <div>
+        <h3>聚焦（Spotlight）：被低估的万能搜索</h3>
+        <p class="mod-sub">一个快捷键，顶替开始菜单搜索 + 计算器 + 换算器 + 启动器</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>按 <kbd>Cmd</kbd>+<kbd>空格</kbd> 呼出聚焦（对照 <kbd>Win</kbd>+<kbd>S</kbd>），输入即搜。它远不止找文件：</p>
+
+    <h4><i class="fa-solid fa-magnifying-glass"></i> 十个立刻能用的姿势</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>输入</th><th>得到</th></tr></thead>
+      <tbody>
+        <tr><td><code>saf</code></td><td>秒开 Safari——启动 App 不用碰 Dock</td></tr>
+        <tr><td><code>150*0.85</code></td><td>直接出计算结果 127.5（不用开计算器）</td></tr>
+        <tr><td><code>100 usd to cny</code></td><td>实时汇率换算</td></tr>
+        <tr><td><code>10 km to miles</code></td><td>长度/重量/温度单位全都能换</td></tr>
+        <tr><td><code>简体</code></td><td>搜到系统设置项直达（"设置"类搜索）</td></tr>
+        <tr><td><code>种类:pdf 面试</code></td><td>按文件类型过滤搜索（还支持 日期:、发件人: 等语法）</td></tr>
+        <tr><td>某个词 + 方向键下</td><td>查词典释义</td></tr>
+        <tr><td><code>天气</code></td><td>当前城市天气卡片</td></tr>
+        <tr><td>剪贴板里的文字</td><td><kbd>Cmd</kbd>+<kbd>空格</kbd> 后直接 <kbd>Cmd</kbd>+<kbd>V</kbd> 粘贴搜索</td></tr>
+        <tr><td>邮件/备忘录关键词</td><td>全文检索 App 内容，回车直达原文位置</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-bolt"></i> macOS 26 的聚焦大升级</h4>
+    <p>Tahoe 版本的聚焦支持<b>执行动作</b>：不只搜索，还能直接"在 XX App 里创建文档""运行某条快捷指令""开始屏幕录制"，并集成了视觉智能（Visual Intelligence）搜索——从"搜索框"进化成"操作面板"。这也是后面模块 17 自动化的入口之一。</p>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>进阶替代品：</b>聚焦用顺后，可以试试 <b>Raycast</b>（免费）——剪贴板历史、窗口管理、脚本商店一体化，是 Mac 圈公认效率神器（模块 16 一行命令可装）。Alfred 是老牌付费同类。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple · macOS Tahoe「聚焦操作」新功能 <a href="https://www.apple.com.cn/macos/" target="_blank">apple.com.cn/macos</a></li>
+        <li><span class="ref-tag">社区</span>Raycast 官网 <a href="https://www.raycast.com/" target="_blank">raycast.com</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 10 -->
+  <article class="module c-cyan" id="m10" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">10</div>
+      <div>
+        <h3>截图与录屏</h3>
+        <p class="mod-sub">记住一组快捷键，截图工具可以直接退休</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-camera-retro"></i> 快捷键全家桶</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>操作</th><th>快捷键</th><th>Windows 对照</th></tr></thead>
+      <tbody>
+        <tr><td>全屏截图（存为文件）</td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>3</kbd></td><td><kbd>Win</kbd>+<kbd>PrtSc</kbd></td></tr>
+        <tr><td>区域截图（拖框）</td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>4</kbd></td><td><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td></tr>
+        <tr><td>窗口截图（带阴影）</td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>4</kbd> 再按 <kbd>空格</kbd></td><td>截图工具窗口模式</td></tr>
+        <tr><td><b>截图控制中心（含录屏）</b></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>5</kbd></td><td>无原生对照</td></tr>
+        <tr><td>截图进剪贴板（不存文件）</td><td>以上任意组合 <b>再加按住 <kbd>Ctrl</kbd></b></td><td><kbd>PrtSc</kbd> 默认行为</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-video"></i> 录屏步骤（零软件成本）</h4>
+    <ol class="steps">
+      <li>按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>5</kbd>，屏幕底部浮出控制条</li>
+      <li>选「录制整个屏幕」或「录制选定部分」（右侧两个录制按钮）</li>
+      <li>点「选项」可设：保存位置、内置麦克风录音、是否显示鼠标点按、定时器</li>
+      <li>点「录制」开始；结束后点屏幕右上角菜单栏的<b>停止按钮 ■</b></li>
+      <li>点右下角浮出缩略图可直接<b>修剪</b>或用「标记」工具批注，或右滑保存</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-scissors"></i> 顺带解锁：预览（Preview）批注</h4>
+    <p>截图后双击打开（默认就是"预览"App），工具栏自带<b>标记</b>：箭头、文字、马赛克、签名（触控板手写签名后可反复贴到任何 PDF）。「预览」还能合并 PDF、裁剪、调色——很多人装了 Acrobat 才发现预览全能干。</p>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>默认保存位置在桌面</b>，截图多了桌面会很乱。在 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>5</kbd> 的「选项 → 存储到」里改到专门的截图文件夹。</div>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>录 iPhone 屏幕：</b>iPhone 数据线连 Mac → QuickTime Player → 文件 → 新建影片录制 → 下拉箭头选 iPhone——写教程、录 App 演示的神器。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持《在 Mac 上截屏或录制屏幕》 <a href="https://support.apple.com/zh-cn/guide/mac-help/mh26782/11.0/mac" target="_blank">support.apple.com/zh-cn/guide/mac-help/mh26782</a></li>
+      </ol>
+    </details>
+  </article>
+  <!-- 模块 11 -->
+  <article class="module c-lemon" id="m11" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">11</div>
+      <div>
+        <h3>Windows ↔ macOS 快捷键对照大全</h3>
+        <p class="mod-sub">肌肉记忆翻译词典 · 支持搜索 · 建议收藏常查</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>规律总纲：<b>90% 的场景把 <kbd>Ctrl</kbd> 换成 <kbd>Cmd</kbd> 即可</b>；剩下的差异集中在窗口管理（Windows 靠 <kbd>Win</kbd> 键，Mac 靠 <kbd>Ctrl</kbd>+方向键）和文件操作。下面这张表覆盖日常 90% 的需求，找不到就按 <kbd>Cmd</kbd>+<kbd>,</kbd> 打开当前 App 的设置翻快捷键列表。</p>
+
+    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="scSearch" placeholder="搜索：复制 / 关闭窗口 / 锁屏 / 保存…"></div>
+    <div class="table-wrap"><table class="neon" id="scTable">
+      <thead><tr><th>功能</th><th>Windows</th><th>macOS</th></tr></thead>
+      <tbody>
+        <tr><td>复制</td><td><kbd>Ctrl</kbd>+<kbd>C</kbd></td><td><kbd>Cmd</kbd>+<kbd>C</kbd></td></tr>
+        <tr><td>粘贴</td><td><kbd>Ctrl</kbd>+<kbd>V</kbd></td><td><kbd>Cmd</kbd>+<kbd>V</kbd></td></tr>
+        <tr><td>剪切（文本）</td><td><kbd>Ctrl</kbd>+<kbd>X</kbd></td><td><kbd>Cmd</kbd>+<kbd>X</kbd></td></tr>
+        <tr><td>剪切（文件移动）</td><td><kbd>Ctrl</kbd>+<kbd>X</kbd></td><td><kbd>Cmd</kbd>+<kbd>C</kbd> 后 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>V</kbd></td></tr>
+        <tr><td>撤销 / 重做</td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd> / <kbd>Y</kbd></td><td><kbd>Cmd</kbd>+<kbd>Z</kbd> / <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd></td></tr>
+        <tr><td>全选</td><td><kbd>Ctrl</kbd>+<kbd>A</kbd></td><td><kbd>Cmd</kbd>+<kbd>A</kbd></td></tr>
+        <tr><td>保存 / 另存为</td><td><kbd>Ctrl</kbd>+<kbd>S</kbd> / <kbd>F12</kbd></td><td><kbd>Cmd</kbd>+<kbd>S</kbd> / <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td></tr>
+        <tr><td>打印</td><td><kbd>Ctrl</kbd>+<kbd>P</kbd></td><td><kbd>Cmd</kbd>+<kbd>P</kbd></td></tr>
+        <tr><td>查找</td><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td><kbd>Cmd</kbd>+<kbd>F</kbd></td></tr>
+        <tr><td>新建窗口/文档</td><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td><td><kbd>Cmd</kbd>+<kbd>N</kbd></td></tr>
+        <tr><td>打开文件</td><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td><td><kbd>Cmd</kbd>+<kbd>O</kbd></td></tr>
+        <tr><td>关闭当前窗口/标签</td><td><kbd>Ctrl</kbd>+<kbd>W</kbd></td><td><kbd>Cmd</kbd>+<kbd>W</kbd></td></tr>
+        <tr><td>关闭窗口（全部标签）</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd></td></tr>
+        <tr><td><b>退出应用</b></td><td><kbd>Alt</kbd>+<kbd>F4</kbd></td><td><kbd>Cmd</kbd>+<kbd>Q</kbd></td></tr>
+        <tr><td>强制退出（应用无响应）</td><td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd></td><td><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd></td></tr>
+        <tr><td>切换应用</td><td><kbd>Alt</kbd>+<kbd>Tab</kbd></td><td><kbd>Cmd</kbd>+<kbd>Tab</kbd></td></tr>
+        <tr><td>同应用窗口间切换</td><td>—</td><td><kbd>Cmd</kbd>+<kbd>`</kbd></td></tr>
+        <tr><td>打开搜索</td><td><kbd>Win</kbd>+<kbd>S</kbd></td><td><kbd>Cmd</kbd>+<kbd>空格</kbd>（聚焦）</td></tr>
+        <tr><td>显示桌面</td><td><kbd>Win</kbd>+<kbd>D</kbd></td><td><kbd>F11</kbd> 或触发角</td></tr>
+        <tr><td>文件资源管理器</td><td><kbd>Win</kbd>+<kbd>E</kbd></td><td><kbd>Cmd</kbd>+<kbd>N</kbd>（在访达中）</td></tr>
+        <tr><td>锁屏</td><td><kbd>Win</kbd>+<kbd>L</kbd></td><td><kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>Q</kbd></td></tr>
+        <tr><td>任务管理器</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd></td><td><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd> 或活动监视器</td></tr>
+        <tr><td>系统设置</td><td><kbd>Win</kbd>+<kbd>I</kbd></td><td><kbd>Cmd</kbd>+<kbd>,</kbd>（当前 App 设置）或点 <i class="fa-brands fa-apple"></i> 菜单</td></tr>
+        <tr><td>输入法切换</td><td><kbd>Win</kbd>+<kbd>空格</kbd></td><td><kbd>Ctrl</kbd>+<kbd>空格</kbd> 或 <kbd>Caps Lock</kbd></td></tr>
+        <tr><td>截图</td><td><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>4</kbd></td></tr>
+        <tr><td>刷新页面</td><td><kbd>F5</kbd></td><td><kbd>Cmd</kbd>+<kbd>R</kbd></td></tr>
+        <tr><td>强制刷新（忽略缓存）</td><td><kbd>Ctrl</kbd>+<kbd>F5</kbd></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd></td></tr>
+        <tr><td>浏览器地址栏</td><td><kbd>Ctrl</kbd>+<kbd>L</kbd> / <kbd>F6</kbd></td><td><kbd>Cmd</kbd>+<kbd>L</kbd></td></tr>
+        <tr><td>新建浏览器标签 / 恢复关闭标签</td><td><kbd>Ctrl</kbd>+<kbd>T</kbd> / <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td><td><kbd>Cmd</kbd>+<kbd>T</kbd> / <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd></td></tr>
+        <tr><td>跳到行首/行尾（文本）</td><td><kbd>Home</kbd> / <kbd>End</kbd></td><td><kbd>Cmd</kbd>+<kbd>←</kbd> / <kbd>Cmd</kbd>+<kbd>→</kbd></td></tr>
+        <tr><td>按词移动光标</td><td><kbd>Ctrl</kbd>+<kbd>←/→</kbd></td><td><kbd>Option</kbd>+<kbd>←/→</kbd></td></tr>
+        <tr><td>删除前一个词</td><td><kbd>Ctrl</kbd>+<kbd>Backspace</kbd></td><td><kbd>Option</kbd>+<kbd>⌫</kbd></td></tr>
+        <tr><td>截图（全屏）</td><td><kbd>Win</kbd>+<kbd>PrtSc</kbd></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>3</kbd></td></tr>
+        <tr><td>表情面板</td><td><kbd>Win</kbd>+<kbd>.</kbd></td><td><kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>空格</kbd></td></tr>
+        <tr><td>最小化窗口</td><td><kbd>Win</kbd>+<kbd>↓</kbd></td><td><kbd>Cmd</kbd>+<kbd>M</kbd></td></tr>
+        <tr><td>隐藏当前应用所有窗口</td><td>—</td><td><kbd>Cmd</kbd>+<kbd>H</kbd>（比最小化快，Dock 点图标即回）</td></tr>
+        <tr><td>新建文件夹</td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></td><td><kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></td></tr>
+        <tr><td>文件重命名</td><td><kbd>F2</kbd></td><td><kbd>Return</kbd>（回车即重命名，不是打开！）</td></tr>
+        <tr><td>预览文件</td><td>—</td><td><kbd>空格</kbd>（快速预览）</td></tr>
+        <tr><td>进入文件所在文件夹层级</td><td>地址栏面包屑</td><td><kbd>Cmd</kbd>+<kbd>↑</kbd>（上跳一层）</td></tr>
+      </tbody>
+    </table></div>
+    <p class="empty-hint" id="scEmpty">😵 没找到，换个关键词试试（比如"标签""截图""删除"）</p>
+
+    <div class="danger"><i class="fa-solid fa-skull-crossbones"></i><b>高危差异警告：</b>在访达里按 <kbd>Return</kbd> 是<b>重命名</b>而不是打开文件！打开文件是 <kbd>Cmd</kbd>+<kbd>O</kbd> 或双击。这条坑过 99% 的 Windows 移民。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持《Mac 键盘快捷键》官方对照文档 <a href="https://support.apple.com/zh-cn/HT201236" target="_blank">support.apple.com/zh-cn/HT201236</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 12 -->
+  <article class="module c-purple" id="m12" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">12</div>
+      <div>
+        <h3>文件迁移与双系统协同</h3>
+        <p class="mod-sub">和旧 PC 说再见（但偶尔还要来往）的完全方案</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-truck-moving"></i> 方案 A：迁移助理完整搬家</h4>
+    <ol class="steps">
+      <li><b>PC 端准备</b>：更新 Windows 到最新 → 关闭杀毒软件/防火墙/VPN → 从 Apple 官网下载与 Mac 系统匹配的 <b>Windows 迁移助理</b>（macOS Sonoma/Sequoia/Tahoe 对应 3.0.1.0 版）</li>
+      <li><b>两台电脑</b>连同一 Wi-Fi（或用网线直连更快），彼此靠近、全程插电</li>
+      <li><b>Mac 端</b>：首次开机时选「从 Windows PC 传输」；已完成设置则打开「应用程序 → 实用工具 → 迁移助理」→ 选「从 Windows PC」→ 继续</li>
+      <li>Mac 屏幕出现配对代码，在 PC 的迁移助理中输入 → PC 开始连接</li>
+      <li>Mac 上勾选要搬的类别（邮件/联系人/日历/浏览器书签/用户文件夹文件/桌面壁纸等）→ 继续，等待完成（100GB 约 1~3 小时，有线更快）</li>
+      <li>重启后用新密码登录，邮件、通讯录、日历、书签各就各位</li>
+    </ol>
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>迁移助理搬不了：</b>Windows 上安装的<b>软件本体</b>、系统设置里的非账户类偏好。软件需要重新装 Mac 版——正好趁机断舍离。</div>
+
+    <h4><i class="fa-solid fa-hard-drive"></i> 方案 B：移动硬盘手动搬运</h4>
+    <ul>
+      <li>硬盘格成 <b>exFAT</b>：Windows 上右键磁盘 → 格式化 → exFAT；或 Mac 上用「磁盘工具」抹掉（GUID 分区图 + exFAT）</li>
+      <li>优先搬：<code>文档 / 桌面 / 图片 / 下载 / 视频</code> 五大目录 + 浏览器书签导出（浏览器自带导出 HTML 功能）+ 微信/QQ 聊天记录（各客户端官方迁移工具）</li>
+      <li>OneDrive 用户直接装 Mac 版客户端登录即同步，最无缝</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-file-shield"></i> NTFS 移动硬盘在 Mac 上写入的三条路</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>方案</th><th>成本</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>改用 exFAT 硬盘</td><td>免费</td><td>需重新格式化（会清空数据，先备份）。日常双系统交换<b>首选</b></td></tr>
+        <tr><td>第三方 NTFS 驱动</td><td>付费 ~¥200</td><td>Paragon NTFS for Mac、Tuxera 等成熟商业驱动，稳定写入</td></tr>
+        <tr><td>开源方案 mounty / ntfs-3g</td><td>免费</td><td>基于实验性写入，重要数据不推荐（社区方案，稳定性自负）</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-network-wired"></i> 双机共存：局域网互访（SMB 共享）</h4>
+    <ul>
+      <li><b>Mac 访问 Windows 共享</b>：访达 → 菜单「前往 → 连接服务器」（<kbd>Cmd</kbd>+<kbd>K</kbd>）→ 输入 <code>smb://电脑名或IP</code> → 输 Windows 账号密码</li>
+      <li><b>Windows 访问 Mac 共享</b>：系统设置 → 通用 → 共享 → 打开「文件共享」，Windows 资源管理器地址栏输 <code>\\Mac的IP</code> 即可</li>
+      <li>偶发「Windows 共享 Mac 连不上」：多半是 SMB 3 版本协商问题，在 Mac 上「共享 → 文件共享 → 选项」里勾选 SMB 共享并确认用户勾选</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-font"></i> 高频踩坑：文件名非法字符</h4>
+    <p>Mac 上能存的 <code>汇报?终稿*.docx</code> 拷去 Windows 会报错或被强制改名；反向，Windows 的 <code>计划:周一.docx</code>（理论不允许但U盘里常见）在 Mac 上可以正常显示。互传前统一清理特殊字符最省心。</p>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持《使用"迁移助理"从 PC 传输到 Mac》（含各版本迁移助理下载） <a href="https://support.apple.com/zh-cn/HT204087" target="_blank">support.apple.com/zh-cn/HT204087</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 在 Mac 上共享文件（SMB） <a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help</a></li>
+        <li><span class="ref-tag">社区</span>Paragon NTFS for Mac 官网 <a href="https://www.paragon-software.com/home/ntfs-mac/" target="_blank">paragon-software.com</a></li>
+      </ol>
+    </details>
+  </article>
+
+</section>
+
+<!-- ============================================================
+     阶段三 · 精通
+============================================================ -->
+<section class="stage" id="stage3">
+  <div class="stage-banner b3" data-aos="fade-up">
+    <div class="stage-no">Ⅲ</div>
+    <h2><i class="fa-solid fa-crown"></i> 阶段三 · 精通（成为高手）</h2>
+    <p>生态联动 → 备份 → 终端 → Homebrew → 自动化 → 安全与性能。打完这 6 个模块，你在 Mac 圈的段位是"高手"，日常问题不求人。</p>
+  </div>
+
+  <!-- 模块 13 -->
+  <article class="module c-mag" id="m13" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">13</div>
+      <div>
+        <h3>Apple 生态连续互通</h3>
+        <p class="mod-sub">如果 iPhone/iPad 就在你桌上，这一模块价值半台 Mac</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p class="mod-sub">前提只有一条：所有设备<b>登录同一 Apple 账户</b>，并开启蓝牙与 Wi-Fi。以下功能对照 Windows + 安卓的组合基本无解。</p>
+
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>功能</th><th>是什么</th><th>Windows 世界对照</th></tr></thead>
+      <tbody>
+        <tr><td><b>隔空投送 AirDrop</b></td><td>与附近 iPhone/iPad/Mac 秒传文件：访达边栏/分享按钮 → 选对方头像。无需网络、不走流量</td><td>"就近共享"（限制多、速度慢）</td></tr>
+        <tr><td><b>接力 Handoff</b></td><td>iPhone 上看一半的网页/邮件/备忘录，Mac 图标一点继续；反向也行</td><td>无</td></tr>
+        <tr><td><b>通用剪贴板</b></td><td>iPhone 复制、Mac 直接 <kbd>Cmd</kbd>+<kbd>V</kbd> 粘贴，反之亦然</td><td>无（要靠第三方 App）</td></tr>
+        <tr><td><b>连续互通相机</b></td><td>把 iPhone 当 Mac 的<b>无线摄像头/扫描仪</b>：文档拍照直接进 Mac 文稿</td><td>无</td></tr>
+        <tr><td><b>iPhone 镜像</b></td><td>Mac 屏幕上完整操作 iPhone，键盘也能输入（macOS Sequoia 起）</td><td>无</td></tr>
+        <tr><td><b>侧车 Sidecar</b></td><td>iPad 秒变 Mac <b>第二块屏/手绘板</b>（有线或无线）</td><td>第三方 Spacedesk（体验差距大）</td></tr>
+        <tr><td><b>通用控制</b></td><td>一套键鼠<b>同时操控</b> Mac + iPad，鼠标滑过屏幕边缘即切换</td><td>无</td></tr>
+        <tr><td><b>自动解锁</b></td><td>戴 Apple Watch 靠近，Mac 免密解锁</td><td>动态锁（需配对手机+特定硬件）</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-mobile-screen"></i> 最常用的三个场景演练</h4>
+    <ol class="steps">
+      <li><b>手机照片进 Mac</b>：iPhone 相册 → 分享 → 隔空投送 → 点你的 Mac 名字 → Mac 自动存入「下载」（无需确认，秒到）</li>
+      <li><b>Mac 文件发手机</b>：访达选中文件 → 右键 → 共享 → 隔空投送 → 点对方设备；或直接拖到访达边栏「隔空投送」</li>
+      <li><b>手机验证码粘贴</b>：iPhone 上复制验证码 → 回到 Mac 的输入框直接 <kbd>Cmd</kbd>+<kbd>V</kbd>——不用抬头找手机二次输入</li>
+    </ol>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>隔空投送收不到？</b>九成是接收设置：Mac 系统设置 → 通用 → 隔空投送与接力 → 设为「仅联系人」或「所有人（10 分钟）」；iPhone 在控制中心长按左上角网络块里检查同项。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac、iPhone 与 iPad 的连续互通功能总览 <a href="https://support.apple.com/zh-cn/HT204681" target="_blank">support.apple.com/zh-cn/HT204681</a></li>
+        <li><span class="ref-tag">官方</span>Apple · iPhone 镜像与 macOS 新功能 <a href="https://www.apple.com.cn/macos/" target="_blank">apple.com.cn/macos</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 14 -->
+  <article class="module c-cyan" id="m14" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">14</div>
+      <div>
+        <h3>Time Machine 备份</h3>
+        <p class="mod-sub">备份是"精通"的第一课——出事那天你会感谢今天的自己</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-clock-rotate-left"></i> 为什么是 Time Machine 而不是手动拷贝</h4>
+    <p>Time Machine 是 macOS 内置的<b>自动增量备份</b>：插上备份盘后<b>每小时</b>自动备份，保留最近 24 小时每小时版本、最近一个月每日版本、再往前的每周版本，空间不足时自动删最旧的。文件误删、误改、系统崩了都能"坐时光机回去"——手动拷贝永远做不到版本级恢复。</p>
+
+    <h4><i class="fa-solid fa-hard-drive"></i> 三步开启</h4>
+    <ol class="steps">
+      <li>备一块<b>不小于 Mac 数据量 2 倍</b>的移动硬盘（SSD 体验最佳）</li>
+      <li>插入硬盘 → 系统弹出「用作 Time Machine 备份磁盘？」→ 点「用作备份磁盘」；没弹窗就去 系统设置 → 通用 → Time Machine → 添加备份磁盘</li>
+      <li>首次备份全量拷贝（较慢），之后每小时增量、无感运行。想立即手动备份：菜单栏 Time Machine 图标 → 「立即备份」</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-rotate-left"></i> 两种恢复姿势</h4>
+    <ul>
+      <li><b>找回单个文件/旧版本</b>：进入原文件夹 → 菜单栏 Time Machine 图标 → 「进入 Time Machine」→ 时间轴翻历史版本 → 选中「恢复」</li>
+      <li><b>整机恢复</b>：Apple Silicon Mac <b>长按电源键</b>直到出现「载入启动选项」→ 选项 → 从 Time Machine 备份恢复。（Intel Mac 是开机按 <kbd>Cmd</kbd>+<kbd>R</kbd> 进恢复模式）</li>
+    </ul>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 对照</h5>
+        <ul>
+          <li>文件历史记录（功能弱、少人用）</li>
+          <li>系统映像备份（繁琐、半弃用）</li>
+          <li>实际多数人裸奔</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> macOS 生态</h5>
+        <ul>
+          <li>Time Machine 全自动、版本化、随插随用</li>
+          <li>迁移助理可从备份整机还原到新 Mac</li>
+          <li>本地快照兜底（没插盘也有近期版本可回滚）</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>3-2-1 原则提醒：</b>Time Machine 盘插着才有备份，笔记本用户经常忘插。重要数据再加一层：iCloud 云盘 / OneDrive 同步「桌面与文稿」，双保险。备份盘和电脑放不同地方，防丢防盗。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持《使用 Time Machine 备份 Mac》 <a href="https://support.apple.com/zh-cn/HT201250" target="_blank">support.apple.com/zh-cn/HT201250</a></li>
+      </ol>
+    </details>
+  </article>
+  <!-- 模块 15 -->
+  <article class="module c-lemon" id="m15" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">15</div>
+      <div>
+        <h3>终端入门：把 CMD 的经验搬过来</h3>
+        <p class="mod-sub">zsh 没那么可怕——尤其你本来就懂命令行的话</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>打开方式：聚焦搜索 <code>终端</code> 或 <code>Terminal</code>；或启动台 → 其他 → 终端。Mac 默认 shell 是 <b>zsh</b>（2019 年起，macOS Catalina 后），兼容你认识的绝大多数 bash 语法。</p>
+
+    <h4><i class="fa-solid fa-language"></i> CMD/PowerShell → zsh 命令翻译词典（可搜索）</h4>
+    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="termSearch" placeholder="搜索：列出文件 / 复制 / 网络配置…"></div>
+    <div class="table-wrap"><table class="neon" id="termTable">
+      <thead><tr><th>用途</th><th>Windows (CMD)</th><th>macOS (zsh)</th></tr></thead>
+      <tbody>
+        <tr><td>列出当前目录</td><td><code>dir</code></td><td><code>ls</code>（<code>ls -la</code> 看隐藏文件+详情）</td></tr>
+        <tr><td>切换目录</td><td><code>cd</code></td><td><code>cd</code>（相同；回家目录 <code>cd ~</code>）</td></tr>
+        <tr><td>显示当前路径</td><td><code>cd</code>（直接回车）</td><td><code>pwd</code></td></tr>
+        <tr><td>新建目录</td><td><code>mkdir</code></td><td><code>mkdir</code>（相同）</td></tr>
+        <tr><td>复制文件</td><td><code>copy</code></td><td><code>cp 源 目标</code>（目录加 <code>-R</code>）</td></tr>
+        <tr><td>移动/改名</td><td><code>move</code> / <code>ren</code></td><td><code>mv 源 目标</code>（二合一）</td></tr>
+        <tr><td>删除</td><td><code>del</code> / <code>rmdir</code></td><td><code>rm 文件</code> / <code>rm -rf 目录</code></td></tr>
+        <tr><td>查看文件内容</td><td><code>type</code></td><td><code>cat 文件</code> 或 <code>less 文件</code>（分页）</td></tr>
+        <tr><td>查找文本</td><td><code>findstr</code></td><td><code>grep "词" 文件</code></td></tr>
+        <tr><td>查看网络配置</td><td><code>ipconfig</code></td><td><code>ifconfig</code> 或 <code>ipconfig getifaddr en0</code>（取IP）</td></tr>
+        <tr><td>测试连通</td><td><code>ping</code></td><td><code>ping</code>（相同；按 <kbd>Ctrl</kbd>+<kbd>C</kbd> 停止）</td></tr>
+        <tr><td>清屏</td><td><code>cls</code></td><td><code>clear</code> 或 <kbd>Cmd</kbd>+<kbd>K</kbd></td></tr>
+        <tr><td>查看进程</td><td><code>tasklist</code></td><td><code>ps aux</code> 或 <code>top</code></td></tr>
+        <tr><td>结束进程</td><td><code>taskkill /PID</code></td><td><code>kill 进程号</code>（强杀加 <code>-9</code>）</td></tr>
+        <tr><td>查命令用法</td><td><code>help 命令</code></td><td><code>man 命令</code>（按 <kbd>q</kbd> 退出手册）</td></tr>
+        <tr><td>管理员权限</td><td>右键"以管理员运行"</td><td>命令前加 <code>sudo</code>（输自己的密码）</td></tr>
+        <tr><td>管道</td><td><code>|</code></td><td><code>|</code>（相同，如 <code>ps aux | grep Safari</code>）</td></tr>
+        <tr><td>命令历史</td><td>↑ / doskey</td><td>↑ 或 <code>history</code>；<kbd>Ctrl</kbd>+<kbd>R</kbd> 反向搜索</td></tr>
+      </tbody>
+    </table></div>
+    <p class="empty-hint" id="termEmpty">😵 没找到，试试"删除""进程""目录"</p>
+
+    <h4><i class="fa-solid fa-sitemap"></i> 必须认识的五个目录</h4>
+    <ul>
+      <li><code>~</code>（<code>/Users/你</code>）——你的家，日常都在这</li>
+      <li><code>/Applications</code> ——所有用户的应用</li>
+      <li><code>/tmp</code> ——临时文件，重启即清</li>
+      <li><code>/System</code> 与 <code>/usr</code> ——系统地盘，<b>别动</b>（有 SIP 保护，详见模块 18）</li>
+      <li><code>/Volumes</code> ——外接磁盘都挂这里</li>
+    </ul>
+
+    <div class="danger"><i class="fa-solid fa-radiation"></i><b> rm -rf 是核弹：</b>macOS 的删除不进废纸篓、不可撤销，没有"回收站捞回"。执行前看三遍路径，<b>永远不要</b>复制网上不明来源的 <code>rm -rf</code> 命令（配合空格或通配符错位能瞬间删光家目录）。</div>
+
+    <h4><i class="fa-solid fa-star"></i> 立刻能爽到的两个小技巧</h4>
+    <ul>
+      <li><b>Tab 补全</b>：路径打一半按 <kbd>Tab</kbd> 自动补全，按两下显示所有候选——CMD 也有，但 zsh 更聪明</li>
+      <li><b>拖文件进终端</b>：把任意文件从访达<b>拖进终端窗口</b>，路径自动填好，告别手打长路径</li>
+    </ul>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>美化进阶（可选）：</b>终端装 <b>Oh My Zsh</b> 框架 + Powerlevel10k 主题，可获得 git 状态、彩色提示符与智能补全；系统设置 → 用户与群组还能给终端换配色方案。先熟悉原版，再折腾皮肤。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 开发者 · zsh 与 macOS 终端 <a href="https://support.apple.com/zh-cn/102360" target="_blank">support.apple.com/zh-cn/102360</a></li>
+        <li><span class="ref-tag">社区</span>Oh My Zsh 官方仓库 <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">github.com/ohmyzsh/ohmyzsh</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 16 -->
+  <article class="module c-purple" id="m16" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">16</div>
+      <div>
+        <h3>Homebrew：Mac 的软件管家</h3>
+        <p class="mod-sub">相当于 winget / Chocolatey / scoop，但更老牌、更全能</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <p>Homebrew 自称"The Missing Package Manager for macOS"，2009 年诞生至今已是事实标准：一条命令装/卸/升级几乎所有开发工具与常用软件。它管两种"包"：</p>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>类型</th><th>含义</th><th>例子</th></tr></thead>
+      <tbody>
+        <tr><td><b>Formula</b></td><td>命令行工具/开发库</td><td><code>wget</code>、<code>node</code>、<code>git</code>、<code>python</code></td></tr>
+        <tr><td><b>Cask</b></td><td>图形界面 App</td><td><code>weChat</code>、<code>visual-studio-code</code>、<code>rectangle</code></td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-download"></i> 安装（全程一条命令）</h4>
+    <p>打开终端，粘贴官网首页的安装命令：</p>
+    <p style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--neon);overflow-x:auto">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</p>
+    <ul>
+      <li>过程中会提示输入密码（sudo），装到 <code>/opt/homebrew</code>（Apple Silicon）或 <code>/usr/local</code>（Intel 老机型）</li>
+      <li>装完按提示执行两句 <code>eval</code> 命令把 brew 加入 PATH（新版本会自动写入 <code>~/.zprofile</code>）</li>
+      <li>验证：<code>brew --version</code> 出版本号即成功</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-terminal"></i> 高频命令十条</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>命令</th><th>作用</th></tr></thead>
+      <tbody>
+        <tr><td><code>brew install wget</code></td><td>安装命令行工具</td></tr>
+        <tr><td><code>brew install --cask wechat</code></td><td>安装图形 App（自动进"应用程序"）</td></tr>
+        <tr><td><code>brew search 关键词</code></td><td>搜索软件（中英文名都行）</td></tr>
+        <tr><td><code>brew list</code></td><td>列出已装的所有包</td></tr>
+        <tr><td><code>brew uninstall 包名</code></td><td>卸载</td></tr>
+        <tr><td><code>brew update</code></td><td>更新 Homebrew 自身与软件目录</td></tr>
+        <tr><td><code>brew upgrade</code></td><td>升级所有已装包到最新</td></tr>
+        <tr><td><code>brew outdated</code></td><td>看哪些包有新版本</td></tr>
+        <tr><td><code>brew info 包名</code></td><td>看包的说明、版本、依赖</td></tr>
+        <tr><td><code>brew cleanup</code></td><td>清理旧版本缓存，释放空间</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-boxes-stacked"></i> Windows 移民推荐首装清单</h4>
+    <p style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--lemon);overflow-x:auto">brew install --cask rectangle iina raycast appcleaner<br>brew install wget tree htop</p>
+    <ul>
+      <li><b>Rectangle</b>：拖窗口到边缘自动分屏（补齐 Windows Snap 体验，开源免费）</li>
+      <li><b>IINA</b>：macOS 界面最现代的视频播放器（补齐 PotPlayer 生态位，开源）</li>
+      <li><b>Raycast</b>：聚焦超级强化版（启动器+剪贴板历史+脚本）</li>
+      <li><b>AppCleaner</b>：卸载 App 时连带清理偏好残留</li>
+    </ul>
+
+    <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>安全提醒：</b>只从 brew.sh 官网拿安装命令。国内网络慢可参考社区镜像方案（如中科大、清华镜像源，见文末参考），但<b>不要</b>用来路不明的"一键加速脚本"。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Homebrew 官网（安装命令唯一权威来源） <a href="https://brew.sh" target="_blank">brew.sh</a></li>
+        <li><span class="ref-tag">官方</span>Homebrew 官方文档（FAQ / Cask 说明） <a href="https://docs.brew.sh" target="_blank">docs.brew.sh</a></li>
+        <li><span class="ref-tag">社区</span>Homebrew 中文镜像帮助（中科大 LUG） <a href="https://mirrors.ustc.edu.cn/help/brew.git.html" target="_blank">mirrors.ustc.edu.cn</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 17 -->
+  <article class="module c-mag" id="m17" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">17</div>
+      <div>
+        <h3>自动化：快捷指令、AppleScript 与定时任务</h3>
+        <p class="mod-sub">让 Mac 替你干活——从"一键例程"到"无人值守"</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-bolt"></i> 第一站：快捷指令（Shortcuts）——零代码</h4>
+    <p>App Store 自带免费 App「快捷指令」，图形化拖积木拼自动化流程，且与 iPhone/iPad <b>云端同步</b>。新手第一个可以照抄的例子：「早上好」：</p>
+    <ol class="steps">
+      <li>打开快捷指令 → <b>+</b> 新建 → 命名"早上好"</li>
+      <li>添加动作：「获取天气」→「显示结果」；「打开 App」选日历；「设定播放音量」30%</li>
+      <li>点顶部 <b>ⓘ</b> → 「固定到菜单栏」（或添加到程序坞）——以后菜单栏一点全跑</li>
+      <li>进阶：在「自动化」标签里设触发条件：特定时间 / 连接某 Wi-Fi / 关闭某 App 时自动执行</li>
+    </ol>
+    <p>常用玩法：批量压缩图片、截图转 PDF、按文件夹整理下载、定时提醒喝水、连上公司 Wi-Fi 自动开焦点模式。macOS Tahoe 起快捷指令还支持<b>从网页导入</b>他人分享的现成指令，聚焦搜索也能直接搜到并运行。</p>
+
+    <h4><i class="fa-solid fa-code"></i> 第二站：AppleScript——发号施令的英语</h4>
+    <p>AppleScript 是 Mac 独有的自然语言风格脚本，能让"支持它"的应用执行操作。打开「脚本编辑器」试第一条：</p>
+    <p style="background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--neon)">tell application "Finder"<br>&nbsp;&nbsp;display dialog "你好，Mac！" buttons {"继续", "算了"} default button "继续"<br>end tell</p>
+    <p>点运行 ——访达弹出一个对话框。这套 <code>tell application ... end tell</code> 语法能控制访达、Safari、邮件、音乐等大多数原生 App：批量改文件名、自动群发邮件、定时导出报表都有人用 AppleScript 做。查每个 App 支持哪些命令：脚本编辑器 → 文件 → 打开词典。</p>
+
+    <h4><i class="fa-solid fa-clock"></i> 第三站：launchd——无人值守定时任务</h4>
+    <p>对照 Windows「任务计划程序」。macOS 用 <code>launchd</code> + plist 配置文件管理定时/开机任务。新手不用手写 plist，用社区封装好的 <b>LaunchControl</b>（GUI 付费）或 Homebrew 装 <code>brew install launchd</code> 周边工具；也可以先用「快捷指令自动化」的时间触发器顶替大多数场景。</p>
+
+    <h4><i class="fa-solid fa-toolbox"></i> 高手向备选</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>工具</th><th>定位</th><th>Windows 对照</th></tr></thead>
+      <tbody>
+        <tr><td><b>Raycast</b></td><td>启动器 + 脚本命令商店，TypeScript 写扩展</td><td>PowerToys Run</td></tr>
+        <tr><td><b>Hammerspoon</b></td><td>Lua 脚本操控窗口/剪贴板/热键，程序员最爱</td><td>AutoHotkey</td></tr>
+        <tr><td><b>Keyboard Maestro</b></td><td>老牌付费宏神器，非程序员也能拼复杂流程</td><td>Macro Express</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>建议路线：</b>先用快捷指令覆盖 80% 需求（可视化、免代码、全设备同步）→ 有重复劳动再上 Raycast/Hammerspoon → 真有系统级调度需求才碰 launchd。不要一上来就折腾 Hammerspoon 配置，容易劝退。</div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 快捷指令使用手册 <a href="https://support.apple.com/zh-cn/guide/shortcuts-mac/welcome/web" target="_blank">support.apple.com/zh-cn/guide/shortcuts-mac</a></li>
+        <li><span class="ref-tag">官方</span>Apple 开发者 · AppleScript 语言指南 <a href="https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/AppleScriptLangGuide_fundamentals.html" target="_blank">developer.apple.com</a></li>
+        <li><span class="ref-tag">社区</span>Hammerspoon 官网 <a href="https://www.hammerspoon.org/" target="_blank">hammerspoon.org</a></li>
+        <li><span class="ref-tag">社区</span>Raycast 官网 <a href="https://www.raycast.com/" target="_blank">raycast.com</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- 模块 18 -->
+  <article class="module c-cyan" id="m18" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">18</div>
+      <div>
+        <h3>安全、隐私与性能维护</h3>
+        <p class="mod-sub">最后一课：让这台 Mac 又快又稳又安全地跑十年</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-shield-halved"></i> 安全五件套（macOS 的隐形保镖）</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>机制</th><th>干什么</th><th>你要做的</th></tr></thead>
+      <tbody>
+        <tr><td><b>FileVault</b></td><td>全盘加密，电脑丢了数据也读不出</td><td>系统设置 → 隐私与安全性 → FileVault → 打开（开启后务必保管好恢复密钥）</td></tr>
+        <tr><td><b>Gatekeeper</b></td><td>拦截未签名/未公证的应用与恶意软件</td><td>保持「App Store 与已知开发者」；来路不明的 App 想清楚再「仍要打开」</td></tr>
+        <tr><td><b>XProtect</b></td><td>内置恶意软件特征库，静默后台扫描</td><td>什么都不用做，随系统更新自动升级</td></tr>
+        <tr><td><b>SIP 系统完整性保护</b></td><td>锁死系统目录，连 root 都改不了</td><td><b>永远不要关闭</b>。网上教程让你关 SIP 的，九成九是坑</td></tr>
+        <tr><td><b>防火墙</b></td><td>挡入站连接</td><td>系统设置 → 网络 → 防火墙 → 打开（家用笔记本可选，公共网络建议开）</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-user-shield"></i> 隐私权限：App 申请时多看一眼</h4>
+    <p>系统设置 → 隐私与安全性 → 各权限分类（相机/麦克风/屏幕录制/完全磁盘访问…）：App 首次要动这些能力必须弹窗问你，随时可在此处收回。这与 Windows 的权限模型类似但粒度更细。给 App 开「完全磁盘访问」前想清楚它是否真的需要。</p>
+
+    <h4><i class="fa-solid fa-gauge"></i> 性能：活动监视器 = 任务管理器</h4>
+    <ul>
+      <li>打开：聚焦搜「活动监视器」，或 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd> 强退窗口里的按钮直达</li>
+      <li><b>CPU</b> 页签找失控进程；<b>能耗</b>页签看谁在吃电池（"能耗影响"高的 App 拉黑）</li>
+      <li><b>内存</b>页签重点看底部「内存压力」图：<b>绿色=健康</b>，黄色=吃紧，红色=才需要关 App。Mac 的"已用内存"高是<b>正常缓存策略</b>，不要拿 Windows 的"空闲内存越多越好"观念来看——macOS 会把不活跃内存压缩复用</li>
+      <li>风扇狂转/掉电快：先查「能耗」页签和「登录项」（系统设置 → 通用 → 登录项与扩展），再考虑其他</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-broom"></i> 维护四习惯（就这四条，别装管家）</h4>
+    <ol class="steps">
+      <li><b>存储留 15%</b>：系统设置 → 通用 → 储存空间，可视化清理建议；SSD 长期满盘会显著降速减寿</li>
+      <li><b>保持系统更新</b>：软件更新不仅有新功能，XProtect 特征库和安全补丁也走这里</li>
+      <li><b>每季度清缓存</b>：浏览器缓存、<code>~/Library/Caches</code> 手动删、<code>brew cleanup</code>；仅此而已</li>
+      <li><b>电池健康</b>：系统设置 → 电池 → 打开「优化充电」；长期插电使用的，M 系芯片管理已很好，无需焦虑</li>
+    </ol>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 老习惯（可丢弃）</h5>
+        <ul>
+          <li>装杀毒全家桶（Mac 有 XProtect 兜底）</li>
+          <li>清内存软件（macOS 自动压缩调度）</li>
+          <li>磁盘碎片整理（SSD 无此概念，且系统盘 APFS 自动优化）</li>
+          <li>重装系统保平安（Mac 出问题先试安全模式/恢复模式修复）</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 时代好习惯</h5>
+        <ul>
+          <li>出怪事先重启（90% 的玄学问题终结者）</li>
+          <li>更新前看一眼兼容性（尤其是主力生产力工具）</li>
+          <li>备份盘常插，Time Machine 常开</li>
+          <li>系统卡顿查「登录项」而非重装</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4><i class="fa-solid fa-kit-medical"></i> 急救小抄：出事了怎么办</h4>
+    <div class="faq">
+      <details><summary>App 卡死了怎么办？</summary><div class="faq-body">先 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd> 打开强制退出窗口（相当于 Ctrl+Alt+Del 的应用列表），选中无响应 App → 「强制退出」。个别 App 菜单里也有「退出并重新打开」。</div></details>
+      <details><summary>系统卡到鼠标都动不了？</summary><div class="faq-body">长按电源键 10 秒强制关机再开机（数据丢失风险仅限未保存内容）。重启后若仍卡，开机时长按电源键进入「载入启动选项」→ 选「选项」→ 用「磁盘工具」的「急救」修复宗卷。</div></details>
+      <details><summary>系统越用越慢？</summary><div class="faq-body">按顺序排查：① 活动监视器能耗/CPU 页签找元凶 → ② 系统设置 → 登录项，砍掉开机自启 → ③ 储存空间是否低于 15% → ④ 重置 SMC/NVRAM（Intel 机型适用；Apple Silicon 无此操作，重启即可）→ ⑤ 最后一招：迁移助理备份后重装系统。</div></details>
+    </div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple《平台安全指南》（Gatekeeper/XProtect/FileVault/SIP） <a href="https://support.apple.com/guide/security/welcome/web" target="_blank">support.apple.com/guide/security</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 活动监视器使用 <a href="https://support.apple.com/zh-cn/guide/activity-monitor/welcome/web" target="_blank">support.apple.com/zh-cn/guide/activity-monitor</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 优化 Mac 储存空间 <a href="https://support.apple.com/zh-cn/HT206996" target="_blank">support.apple.com/zh-cn/HT206996</a></li>
+      </ol>
+    </details>
+  </article>
+
+</section>
+
+<div class="section-divider"><i class="fa-solid fa-star"></i> 毕业答辩 · 附录区 <i class="fa-solid fa-star"></i></div>
+
+<section class="stage" id="appendix">
+  <!-- 术语对照 -->
+  <article class="module c-purple" id="glossary" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num"><i class="fa-solid fa-language"></i></div>
+      <div>
+        <h3>附录 A · Windows ↔ macOS 术语速查卡</h3>
+        <p class="mod-sub">日常嘴瓢自救词典：叫不出名字的时候翻这里</p>
+      </div>
+    </div>
+    <div class="glossary-grid">
+      <div class="term-card"><b>任务栏</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span>拆成两套：<b>程序坞</b>（Dock，放图标）+ <b>菜单栏</b>（顶部全局菜单）</div>
+      <div class="term-card"><b>资源管理器</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>访达 Finder</b></div>
+      <div class="term-card"><b>控制面板 / 设置</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>系统设置</b>（<i class="fa-brands fa-apple"></i> 菜单 → 系统设置）</div>
+      <div class="term-card"><b>任务管理器</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>活动监视器</b>（强退窗口是 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>Esc</kbd>）</div>
+      <div class="term-card"><b>回收站</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>废纸篓</b>（程序坞最右侧）</div>
+      <div class="term-card"><b>C 盘 / D 盘</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span>无盘符！统一挂 <code>/Volumes</code>，磁盘直接显示在桌面</div>
+      <div class="term-card"><b>任务视图</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>调度中心</b>（<kbd>Ctrl</kbd>+<kbd>↑</kbd>）</div>
+      <div class="term-card"><b>虚拟桌面</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>空间 Spaces</b></div>
+      <div class="term-card"><b>开始菜单</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>启动台</b>（所有 App）+ <b>聚焦</b>（搜索一切）</div>
+      <div class="term-card"><b>截图工具</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span>内置「截屏」面板 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>5</kbd></div>
+      <div class="term-card"><b>就近共享</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>隔空投送 AirDrop</b></div>
+      <div class="term-card"><b>浏览器 Edge</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>Safari</b>（也能装 Chrome/Edge）</div>
+      <div class="term-card"><b>.exe 安装包</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>.dmg</b>（拖拽安装）/ <b>.pkg</b>（向导安装）</div>
+      <div class="term-card"><b>动态锁</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>Apple Watch 自动解锁</b></div>
+      <div class="term-card"><b>夜间模式</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>夜览 Night Shift</b></div>
+      <div class="term-card"><b>任务计划程序</b><span class="win-term">Windows 概念</span><span class="arrow">↓</span><b>快捷指令自动化</b> / <b>launchd</b></div>
+    </div>
+  </article>
+
+  <!-- FAQ -->
+  <article class="module c-mag" id="faq" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num"><i class="fa-solid fa-circle-question"></i></div>
+      <div>
+        <h3>附录 B · Windows 移民高频灵魂拷问（FAQ）</h3>
+        <p class="mod-sub">收到的提问里重复率最高的 12 个，一次答完</p>
+      </div>
+    </div>
+    <div class="faq">
+      <details><summary>Mac 会不会中毒？要不要装杀毒软件？</summary><div class="faq-body">macOS 有 XProtect 内置恶意软件防护 + Gatekeeper 应用验证，对普通用户（只从 App Store/官网装软件）足够安全，无需第三方杀软。真正的风险是"自己同意安装"的流氓软件和钓鱼，这层任何杀软都防不了你的手。参考：Apple 平台安全指南。</div></details>
+      <details><summary>内存 8GB 够用吗？为什么活动监视器里内存快满了？</summary><div class="faq-body">macOS 有内存压缩与统一内存架构，"已用内存"高是正常缓存策略，看「内存压力」颜色判断：绿色就健康。日常办公 8GB 可用，重度的视频剪辑/虚拟机/大型工程建议 16GB 起——买前按三年后的需求定配置。</div></details>
+      <details><summary>为什么关了窗口软件还在运行？</summary><div class="faq-body">macOS 设计哲学：关窗口≠退应用（很多 App 无窗口也能后台干活，如音乐播放）。看程序坞图标下方的小点判断是否在运行，<kbd>Cmd</kbd>+<kbd>Q</kbd> 才是真退出。不习惯可以关窗口后顺手 <kbd>Cmd</kbd>+<kbd>Q</kbd>。</div></details>
+      <details><summary>Mac 能打游戏吗？</summary><div class="faq-body">原生大作库确实远小于 Windows。可行路径：App Store 的 Apple Arcade、原生移植大作（近年《生化危机》《刺客信条》系列有原生版）、CrossOver/Whisky 转译层跑 Windows 游戏（M 系列芯片兼容性持续改善）、云游戏（GeForce NOW）。重度 PC 玩家建议保留一台 Windows 机。</div></details>
+      <details><summary>外接 Windows 键盘能用吗？Win 键当什么用？</summary><div class="faq-body">即插即用。系统设置 → 键盘 → 「修饰键」可把 Win(⌘) 与 Alt(⌥) 功能互换，让 Ctrl+C 的肌肉记忆直接生效。注意外接键盘的 Win→Command 位置恰好在拇指位，比标准 Mac 布局更顺手。</div></details>
+      <details><summary>我的 NTFS 移动硬盘为什么在 Mac 上只能读？</summary><div class="faq-body">macOS 原生只支持 NTFS 读取。方案见模块 12：格成 exFAT（免费但要重格）/ 买 Paragon NTFS 驱动 / 实验性开源方案。重要数据优先选前两个。</div></details>
+      <details><summary>Windows 上的软件在 Mac 上有替代品吗？</summary><div class="faq-body">Office/Adobe/主流国产软件（微信/QQ/钉钉/百度网盘）都有官方 Mac 版。专业软件（Visio、Project）无 Mac 版，可用网页版或 Lucidchart/Merlin 替代；行业刚需 Windows 软件的，可用 Parallels Desktop 装 ARM 版 Windows（M 芯片可跑 x86 转译）。</div></details>
+      <details><summary>Mac 需要定期重启吗？碎片整理呢？</summary><div class="faq-body">不需要刻意定期重启，系统更新或出玄学问题时重启即可。SSD 无碎片整理概念，APFS 文件系统自动优化——磁盘工具里的"急救"都不用常跑。</div></details>
+      <details><summary>触控板那么好，还要买鼠标吗？</summary><div class="faq-body">文字工作/浏览：不需要，手势效率更高。精准拖拽场景（设计、剪辑、Excel 大表、游戏）：建议入一个。蓝牙鼠标即插即用，罗技等驱动也有 Mac 版。</div></details>
+      <details><summary>App 打不开，提示"已损坏"或"无法验证开发者"怎么办？</summary><div class="faq-body">提示"无法验证"：系统设置 → 隐私与安全性 → 底部「仍要打开」，或右键 App → 打开。提示"已损坏"：多为下载不完整或 Gatekeeper 隔离属性误报——重新从官网下载；国内网络下载的安装包易出现此问题。仍然打不开就别硬开，换个来源。</div></details>
+      <details><summary>程序坞越来越乱怎么整理？</summary><div class="faq-body">拖出程序坞即移除（应用本体不动，只是移出 Dock）；把相关 App 拖到一起会自动生成分隔；或建一个「应用文件夹」拖进程序坞归类。原则：程序坞只放每天用的 8~10 个，其余交给聚焦搜索。</div></details>
+      <details><summary>买了新 Mac，旧 Mac 的数据怎么搬？</summary><div class="faq-body">Mac→Mac 最简单：新机首次设置时选「从 Mac、Time Machine 备份或启动磁盘传输」，或用雷电线直连两台机器跑迁移助理，几十 GB 也就半小时级别。详见模块 14 的 Time Machine 与 Apple 迁移助理官方文档。</div></details>
+    </div>
+  </article>
+</section>
+<!-- ============================================================
+     实战训练场（互动区：快捷键训练器 + Boss 战测验）
+     玩法参考：Shortcutsy (github.com/eliaslopezgt/shortcutsy)、
+     quick-quiz (github.com/Dinesh065/quick-quiz)、win32.run
+============================================================ -->
+<style>
+/* ===== 训练场专属样式 ===== */
+.ar-xpbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(135deg,rgba(255,46,136,.14),rgba(157,78,221,.14));border:1px solid var(--line);border-radius:16px;padding:14px 20px;margin-bottom:28px}
+.ar-xpbar .lv-badge{font-family:'ZCOOL KuaiLe',cursive;font-size:1.25rem;color:var(--lemon);white-space:nowrap}
+.ar-xpbar .xp-track{flex:1;min-width:180px;height:14px;background:var(--surface2);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.ar-xpbar .xp-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--purple));transition:width .6s ease;border-radius:8px}
+.ar-xpbar .xp-num{font-family:'JetBrains Mono',monospace;color:var(--cyan);white-space:nowrap}
+/* 快捷键训练器 */
+.kb-map{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.kb-map .km{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:.9rem}
+.kb-map .km b{color:var(--lemon)}
+.trainer-stage{background:var(--surface);border:2px dashed rgba(255,230,0,.35);border-radius:18px;padding:26px 22px;text-align:center;position:relative;margin-top:14px}
+.trainer-stage.idle{padding:44px 22px}
+.tr-task{font-family:'ZCOOL KuaiLe',cursive;font-size:1.7rem;margin:6px 0 2px}
+.tr-task small{display:block;font-family:'Noto Sans SC',sans-serif;color:var(--muted);font-size:.85rem;margin-top:4px}
+.tr-live{min-height:64px;display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 0 4px;flex-wrap:wrap}
+.keycap{display:inline-flex;align-items:center;justify-content:center;min-width:52px;height:52px;padding:0 12px;border-radius:10px;background:var(--surface2);border:1px solid rgba(255,255,255,.22);border-bottom:3px solid rgba(255,255,255,.28);font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--text)}
+.keycap.on{background:var(--mag);border-color:var(--mag);color:#fff;box-shadow:0 0 18px rgba(255,46,136,.55)}
+.keycap.ghost{opacity:.42}
+.tr-feedback{min-height:30px;font-size:1.05rem;margin:6px 0 10px;font-weight:700}
+.tr-feedback.ok{color:var(--neon)}
+.tr-feedback.no{color:var(--mag)}
+.tr-feedback.tip{color:var(--lemon)}
+.osk{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.osk button{cursor:pointer;background:var(--surface2);color:var(--text);border:1px solid var(--line);border-radius:8px;min-width:42px;height:42px;padding:0 10px;font-family:'JetBrains Mono',monospace;font-size:.95rem;transition:.15s}
+.osk button:hover{border-color:var(--cyan);color:var(--cyan)}
+.osk button.sel{background:var(--cyan);color:#04121a;border-color:var(--cyan);box-shadow:0 0 12px rgba(0,229,255,.5)}
+.osk .osk-submit{background:var(--lemon);color:#1a1400;border-color:var(--lemon);font-weight:700;min-width:72px}
+.tr-stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.tr-stat{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:6px 16px;font-size:.88rem}
+.tr-stat b{color:var(--lemon);font-family:'JetBrains Mono',monospace}
+/* Boss 战 */
+.boss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:16px 0}
+.boss-card{cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;transition:.2s;position:relative;overflow:hidden}
+.boss-card:hover{transform:translateY(-4px);border-color:var(--mag);box-shadow:0 8px 26px rgba(255,46,136,.22)}
+.boss-card .bi{font-size:2.1rem;margin-bottom:6px}
+.boss-card h4{font-family:'ZCOOL KuaiLe',cursive;font-size:1.15rem;margin-bottom:4px}
+.boss-card p{font-size:.85rem;color:var(--muted)}
+.boss-card .bstate{position:absolute;top:12px;right:12px;font-size:.75rem;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.boss-card.passed .bstate{color:var(--neon);border-color:var(--neon)}
+.quiz-panel{display:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px 24px;margin-top:8px}
+.quiz-panel.active{display:block}
+.qz-prog{display:flex;gap:6px;margin-bottom:16px}
+.qz-prog i{flex:1;height:6px;border-radius:4px;background:var(--surface2)}
+.qz-prog i.done{background:var(--neon)}
+.qz-prog i.cur{background:var(--lemon)}
+.qz-prog i.bad{background:var(--mag)}
+.qz-q{font-size:1.15rem;font-weight:700;margin-bottom:16px}
+.qz-opts{display:grid;gap:10px}
+.qz-opt{cursor:pointer;text-align:left;background:var(--surface2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.98rem;transition:.15s;font-family:'Noto Sans SC',sans-serif}
+.qz-opt:hover:not(:disabled){border-color:var(--cyan)}
+.qz-opt:disabled{cursor:default;opacity:.75}
+.qz-opt.right{background:rgba(0,255,159,.16);border-color:var(--neon);opacity:1}
+.qz-opt.wrong{background:rgba(255,46,136,.16);border-color:var(--mag);opacity:1}
+.qz-expl{display:none;margin-top:14px;background:rgba(255,230,0,.08);border-left:3px solid var(--lemon);border-radius:0 10px 10px 0;padding:12px 14px;font-size:.9rem;color:var(--muted)}
+.qz-expl.show{display:block}
+.qz-next{margin-top:16px;text-align:right}
+.qz-result{text-align:center}
+.qz-result .big{font-family:'ZCOOL KuaiLe',cursive;font-size:2.2rem;color:var(--lemon);margin:8px 0}
+.qz-review{text-align:left;margin-top:18px;border-top:1px dashed var(--line);padding-top:14px}
+.qz-review .rv{margin-bottom:10px;font-size:.88rem}
+.qz-review .rv b{color:var(--cyan)}
+/* 徽章墙 */
+.badge-wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:14px}
+.badge-cell{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 12px;transition:.25s}
+.badge-cell .bic{font-size:2.2rem;filter:grayscale(1);opacity:.3}
+.badge-cell b{display:block;margin-top:8px;font-size:.95rem}
+.badge-cell span{display:block;font-size:.75rem;color:var(--muted);margin-top:4px}
+.badge-cell.unlocked{border-color:var(--lemon);background:linear-gradient(160deg,rgba(255,230,0,.10),transparent)}
+.badge-cell.unlocked .bic{filter:none;opacity:1;text-shadow:0 0 18px rgba(255,230,0,.5)}
+.badge-cell.unlocked b{color:var(--lemon)}
+@media(max-width:640px){.tr-task{font-size:1.3rem}.keycap{min-width:42px;height:44px;font-size:.9rem}}
+</style>
+<section class="stage" id="arena">
+  <div class="stage-banner b1" data-aos="fade-up">
+    <div class="stage-no"><i class="fa-solid fa-gamepad" style="font-size:3.6rem;position:static;opacity:1"></i></div>
+    <h2><i class="fa-solid fa-gamepad"></i> 实战训练场 · 学完就来打一架</h2>
+    <p>看十遍不如上手打一遍。这里有两座道场：<b>快捷键训练器</b>（真键盘实战，借鉴 GitHub 开源游戏 Shortcutsy）和<b>三阶段 Boss 战</b>（答题测验 + XP + 徽章，借鉴 quick-quiz）。成绩自动存档，关掉网页也不丢。</p>
+  </div>
+
+  <!-- XP 等级条 -->
+  <div class="ar-xpbar" data-aos="fade-up">
+    <span class="lv-badge"><i class="fa-solid fa-bolt" style="color:var(--lemon)"></i> <span id="arLvName">Lv.1 Mac 见习生</span></span>
+    <div class="xp-track"><i id="arXpFill"></i></div>
+    <span class="xp-num" id="arXpNum">0 XP</span>
+  </div>
+
+  <!-- ============ 道场一：快捷键训练器 ============ -->
+  <article class="module c-mag" id="arena-keys" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num"><i class="fa-solid fa-keyboard"></i></div>
+      <div>
+        <h3>道场一 · 快捷键肌肉记忆训练器</h3>
+        <p class="mod-sub">屏幕出题，你按真实键盘 —— 把 Windows 手指改造成 Mac 手指</p>
+      </div>
+    </div>
+
+    <p>你正在用 Windows 键盘练习，完全没问题 —— <b>Windows 键盘就是 Mac 键盘的换皮</b>，按下时自动按下面的映射翻译：</p>
+    <div class="kb-map">
+      <div class="km"><b>Windows 徽标键</b> = Mac <b>⌘ Command</b></div>
+      <div class="km"><b>Alt</b> = Mac <b>⌥ Option</b></div>
+      <div class="km"><b>Ctrl</b> = Mac <b>⌃ Control</b></div>
+      <div class="km"><b>Shift</b> = Mac <b>⇧ Shift</b></div>
+    </div>
+    <p style="color:var(--muted);font-size:.88rem"><i class="fa-solid fa-triangle-exclamation" style="color:var(--lemon)"></i> 小提示：部分 Win 组合键会被 Windows 系统抢走（弹出开始菜单等）。被抢了就用下方的<b>屏幕按键</b>点选作答，效果一样。每轮 10 题、随机出题。</p>
+
+    <div class="trainer-stage idle" id="trStage">
+      <div id="trIdle">
+        <p class="tr-task">准备好了吗，训练生？</p>
+        <p style="color:var(--muted)">10 题一轮 · 答对 +5 XP · 连击 3 以上每题额外 +2 XP</p>
+        <button class="btn btn-primary" id="trStart" style="margin-top:14px"><i class="fa-solid fa-play"></i> 开始训练</button>
+      </div>
+
+      <div id="trPlay" style="display:none">
+        <p style="font-size:.85rem;color:var(--muted)">第 <b id="trIdx" style="color:var(--cyan)">1</b> / 10 题 · 在 Mac 上执行：</p>
+        <p class="tr-task" id="trTask">——</p>
+        <p class="tr-feedback tip" id="trFb">请按下组合键（或用屏幕按键作答）</p>
+        <div class="tr-live" id="trLive">
+          <span class="keycap ghost">⌘</span><span class="keycap ghost">⌥</span><span class="keycap ghost">⌃</span><span class="keycap ghost">⇧</span><span class="keycap ghost" style="min-width:120px">按键…</span>
+        </div>
+        <div class="osk" id="trOsk"></div>
+        <div class="tr-stats">
+          <div class="tr-stat">得分 <b id="trScore">0</b></div>
+          <div class="tr-stat">连击 <b id="trCombo">0</b> 🔥</div>
+          <div class="tr-stat">本轮最高连击纪录 <b id="trBest">0</b></div>
+          <button class="btn btn-ghost" id="trSkip" style="padding:6px 14px;font-size:.85rem">跳过此题</button>
+          <button class="btn btn-ghost" id="trQuit" style="padding:6px 14px;font-size:.85rem">结束训练</button>
+        </div>
+      </div>
+
+      <div id="trDone" style="display:none">
+        <p class="tr-task">训练结束！</p>
+        <p id="trDoneLine" style="font-size:1.05rem;margin:8px 0"></p>
+        <p id="trDoneXp" style="color:var(--lemon);font-weight:700"></p>
+        <button class="btn btn-primary" id="trAgain" style="margin-top:12px"><i class="fa-solid fa-rotate-right"></i> 再来一轮</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 道场二：Boss 战 ============ -->
+  <article class="module c-lemon" id="arena-boss" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num"><i class="fa-solid fa-dragon"></i></div>
+      <div>
+        <h3>道场二 · 三阶段 Boss 战</h3>
+        <p class="mod-sub">每个阶段学完就来挑战对应的 Boss —— 8 题及格线 6 题，通关掉落徽章</p>
+      </div>
+    </div>
+    <p>答对 +10 XP，连击额外加成；通关（≥6/8）解锁对应徽章，三个 Boss 全通关解锁最终称号<b style="color:var(--lemon)">「Tahoe 通关大师」</b>。答完立刻显示错题解析，随时可以重打刷新最高分。</p>
+
+    <div class="boss-grid">
+      <div class="boss-card" data-boss="boss1" data-aos="zoom-in">
+        <span class="bstate" id="st-boss1">未挑战</span>
+        <div class="bi">🐣</div>
+        <h4>Boss Ⅰ · 新手村守门员</h4>
+        <p>桌面 / 程序坞 / 访达 / 安装卸载 / 系统设置 —— 模块 1-6 的试炼</p>
+      </div>
+      <div class="boss-card" data-boss="boss2" data-aos="zoom-in">
+        <span class="bstate" id="st-boss2">未挑战</span>
+        <div class="bi">⚡</div>
+        <h4>Boss Ⅱ · 效率双头龙</h4>
+        <p>快捷键 / 多任务 / 聚焦搜索 / 截图 / 文件迁移 —— 模块 7-12 的试炼</p>
+      </div>
+      <div class="boss-card" data-boss="boss3" data-aos="zoom-in">
+        <span class="bstate" id="st-boss3">未挑战</span>
+        <div class="bi">🐉</div>
+        <h4>Boss Ⅲ · 深渊领主</h4>
+        <p>连续互通 / 备份 / 终端 / Homebrew / 自动化 / 安全 —— 模块 13-18 的试炼</p>
+      </div>
+    </div>
+
+    <div class="quiz-panel" id="qzPanel">
+      <div id="qzPlay">
+        <div class="qz-prog" id="qzProg"></div>
+        <p style="font-size:.85rem;color:var(--muted)"><b id="qzBossName" style="color:var(--lemon)"></b> · 第 <b id="qzIdx">1</b> / 8 题 · 连击 <b id="qzCombo" style="color:var(--mag)">0</b> 🔥</p>
+        <div class="qz-q" id="qzQ">——</div>
+        <div class="qz-opts" id="qzOpts"></div>
+        <div class="qz-expl" id="qzExpl"></div>
+        <div class="qz-next"><button class="btn btn-primary" id="qzNext" style="display:none">下一题 <i class="fa-solid fa-arrow-right"></i></button></div>
+      </div>
+      <div id="qzResult" style="display:none" class="qz-result">
+        <p style="font-size:2.6rem;margin:0" id="qzEmoji">🏆</p>
+        <p class="big" id="qzScoreLine">—</p>
+        <p id="qzXpLine" style="color:var(--lemon);font-weight:700"></p>
+        <p id="qzBadgeLine" style="margin-top:6px"></p>
+        <div class="qz-review" id="qzReview"></div>
+        <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="btn btn-primary" id="qzRetry"><i class="fa-solid fa-rotate-right"></i> 再战一次</button>
+          <button class="btn btn-ghost" id="qzClose">返回训练场</button>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ 徽章墙 ============ -->
+  <article class="module c-cyan" id="arena-badges" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num"><i class="fa-solid fa-medal"></i></div>
+      <div>
+        <h3>成就徽章墙</h3>
+        <p class="mod-sub">6 枚限定徽章 —— 训练场里打出来的才是真功夫</p>
+      </div>
+    </div>
+    <div class="badge-wall" id="badgeWall">
+      <div class="badge-cell" data-badge="b_muscle"><div class="bic">💪</div><b>肌肉记忆移植</b><span>训练器累计答对 30 题</span></div>
+      <div class="badge-cell" data-badge="b_keycombo"><div class="bic">🔥</div><b>十连斩</b><span>训练器单轮连击达 8</span></div>
+      <div class="badge-cell" data-badge="b_boss1"><div class="bic">🐣</div><b>新手村守护者</b><span>Boss Ⅰ 通关（≥6/8）</span></div>
+      <div class="badge-cell" data-badge="b_boss2"><div class="bic">⚡</div><b>效率大师</b><span>Boss Ⅱ 通关（≥6/8）</span></div>
+      <div class="badge-cell" data-badge="b_boss3"><div class="bic">🐉</div><b>深渊征服者</b><span>Boss Ⅲ 通关（≥6/8）</span></div>
+      <div class="badge-cell" data-badge="b_all"><div class="bic">👑</div><b>Tahoe 通关大师</b><span>三大 Boss 全部通关</span></div>
+    </div>
+    <p style="margin-top:14px;color:var(--muted);font-size:.85rem"><i class="fa-solid fa-floppy-disk"></i> 所有成绩存在浏览器本地（localStorage），换设备或清缓存会重置——就像游戏删档。互动玩法灵感来自开源项目 <a href="https://github.com/eliaslopezgt/shortcutsy" target="_blank">Shortcutsy</a>（打飞船练快捷键）、<a href="https://github.com/Dinesh065/quick-quiz" target="_blank">quick-quiz</a>（XP/徽章测验）与 <a href="https://win32.run" target="_blank">win32.run</a>（浏览器系统模拟器）。</p>
+  </article>
+</section>
+
+<!-- ============================================================
+     学习路线图
+============================================================ -->
+<section class="stage" id="roadmap">
+  <div class="stage-banner b3" data-aos="fade-up">
+    <div class="stage-no"><i class="fa-solid fa-map" style="font-size:3.6rem;position:static;opacity:1"></i></div>
+    <h2><i class="fa-solid fa-map"></i> 通关路线图 · 90 天计划</h2>
+    <p>不用一天肝完。按这个节奏走，三个月后你就是别人眼里"很懂 Mac 的那个人"。</p>
+  </div>
+
+  <article class="module c-cyan" data-aos="fade-up">
+    <div class="roadmap">
+      <div class="rm">
+        <h4 style="color:var(--mag)">第 1 周 · 生存期（模块 1-6）</h4>
+        <p>完成首次设置与数据迁移；对照本教程把系统设置、访达设置调一遍；每天强迫自己用触控板手势，不开鼠标；把 10 个最常用快捷键（模块 11 表格前 10 行）练成肌肉记忆。检验标准：不看教程独立装/卸一个 App，用三指上滑切桌面。</p>
+      </div>
+      <div class="rm">
+        <h4 style="color:var(--cyan)">第 1 个月 · 效率期（模块 7-12）</h4>
+        <p>抛弃"开始菜单"改用聚焦；学会分屏与调度中心的工作流；把快捷键对照表打印/收藏，遇到要按 Ctrl 的场合先想 Cmd；搞定 NTFS 硬盘方案，彻底告别双机搬运的痛。检验标准：一天下来没碰过鼠标右下角找东西，效率不低于 Windows 时期。</p>
+      </div>
+      <div class="rm">
+        <h4 style="color:var(--lemon)">第 2-3 个月 · 精通期（模块 13-18）</h4>
+        <p>配齐 Time Machine 备份；装 Homebrew 并用它管理所有软件更新；用快捷指令把一件每周重复做的事自动化；打开终端完成一次文件批量重命名。检验标准：遇到问题第一反应是"聚焦搜一下/查手册"，而不是"下个管家"。</p>
+      </div>
+      <div class="rm">
+        <h4 style="color:var(--neon)">毕业之后 · 持续进化</h4>
+        <p>关注每年 6 月 WWDC 的 macOS 新版本功能介绍（apple.com.cn 的 macOS 页面会同步更新）；想深入开发再学 Xcode/Swift；把你的快捷指令分享给朋友。Windows 的肌肉记忆不会白学——如今你两套都会，才是真正的双修玩家。</p>
+      </div>
+    </div>
+    <div class="tip"><i class="fa-solid fa-lightbulb"></i><b>卡关了怎么办？</b>① 聚焦搜索直接找设置项；② 菜单栏「帮助」菜单输入关键词，会直接高亮对应菜单项；③ Apple 官方支持站 support.apple.com/zh-cn/mac 全中文全免费；④ 本教程每个模块底部的参考来源就是最权威的答案。</div>
+  </article>
+</section>
+
+<!-- ============================================================
+     完整参考文献
+============================================================ -->
+<section class="stage" id="refs-all">
+  <div class="stage-banner b2" data-aos="fade-up">
+    <div class="stage-no"><i class="fa-solid fa-book-open" style="font-size:3.4rem;position:static;opacity:1"></i></div>
+    <h2><i class="fa-solid fa-book-open"></i> 完整参考文献</h2>
+    <p>本教程全部关键事实均来自以下来源，正文各模块另有就地标注。官方来源（Apple 官网/官方支持/开发者文档）为准，社区来源作交叉验证。</p>
+  </div>
+
+  <article class="module c-lemon ref-section" data-aos="fade-up">
+    <h4><i class="fa-solid fa-apple-whole"></i> Apple 官方来源</h4>
+    <ol>
+      <li><span class="src-tag official">官方</span>Apple 支持 · Mac 使用手册（界面/访达/触控板/多任务/设置）<a href="https://support.apple.com/zh-cn/guide/mac-help/welcome/web" target="_blank">support.apple.com/zh-cn/guide/mac-help/welcome/web</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持 · Mac 主页（全部主题入口）<a href="https://support.apple.com/zh-cn/mac" target="_blank">support.apple.com/zh-cn/mac</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持《使用"迁移助理"从 PC 传输到 Mac》HT204087 <a href="https://support.apple.com/zh-cn/HT204087" target="_blank">support.apple.com/zh-cn/HT204087</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持《Mac 键盘快捷键》HT201236 <a href="https://support.apple.com/zh-cn/HT201236" target="_blank">support.apple.com/zh-cn/HT201236</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持《在 Mac 上截屏或录制屏幕》<a href="https://support.apple.com/zh-cn/guide/mac-help/mh26782/11.0/mac" target="_blank">support.apple.com/zh-cn/guide/mac-help/mh26782</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持《使用 Time Machine 备份 Mac》HT201250 <a href="https://support.apple.com/zh-cn/HT201250" target="_blank">support.apple.com/zh-cn/HT201250</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持 · Mac、iPhone 与 iPad 的连续互通功能 HT204681 <a href="https://support.apple.com/zh-cn/HT204681" target="_blank">support.apple.com/zh-cn/HT204681</a></li>
+      <li><span class="src-tag official">官方</span>Apple《平台安全指南》（Gatekeeper / XProtect / FileVault / SIP）<a href="https://support.apple.com/guide/security/welcome/web" target="_blank">support.apple.com/guide/security/welcome/web</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持 · 活动监视器指南 <a href="https://support.apple.com/zh-cn/guide/activity-monitor/welcome/web" target="_blank">support.apple.com/zh-cn/guide/activity-monitor</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持 · 快捷指令 Mac 版指南 <a href="https://support.apple.com/zh-cn/guide/shortcuts-mac/welcome/web" target="_blank">support.apple.com/zh-cn/guide/shortcuts-mac</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持 · 磁盘工具指南（文件系统/急救）<a href="https://support.apple.com/zh-cn/guide/disk-utility/welcome/web" target="_blank">support.apple.com/zh-cn/guide/disk-utility</a></li>
+      <li><span class="src-tag official">官方</span>Apple 开发者 · AppleScript 语言指南 <a href="https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/AppleScriptLangGuide_fundamentals.html" target="_blank">developer.apple.com</a></li>
+      <li><span class="src-tag official">官方</span>Apple · macOS Tahoe 官方功能页（Liquid Glass / 聚焦操作 / iPhone 镜像）<a href="https://www.apple.com.cn/macos/" target="_blank">apple.com.cn/macos</a></li>
+      <li><span class="src-tag official">官方</span>Apple 支持 · 在 Mac 上使用 zsh 终端 <a href="https://support.apple.com/zh-cn/102360" target="_blank">support.apple.com/zh-cn/102360</a></li>
+    </ol>
+    <h4><i class="fa-solid fa-users"></i> 社区与第三方来源（交叉验证用）</h4>
+    <ol>
+      <li><span class="src-tag community">社区</span>Homebrew 官网与文档 <a href="https://brew.sh" target="_blank">brew.sh</a> / <a href="https://docs.brew.sh" target="_blank">docs.brew.sh</a></li>
+      <li><span class="src-tag community">社区</span>Homebrew 国内镜像（中科大 LUG）<a href="https://mirrors.ustc.edu.cn/help/brew.git.html" target="_blank">mirrors.ustc.edu.cn</a></li>
+      <li><span class="src-tag community">社区</span>Rectangle（开源窗口管理器）<a href="https://github.com/rxhanson/Rectangle" target="_blank">github.com/rxhanson/Rectangle</a></li>
+      <li><span class="src-tag community">社区</span>Oh My Zsh <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">github.com/ohmyzsh/ohmyzsh</a></li>
+      <li><span class="src-tag community">社区</span>Raycast <a href="https://www.raycast.com/" target="_blank">raycast.com</a></li>
+      <li><span class="src-tag community">社区</span>Hammerspoon <a href="https://www.hammerspoon.org/" target="_blank">hammerspoon.org</a></li>
+      <li><span class="src-tag community">社区</span>Paragon NTFS for Mac <a href="https://www.paragon-software.com/home/ntfs-mac/" target="_blank">paragon-software.com</a></li>
+      <li><span class="src-tag community">社区</span>PCMag · Migration Assistant 使用指南 <a href="https://www.pcmag.com/how-to/transfer-data-from-old-to-new-mac-with-apple-migration-assistant" target="_blank">pcmag.com</a></li>
+      <li><span class="src-tag community">社区</span>MacObserver · Migration Assistant 2026 指南 <a href="https://www.macobserver.com/tips/how-to/use-apples-migration-assistant/" target="_blank">macobserver.com</a></li>
+    </ol>
+    <div class="warn" style="margin-top:18px"><i class="fa-solid fa-circle-info"></i><b>时效说明：</b>本教程基于 <b>macOS 26 Tahoe</b>（2025 年 9 月起推送）编写，界面与功能以官方文档 2026 年版本为准。若你的系统是 macOS Sonoma / Sequoia，绝大多数操作一致，个别设置项名称略有差异。</div>
+  </article>
+</section>
+
+</main>
+
+<div id="backtop" title="返回顶部"><i class="fa-solid fa-chevron-up"></i></div>
+
+<footer>
+  <div class="f-logo">Mac · 通关手册</div>
+  <p>从 0 到 1 再到精通 · 专为 Windows 移民打造 · 基于 macOS 26 Tahoe</p>
+  <p style="margin-top:6px">18 模块 / 3 阶段 / 100+ 快捷键对照 / 30+ 参考来源 —— 打完收工，恭喜毕业 🎉</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+/* ===== AOS ===== */
+AOS.init({duration:700,once:true,offset:60});
+setTimeout(()=>AOS.refresh(),1200);
+
+/* ===== 移动端导航开关 ===== */
+(function(){
+  var btn=document.getElementById('nav-toggle');
+  var nav=document.getElementById('topnav');
+  if(!btn||!nav)return;
+  btn.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    btn.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';
+    btn.setAttribute('aria-label',open?'关闭导航':'打开导航');
+  });
+  // 点击导航链接后自动收起（移动端）
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      if(window.innerWidth<=900){
+        nav.classList.remove('open');
+        btn.innerHTML='<i class="fa-solid fa-bars"></i>';
+      }
+    });
+  });
+})();
+
+/* ===== 日夜主题切换 ===== */
+(function(){
+  var btn=document.getElementById('theme-toggle');
+  if(!btn)return;
+  var label=btn.querySelector('span');
+  var saved=null;
+  try{saved=localStorage.getItem('mb-theme');}catch(e){}
+  function render(day){
+    btn.innerHTML=day?'<i class="fa-solid fa-moon"></i><span>夜晚模式</span>':'<i class="fa-solid fa-sun"></i><span>白天模式</span>';
+    btn.title=day?'切换到夜晚模式':'切换到白天模式';
+  }
+  if(saved==='day'){document.body.classList.add('day');render(true);}
+  btn.addEventListener('click',function(){
+    var day=document.body.classList.toggle('day');
+    render(day);
+    try{localStorage.setItem('mb-theme',day?'day':'night');}catch(e){}
+  });
+})();
+
+/* ===== 霓虹粒子 ===== */
+(function(){
+  var symbols=['✦','✧','★','♡','⚡','✿','⬡','＋'];
+  var colors=['var(--mag)','var(--cyan)','var(--lemon)','var(--purple)','var(--neon)'];
+  var box=document.getElementById('particles');
+  for(var i=0;i<26;i++){
+    var s=document.createElement('span');
+    s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    s.style.left=Math.random()*100+'%';
+    s.style.color=colors[Math.floor(Math.random()*colors.length)];
+    s.style.fontSize=(10+Math.random()*16)+'px';
+    s.style.animationDuration=(9+Math.random()*14)+'s';
+    s.style.animationDelay=(-Math.random()*20)+'s';
+    box.appendChild(s);
+  }
+})();
+
+/* ===== 阅读进度条 + 返回顶部 ===== */
+(function(){
+  var bar=document.getElementById('read-progress');
+  var back=document.getElementById('backtop');
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=p+'%';
+    if(h.scrollTop>600){back.classList.add('show');}else{back.classList.remove('show');}
+  },{passive:true});
+  back.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+
+/* ===== 通关进度追踪（localStorage 持久化） ===== */
+(function(){
+  var KEY='mac-tutorial-neon-progress';
+  var checks=document.querySelectorAll('.mod-check');
+  var labels=document.querySelectorAll('.tracker');
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){saved={};}
+  function refresh(){
+    var done=0;
+    checks.forEach(function(c,i){
+      if(c.checked)done++;
+      labels[i].classList.toggle('done',c.checked);
+    });
+    var pct=Math.round(done/checks.length*100);
+    document.getElementById('progress-num').textContent=pct+'%';
+    document.getElementById('progress-fill').style.width=pct+'%';
+  }
+  checks.forEach(function(c,i){
+    var id=c.closest('.module')?c.closest('.module').id:('m'+i);
+    if(saved[id]){c.checked=true;}
+    c.addEventListener('change',function(){
+      saved[id]=c.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      refresh();
+    });
+  });
+  refresh();
+})();
+
+/* ===== Tabs ===== */
+document.querySelectorAll('.tabs .tab-btns button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var wrap=btn.closest('.tabs');
+    wrap.querySelectorAll('.tab-btns button').forEach(function(b){b.classList.remove('active');});
+    wrap.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ===== Dock 演示 ===== */
+(function(){
+  var say=document.getElementById('dockSay');
+  document.querySelectorAll('#demoDock .dicon').forEach(function(ic){
+    ic.addEventListener('click',function(){
+      say.textContent=ic.dataset.say;
+      say.style.color='var(--lemon)';
+    });
+  });
+})();
+
+/* ===== 可搜索表格 ===== */
+function bindSearch(inputId,tableId,emptyId){
+  var input=document.getElementById(inputId);
+  if(!input)return;
+  var table=document.getElementById(tableId);
+  var empty=document.getElementById(emptyId);
+  input.addEventListener('input',function(){
+    var q=input.value.trim().toLowerCase();
+    var shown=0;
+    table.querySelectorAll('tbody tr').forEach(function(tr){
+      var hit=!q||tr.textContent.toLowerCase().indexOf(q)>-1;
+      tr.style.display=hit?'':'none';
+      if(hit)shown++;
+    });
+    if(empty)empty.style.display=shown?'none':'block';
+  });
+}
+bindSearch('scSearch','scTable','scEmpty');
+bindSearch('termSearch','termTable','termEmpty');
+bindSearch('resSearch','resTable','resEmpty');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+/* ============================================================
+   实战训练场脚本：快捷键训练器 + Boss 战 + XP/徽章系统
+   ============================================================ */
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+
+/* ===== 全局状态（localStorage 持久化） ===== */
+var SKEY='macArenaV1';
+var S;
+try{S=JSON.parse(localStorage.getItem(SKEY))||{};}catch(e){S={};}
+S.xp=S.xp||0; S.keyTotal=S.keyTotal||0; S.keyBestCombo=S.keyBestCombo||0;
+S.badges=S.badges||{}; S.best=S.best||{};
+function save(){try{localStorage.setItem(SKEY,JSON.stringify(S));}catch(e){}}
+
+var LEVELS=[
+  {xp:0,name:'Lv.1 Mac 见习生'},
+  {xp:50,name:'Lv.2 操作达人'},
+  {xp:120,name:'Lv.3 效率高手'},
+  {xp:260,name:'Lv.4 进阶玩家'},
+  {xp:450,name:'Lv.5 Tahoe 通关大师'}
+];
+function levelOf(xp){var lv=0;for(var i=0;i<LEVELS.length;i++){if(xp>=LEVELS[i].xp)lv=i;}return lv;}
+function renderXp(){
+  var lv=levelOf(S.xp);
+  $('arLvName').textContent=LEVELS[lv].name;
+  var cur=LEVELS[lv].xp, next=lv<LEVELS.length-1?LEVELS[lv+1].xp:cur;
+  var pct=next>cur?Math.min(100,Math.round((S.xp-cur)/(next-cur)*100)):(S.xp>0?100:0);
+  $('arXpFill').style.width=pct+'%';
+  $('arXpNum').textContent=S.xp+' XP'+(lv<LEVELS.length-1?(' / '+next):'');
+}
+function addXp(n){S.xp+=n;save();renderXp();}
+
+/* ===== 徽章 ===== */
+var BADGE_CONF={
+  b_muscle:{emoji:'💪',label:'肌肉记忆移植'},
+  b_keycombo:{emoji:'🔥',label:'十连斩'},
+  b_boss1:{emoji:'🐣',label:'新手村守护者'},
+  b_boss2:{emoji:'⚡',label:'效率大师'},
+  b_boss3:{emoji:'🐉',label:'深渊征服者'},
+  b_all:{emoji:'👑',label:'Tahoe 通关大师'}
+};
+function unlock(id){
+  if(S.badges[id])return false;
+  S.badges[id]=true;save();renderBadges();
+  popConfetti();
+  var c=BADGE_CONF[id];
+  toast('🏅 徽章解锁：'+c.label+'！');
+  return true;
+}
+function renderBadges(){
+  document.querySelectorAll('#badgeWall .badge-cell').forEach(function(c){
+    c.classList.toggle('unlocked',!!S.badges[c.dataset.badge]);
+  });
+}
+function toast(msg){
+  var t=document.createElement('div');
+  t.textContent=msg;
+  t.style.cssText='position:fixed;left:50%;top:88px;transform:translateX(-50%);z-index:9999;background:rgba(22,22,58,.96);border:1px solid #FFE600;color:#FFE600;padding:10px 22px;border-radius:12px;font-size:.95rem;font-weight:700;box-shadow:0 6px 24px rgba(0,0,0,.45)';
+  document.body.appendChild(t);
+  setTimeout(function(){t.style.transition='opacity .5s';t.style.opacity='0';},2200);
+  setTimeout(function(){t.remove();},2800);
+}
+function popConfetti(){
+  if(typeof confetti!=='function')return;
+  try{
+    var day=document.body.classList.contains('day');
+    var pal=day?['#C2255C','#C2410C','#F5A623','#1A6BC4','#0F766E']  /* 暖色二次元 */
+               :['#FF2E88','#00E5FF','#FFE600','#9D4EDD','#00FF9F']; /* 霓虹赛博 */
+    confetti({particleCount:90,spread:70,origin:{y:.6},colors:pal});
+    setTimeout(function(){confetti({particleCount:50,angle:60,spread:60,origin:{x:0},colors:[pal[0],pal[2]]});},250);
+    setTimeout(function(){confetti({particleCount:50,angle:120,spread:60,origin:{x:1},colors:[pal[3],pal[4]]});},450);
+  }catch(e){}
+}
+
+/* ============================================================
+   道场一：快捷键训练器
+   ============================================================ */
+var KEY_POOL=[
+  {d:'复制',keys:['cmd','c'],tip:'Windows 陷阱：不是 Ctrl+C！'},
+  {d:'粘贴',keys:['cmd','v']},
+  {d:'剪切文本',keys:['cmd','x']},
+  {d:'撤销',keys:['cmd','z']},
+  {d:'全选',keys:['cmd','a']},
+  {d:'保存',keys:['cmd','s']},
+  {d:'查找',keys:['cmd','f']},
+  {d:'新建标签页',keys:['cmd','t']},
+  {d:'关闭窗口（应用还在运行）',keys:['cmd','w']},
+  {d:'彻底退出应用',keys:['cmd','q'],tip:'关窗口 ≠ 退应用'},
+  {d:'最小化窗口',keys:['cmd','m']},
+  {d:'隐藏当前应用全部窗口',keys:['cmd','h'],tip:'比分屏切走更快的"消失术"'},
+  {d:'打印',keys:['cmd','p']},
+  {d:'打开聚焦搜索（Spotlight）',keys:['cmd','space']},
+  {d:'切换到最近使用的应用',keys:['cmd','tab']},
+  {d:'光标跳到行首',keys:['cmd','left']},
+  {d:'光标跳到行尾',keys:['cmd','right']},
+  {d:'打开调度中心（=Windows 任务视图）',keys:['ctrl','up']},
+  {d:'打开截屏录屏面板',keys:['cmd','shift','5']},
+  {d:'打开强制退出面板（=Ctrl+Alt+Del）',keys:['cmd','opt','esc']},
+  {d:'立即锁屏',keys:['ctrl','cmd','q']}
+];
+var KEYNAME={cmd:'⌘',opt:'⌥',ctrl:'⌃',shift:'⇧',space:'Space',tab:'Tab',esc:'Esc',left:'←',right:'→',up:'↑'};
+function keyLabel(k){return KEYNAME[k]||k.toUpperCase();}
+var MODS=['cmd','opt','ctrl','shift'];
+var MAINKEYS=['c','v','x','z','a','s','f','t','w','q','m','h','p','space','tab','esc','left','right','up','5'];
+
+var tr={running:false,queue:[],idx:0,score:0,combo:0,bestCombo:0,held:{},sel:{}};
+
+function trShow(which){
+  $('trIdle').style.display=which==='idle'?'block':'none';
+  $('trPlay').style.display=which==='play'?'block':'none';
+  $('trDone').style.display=which==='done'?'block':'none';
+  $('trStage').classList.toggle('idle',which!=='play');
+}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function trStart(){
+  tr.queue=shuffle(KEY_POOL.slice()).slice(0,10);
+  tr.idx=0;tr.score=0;tr.combo=0;tr.bestCombo=0;tr.running=true;
+  $('trScore').textContent='0';$('trCombo').textContent='0';$('trBest').textContent=S.keyBestCombo;
+  trShow('play');trNext();
+}
+function trNext(){
+  if(tr.idx>=tr.queue.length){trFinish();return;}
+  var q=tr.queue[tr.idx];
+  $('trIdx').textContent=tr.idx+1;
+  $('trTask').innerHTML=q.d+(q.tip?'<small>'+q.tip+'</small>':'');
+  $('trFb').textContent='请按下组合键（或用屏幕按键作答）';
+  $('trFb').className='tr-feedback tip';
+  tr.held={};tr.sel={};
+  renderLive();renderOsk();
+}
+function renderLive(){
+  var html='';
+  MODS.forEach(function(m){html+='<span class="keycap'+((tr.held[m]||tr.sel[m])?' on':'')+'">'+KEYNAME[m]+'</span>';});
+  var mainHeld=Object.keys(tr.held).filter(function(k){return MODS.indexOf(k)<0;})[0];
+  if(mainHeld)html+='<span class="keycap on">'+keyLabel(mainHeld)+'</span>';
+  else{
+    var mainSel=Object.keys(tr.sel).filter(function(k){return MODS.indexOf(k)<0;})[0];
+    if(mainSel)html+='<span class="keycap">'+keyLabel(mainSel)+'</span>';
+  }
+  $('trLive').innerHTML=html||'<span class="keycap ghost">等待输入…</span>';
+}
+function renderOsk(){
+  var html='';
+  MODS.forEach(function(m){
+    html+='<button data-k="'+m+'" class="'+(tr.sel[m]?'sel':'')+'">'+KEYNAME[m]+'</button>';
+  });
+  MAINKEYS.forEach(function(k){
+    html+='<button data-k="'+k+'">'+keyLabel(k)+'</button>';
+  });
+  html+='<button class="osk-submit" id="trSubmitBtn">提交</button>';
+  $('trOsk').innerHTML=html;
+  $('trOsk').querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var k=b.dataset.k;
+      if(k==='__submit')return;
+      if(MODS.indexOf(k)>-1){tr.sel[k]=!tr.sel[k];}
+      else{tr.sel={};tr.sel[k]=true;}
+      renderLive();renderOsk();
+    });
+  });
+  $('trSubmitBtn').addEventListener('click',function(){
+    var mods=MODS.filter(function(m){return tr.sel[m];});
+    var main=Object.keys(tr.sel).filter(function(k){return MODS.indexOf(k)<0;})[0];
+    if(!main){$('trFb').textContent='先选一个主键（字母/功能键），再提交';$('trFb').className='tr-feedback tip';return;}
+    var combo=mods.concat([main]);
+    judge(combo);
+  });
+}
+function judge(combo){
+  var q=tr.queue[tr.idx];
+  var want=q.keys.slice().sort().join('+');
+  var got=combo.slice().sort().join('+');
+  if(got===want){
+    tr.score++;tr.combo++;
+    if(tr.combo>tr.bestCombo)tr.bestCombo=tr.combo;
+    S.keyTotal++;var xp=5+(tr.combo>=3?2:0);addXp(xp);
+    if(tr.combo>=8)unlock('b_keycombo');
+    if(S.keyTotal>=30)unlock('b_muscle');
+    if(S.keyBestCombo<tr.bestCombo){S.keyBestCombo=tr.bestCombo;save();}
+    $('trFb').innerHTML='✅ 正确！'+(q.keys.map(keyLabel).join(' + ')+'　+'+xp+' XP');
+    $('trFb').className='tr-feedback ok';
+    $('trScore').textContent=tr.score;$('trCombo').textContent=tr.combo;$('trBest').textContent=S.keyBestCombo;
+    setTimeout(function(){tr.idx++;trNext();},900);
+  }else{
+    tr.combo=0;
+    $('trFb').innerHTML='❌ 你按的是 '+combo.map(keyLabel).join(' + ')+'，正确答案：<b>'+q.keys.map(keyLabel).join(' + ')+'</b>';
+    $('trFb').className='tr-feedback no';
+    $('trCombo').textContent='0';
+    setTimeout(function(){tr.idx++;trNext();},1600);
+  }
+}
+function trFinish(){
+  tr.running=false;trShow('done');
+  var acc=Math.round(tr.score/tr.queue.length*100);
+  var extra=tr.score===tr.queue.length?10:0;
+  if(extra)addXp(extra);
+  $('trDoneLine').innerHTML='本轮 <b style="color:var(--cyan)">'+tr.score+' / '+tr.queue.length+'</b>（正确率 '+acc+'%）· 最高连击 '+tr.bestCombo;
+  $('trDoneXp').textContent=tr.score===tr.queue.length?'🏆 全对奖励 +10 XP！':'（答对累计获得 XP 已入账）';
+  if(acc===100)popConfetti();
+}
+/* 真实键盘监听（训练进行中才拦截） */
+function normKey(e){
+  var k=e.key;
+  if(k===' ')return 'space';
+  if(k==='Tab')return 'tab';
+  if(k==='Escape')return 'esc';
+  if(k==='ArrowLeft')return 'left';
+  if(k==='ArrowRight')return 'right';
+  if(k==='ArrowUp')return 'up';
+  return k.length===1?k.toLowerCase():null;
+}
+document.addEventListener('keydown',function(e){
+  if(!tr.running)return;
+  if(e.key==='Meta'||e.key==='Alt'||e.key==='Control'||e.key==='Shift'){
+    var m=e.key==='Meta'?'cmd':e.key==='Alt'?'opt':e.key==='Control'?'ctrl':'shift';
+    tr.held[m]=true;renderLive();e.preventDefault();return;
+  }
+  var main=normKey(e);
+  if(!main)return;
+  e.preventDefault();
+  var mods=MODS.filter(function(m){return tr.held[m]||tr.sel[m];});
+  var combo=mods.concat([main]);
+  renderLive();
+  judge(combo);
+});
+document.addEventListener('keyup',function(e){
+  if(!tr.running)return;
+  if(e.key==='Meta')delete tr.held.cmd;
+  if(e.key==='Alt')delete tr.held.opt;
+  if(e.key==='Control')delete tr.held.ctrl;
+  if(e.key==='Shift')delete tr.held.shift;
+  renderLive();
+});
+window.addEventListener('blur',function(){tr.held={};if(tr.running)renderLive();});
+$('trStart').addEventListener('click',trStart);
+$('trAgain').addEventListener('click',trStart);
+$('trSkip').addEventListener('click',function(){
+  if(!tr.running)return;
+  var q=tr.queue[tr.idx];
+  $('trFb').innerHTML='答案是 <b>'+q.keys.map(keyLabel).join(' + ')+'</b>，记住了吗？';
+  $('trFb').className='tr-feedback tip';
+  tr.combo=0;$('trCombo').textContent='0';
+  setTimeout(function(){tr.idx++;trNext();},1300);
+});
+$('trQuit').addEventListener('click',function(){if(tr.running)trFinish();});
+
+/* ============================================================
+   道场二：Boss 战
+   ============================================================ */
+var BOSS_NAME={boss1:'Boss Ⅰ · 新手村守门员',boss2:'Boss Ⅱ · 效率双头龙',boss3:'Boss Ⅲ · 深渊领主'};
+var QUIZ={
+boss1:[
+ {q:'Mac 上承担 Windows「任务栏」职责的是？',o:['开始菜单','程序坞 Dock + 顶部菜单栏','控制面板','桌面小部件'],a:1,e:'macOS 把任务栏拆成两套：Dock 放图标和常用 App，菜单栏放全局菜单和状态图标。见模块 2。'},
+ {q:'点击窗口左上角的红色按钮后，应用通常会？',o:['彻底退出','后台继续运行（菜单栏还在）','进入休眠','自动最小化'],a:1,e:'macOS 设计哲学：关窗口 ≠ 退应用。⌘Q 才是真退出。这是 Windows 移民最容易踩的第一个坑。见模块 2。'},
+ {q:'把文件移入废纸篓的快捷键是？',o:['Ctrl+D','Delete','⌘+Delete','⌘+D'],a:2,e:'⌘⌫（Command+退格）= 移入废纸篓。空格预览、⌘⌫ 删除，是访达双绝。见模块 4。'},
+ {q:'下载了一个 .dmg 安装包，正确的安装方式是？',o:['双击后一路"下一步"','右键以管理员身份运行','打开后把 App 图标拖进 Applications 文件夹','必须先用杀毒软件扫描'],a:2,e:'.dmg 是磁盘镜像：挂载后把 App 拖到 Applications 即完成安装，装完推出 .dmg。见模块 5。'},
+ {q:'在访达里"不打开文件、快速看一眼内容"的方法是？',o:['双击','选中后按空格键','右键 → 预览','⌘+P'],a:1,e:'空格键 = 快速查看 Quick Look，再按空格关闭。看图、看文档神器。见模块 4。'},
+ {q:'触控板"双指捏合"手势的作用是？',o:['切换桌面','缩放图片/网页','旋转图片','呼出调度中心'],a:1,e:'双指捏合 = 放大缩小；双指张开可以呼出启动台。见模块 3 手势速查表。'},
+ {q:'想打开一个不在程序坞里的应用，最快的方式是？',o:['翻访达一个文件夹一个文件夹找','打开启动台或聚焦搜索','去 App Store 重新下载','重启电脑'],a:1,e:'启动台（F4/四指捏合）看全部 App；聚焦搜索（⌘Space）直接敲名字回车。见模块 2。'},
+ {q:'Mac 上的"控制面板"去哪了？',o:['没有，什么都不能改',' 菜单 → 系统设置','程序坞最右端的按钮','终端里改配置文件'],a:1,e:'系统设置（System Settings）承担控制面板职责，左栏分类 + 右侧搜索框。见模块 6。'}
+],
+boss2:[
+ {q:'Mac 上 90% 场合承担 Windows Ctrl 键职责的是？',o:['Control ⌃','Command ⌘','Option ⌥','Fn'],a:1,e:'Windows 的 Ctrl 基本平移到 Mac 的 ⌘。Ctrl+C → ⌘C，Ctrl+V → ⌘V。见模块 7。'},
+ {q:'打开调度中心（相当于 Windows 任务视图）的默认快捷键是？',o:['⌘+↑','⌃+↑（Control+上箭头）','⌘+Tab','F11'],a:1,e:'⌃↑ 打开调度中心看所有窗口和桌面；⌘Tab 是切换应用。见模块 8。'},
+ {q:'呼出聚焦搜索（Spotlight）的默认快捷键是？',o:['⌘+F','⌘+空格','⌘+K','Ctrl+空格'],a:1,e:'⌘空格 = 聚焦搜索，能搜文件、启动 App、做计算、查汇率。⌘F 是"页面内查找"。见模块 9。'},
+ {q:'打开截屏/录屏面板（可选区域、可录屏）的快捷键是？',o:['⌘+⇧+3','⌘+⇧+4','⌘+⇧+5','PrtSc'],a:2,e:'⌘⇧3 全屏、⌘⇧4 选区、⌘⇧5 打开完整截屏录屏面板。Mac 没有 PrtSc 键。见模块 10。'},
+ {q:'在访达里把文件"剪切"到另一个文件夹，正确操作是？',o:['⌘X 剪切，然后 ⌘V 粘贴','⌘C 复制，然后 ⌘⌥V 移动到这里','直接拖拽不行，必须复制','Delete 删除后在目标文件夹粘贴'],a:1,e:'访达没有直接剪切文件的 ⌘X（那是给文本的）。先 ⌘C 复制，目标位置 ⌘⌥V = 移动。见模块 4/12。'},
+ {q:'移动硬盘想要 Windows 和 Mac 都能读写，应该格式化为？',o:['NTFS','exFAT','APFS','FAT16'],a:1,e:'exFAT 是双平台读写的最优解；NTFS 在 macOS 只读；APFS 只有 Mac 认。见模块 12。'},
+ {q:'把一个窗口移到另一个桌面（空间），应该？',o:['最小化后再还原','先进入调度中心再拖窗口，或拖到屏幕边缘悬停','关掉窗口重新打开','按 ⌘Tab'],a:1,e:'调度中心里直接拖窗口到上方目标空间；或全屏时把窗口拖到边缘稍等自动切换。见模块 8。'},
+ {q:'按住 ⌘Tab 切换应用时，松手前再按 Q 会？',o:['最小化该应用','直接退出当前高亮的应用','锁定屏幕','刷新窗口'],a:1,e:'⌘Tab 面板里按 Q 退应用、按 H 隐藏应用——切换器里就能做掉不需要的应用。见模块 8。'}
+],
+boss3:[
+ {q:'把 iPhone 里的照片快速传到 Mac，最顺手的方式是？',o:['微信文件传输助手','AirDrop 隔空投送','数据线 + iTunes','邮件发给自己'],a:1,e:'隔空投送 AirDrop：选中照片 → 分享 → 点 Mac 图标，秒到。无需网络，走点对点。见模块 13。'},
+ {q:'Time Machine 移动硬盘首次使用，需要先做什么？',o:['在 Windows 里格式化成 NTFS','在系统设置 → 通用 → Time Machine 里选它作为备份磁盘','安装第三方备份软件','手动把文件拷进去'],a:1,e:'接上硬盘，系统询问后选"用作备份磁盘"即可，Time Machine 自动每小时增量备份。见模块 14。'},
+ {q:'终端里"查看当前所在目录路径"的命令是？',o:['ls','pwd','cd','whoami'],a:1,e:'pwd = print working directory；ls 列目录内容；cd 切换目录。终端第一课三件套。见模块 16。'},
+ {q:'用 Homebrew 安装 Chrome 这类图形界面应用，命令是？',o:['brew install chrome','brew install --cask google-chrome','brew cask chrome','sudo apt install chrome'],a:1,e:'命令行工具用 formula（brew install wget），GUI 应用用 cask（brew install --cask xxx）。见模块 17。'},
+ {q:'想实现"每天早上 9 点自动执行某操作"，macOS 上最简单的图形化工具是？',o:['任务计划程序','快捷指令（Shortcuts）的自动化','活动监视器','磁盘工具'],a:1,e:'快捷指令 → 自动化 → 新建 → 选时间触发。图形化无代码，Windows 的任务计划程序对应物。见模块 18。'},
+ {q:'FileVault 是什么？',o:['系统防火墙','全盘加密功能','杀毒软件','备份工具'],a:1,e:'FileVault 用 XTS-AES-128 加密整个磁盘，丢失电脑时数据不可被读取。防火墙是另一项独立设置。见模块 19（安全）。'},
+ {q:'打开 App 提示"无法验证开发者"，正确的处理是？',o:['终端里输 sudo 强制打开','系统设置 → 隐私与安全性 → 底部点「仍要打开」','关掉 Wi-Fi 再开','重装系统'],a:1,e:'Gatekeeper 拦截非 App Store 应用：去隐私与安全性里「仍要打开」，或右键 App → 打开。确认来源可信再放行。见安全模块。'},
+ {q:'判断 Mac 内存够不够用，活动监视器里最该看的指标是？',o:['已用内存大小','内存压力颜色（绿/黄/红）','缓存文件大小','电池循环次数'],a:1,e:'macOS 会尽量占满内存做缓存，"已用内存高"是正常现象；内存压力绿色 = 健康。见性能维护模块。'}
+]};
+var qz={boss:null,order:[],idx:0,score:0,combo:0,maxCombo:0,answered:false,wrong:[]};
+function bossState(b){
+  var el=$('st-'+b), card=document.querySelector('.boss-card[data-boss="'+b+'"]');
+  if(S.best[b]!=null){el.textContent='已通关 · 最高 '+S.best[b]+'/8';card.classList.add('passed');}
+  else{el.textContent='未挑战';card.classList.remove('passed');}
+}
+function renderBossStates(){['boss1','boss2','boss3'].forEach(bossState);}
+document.querySelectorAll('.boss-card').forEach(function(c){
+  c.addEventListener('click',function(){qzStart(c.dataset.boss);});
+});
+function qzStart(boss){
+  qz.boss=boss;qz.order=QUIZ[boss].map(function(_,i){return i;});
+  shuffle(qz.order);
+  qz.idx=0;qz.score=0;qz.combo=0;qz.maxCombo=0;qz.wrong=[];
+  $('qzBossName').textContent=BOSS_NAME[boss];
+  $('qzPanel').classList.add('active');
+  $('qzPlay').style.display='block';$('qzResult').style.display='none';
+  $('arena-boss').scrollIntoView({behavior:'smooth',block:'start'});
+  qzNext();
+}
+function qzNext(){
+  if(qz.idx>=qz.order.length){qzFinish();return;}
+  qz.answered=false;
+  var q=QUIZ[qz.boss][qz.order[qz.idx]];
+  var prog='';
+  for(var i=0;i<qz.order.length;i++){
+    prog+='<i class="'+(i<qz.idx?(qz.wrong.indexOf(i)>-1?'bad':'done'):(i===qz.idx?'cur':''))+'"></i>';
+  }
+  $('qzProg').innerHTML=prog;
+  $('qzIdx').textContent=qz.idx+1;
+  $('qzQ').textContent=q.q;
+  $('qzExpl').className='qz-expl';
+  $('qzNext').style.display='none';
+  var html='';
+  q.o.forEach(function(opt,i){html+='<button class="qz-opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+opt+'</button>';});
+  $('qzOpts').innerHTML=html;
+  $('qzOpts').querySelectorAll('.qz-opt').forEach(function(b){
+    b.addEventListener('click',function(){qzAnswer(parseInt(b.dataset.i,10));});
+  });
+}
+function qzAnswer(i){
+  if(qz.answered)return;qz.answered=true;
+  var q=QUIZ[qz.boss][qz.order[qz.idx]];
+  var btns=$('qzOpts').querySelectorAll('.qz-opt');
+  btns.forEach(function(b){b.disabled=true;});
+  btns[q.a].classList.add('right');
+  if(i===q.a){
+    qz.score++;qz.combo++;if(qz.combo>qz.maxCombo)qz.maxCombo=qz.combo;
+  }else{
+    btns[i].classList.add('wrong');
+    qz.combo=0;qz.wrong.push(qz.order[qz.idx]);
+  }
+  $('qzCombo').textContent=qz.combo;
+  $('qzExpl').innerHTML='<b>解析：</b>'+q.e;
+  $('qzExpl').className='qz-expl show';
+  $('qzNext').style.display='inline-block';
+  $('qzNext').innerHTML=(qz.idx===qz.order.length-1?'看战报 <i class="fa-solid fa-flag-checkered"></i>':'下一题 <i class="fa-solid fa-arrow-right"></i>');
+}
+$('qzNext').addEventListener('click',function(){qz.idx++;qzNext();});
+function qzFinish(){
+  var total=qz.order.length,passed=qz.score>=6;
+  var xp=qz.score*10+(qz.maxCombo>=3?qz.maxCombo*2:0);
+  addXp(xp);
+  var newBest=(S.best[qz.boss]==null||qz.score>S.best[qz.boss]);
+  if(passed)newBest=true;
+  if(newBest){S.best[qz.boss]=Math.max(S.best[qz.boss]||0,qz.score);save();}
+  $('qzPlay').style.display='none';$('qzResult').style.display='block';
+  $('qzEmoji').textContent=passed?(qz.score===8?'👑':'🏆'):'💀';
+  $('qzScoreLine').textContent=qz.score+' / '+total+(passed?' · 通关！':' · 未达 6 题及格线，再战！');
+  $('qzXpLine').textContent='+'+xp+' XP（连击最高 '+qz.maxCombo+'）';
+  $('qzBadgeLine').innerHTML=passed?('🏅 徽章掉落：<b style="color:var(--lemon)">'+BADGE_CONF['b_'+qz.boss].label+'</b>'):'（通关后掉落徽章）';
+  var rv='';
+  qz.wrong.forEach(function(i){
+    var q=QUIZ[qz.boss][i];
+    rv+='<div class="rv">❓ '+q.q+'<br><b>✔ '+String.fromCharCode(65+q.a)+'. '+q.o[q.a]+'</b></div>';
+  });
+  $('qzReview').innerHTML=qz.wrong.length?('<b style="color:var(--mag)">错题回顾</b>'+rv):'🎉 全对，无错题！';
+  if(passed){
+    unlock('b_'+qz.boss);
+    if(S.badges.b_boss1&&S.badges.b_boss2&&S.badges.b_boss3)unlock('b_all');
+  }
+  renderBossStates();
+}
+$('qzRetry').addEventListener('click',function(){if(qz.boss)qzStart(qz.boss);});
+$('qzClose').addEventListener('click',function(){$('qzPanel').classList.remove('active');});
+
+/* ===== 初始化 ===== */
+renderXp();renderBadges();renderBossStates();
+setTimeout(function(){if(typeof AOS!=='undefined'&&AOS.refresh)AOS.refresh();},600);
+})();
+</script>
+
+</body>
+</html>
