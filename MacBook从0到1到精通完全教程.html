@@ -1669,6 +1669,95 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
       <details><summary>买了新 Mac，旧 Mac 的数据怎么搬？</summary><div class="faq-body">Mac→Mac 最简单：新机首次设置时选「从 Mac、Time Machine 备份或启动磁盘传输」，或用雷电线直连两台机器跑迁移助理，几十 GB 也就半小时级别。详见模块 14 的 Time Machine 与 Apple 迁移助理官方文档。</div></details>
     </div>
   </article>
+
+  <!-- ===== 附录 C · 补充实战指南 ===== -->
+  <article class="module c-cyan" id="supplement" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num"><i class="fa-solid fa-toolbox"></i></div>
+      <div>
+        <h3>附录 C · 补充实战指南</h3>
+        <p class="mod-sub">Windows 移民最容易撞上的 5 个刚需场景 —— 前面没展开讲的，这里一次补齐</p>
+      </div>
+    </div>
+
+    <!-- C-1 Safari -->
+    <h4><i class="fa-solid fa-compass"></i> C-1 Safari 浏览器与默认浏览器切换</h4>
+    <p>Windows 用户习惯 Chrome/Edge，到了 Mac 上 Safari 是预装默认。它轻量省电，但操作逻辑和 Chrome 有差异。</p>
+    <ul>
+      <li><b>从 Chrome/Edge 导入书签</b>：打开 Safari → 菜单栏「文件」→「导入自」→ 选择「Google Chrome」或「Microsoft Edge」→ 勾选书签/历史/密码 → 导入。前提是 Chrome/Edge 已在 Mac 上安装且有数据。</p>
+      <li><b>切换默认浏览器为 Chrome</b>：先从 google.com/chrome 下载安装 Chrome → 系统设置 → 桌面与程序坞（或「应用程序」）→ 找到「默认网页浏览器」→ 从 Safari 改为 Google Chrome。之后所有链接点击都会走 Chrome。</li>
+      <li><b>Safari 独有功能</b>：
+        <ul>
+          <li><b>隐私追踪概览</b>：菜单栏「 Safari」→「隐私」→「隐私报告」，可看每个网站被阻止的追踪器数量。Safari 默认拦截已知追踪器，比 Chrome 更激进。</li>
+          <li><b>标签页分组</b>：侧边栏底部「+」新建分组，把不同场景的标签页归到一起（如「工作」「摸鱼」），切换时整个组一起显示/隐藏。</li>
+          <li><b>阅读器模式</b>：地址栏左侧出现「AAAA」图标时点击，或按 <kbd>Shift</kbd>+<kbd>Cmd</kbd>+<kbd>R</kbd>，进入纯文字阅读视图——去掉广告和侧边栏，长文必备。</li>
+          <li><b>iCloud 钥匙串</b>：Safari 的密码管理器，跨 Apple 设备同步。比 Chrome 密码更贴合 Mac 生态，但跨平台不如 Chrome 方便。</li>
+        </ul>
+      </li>
+      <li><b>Safari 扩展</b>：App Store 搜索安装（Safari 13+ 统一走 App Store 分发）。推荐：<b>1Password</b>（密码管理）、<b>StopTheMadness</b>（隐私增强）、<b>Ultra Nova</b>（暗色模式强制）。在 系统设置 → Safari → 扩展 中开启/关闭。</li>
+      <li><b>Chrome on Mac 须知</b>：Chrome 在 Mac 上吃电比 Safari 多 20%~40%（Apple 官方测试），M 芯片原生版已优化但仍有差距。重度依赖 Chrome 扩展的可以用，但出门前建议切 Safari 省电。</li>
+    </ul>
+
+    <!-- C-2 iCloud -->
+    <h4><i class="fa-solid fa-cloud"></i> C-2 iCloud 云存储全攻略</h4>
+    <p>iCloud 是 Mac 生态的"看不见的手"——文件、照片、密码、设备定位全靠它。Windows 用户理解成「OneDrive + Google Photos + Find My Device 三合一」就对了。</p>
+    <ul>
+      <li><b>免费空间与升级</b>：每个 Apple ID 免费 5GB（不够用）。升级方案（月费）：50GB ¥6 / 200GB ¥21 / 2TB ¥68 / 6TB ¥138 / 12TB ¥278。200GB 起步够多数人用，全家共享选 2TB+。</li>
+      <li><b>iCloud Drive（文件同步）</b>：相当于 OneDrive。访达侧边栏有「iCloud Drive」入口，拖文件进去就自动同步到云端和其他设备。<b>桌面与文稿同步</b>：系统设置 → Apple 账户 → iCloud → iCloud Drive → 开启「桌面与文稿文件夹」——开了之后你的桌面文件会在所有 Mac/iPhone 上同步。注意：开启后桌面文件夹实际位置变成 iCloud 云端路径，关闭时需选择「保留本地副本」。</li>
+      <li><b>优化 Mac 存储空间</b>：系统设置 → Apple 账户 → iCloud → 「优化 Mac 存储空间」。开启后旧文件自动上传云端、本地保留占位符，点开时再下载。对硬盘小的 MacBook 必开。</li>
+      <li><b>iCloud 照片</b>：照片 App 自动把所有图传到 iCloud（原图存云端，本地看缩略图）。和 Google Photos 类似，但压缩选项不同：Apple 是「原件」（无损）或「优化」（压缩本地）。和 Windows 的区别：不能选只同步指定文件夹——开了就全同步。</li>
+      <li><b>查找（Find My）</b>：系统设置 → Apple 账户 → 查找。Mac 丢了/被偷了，在 iCloud.com 或 iPhone「查找」App 里定位、播放声音、标记为丢失（锁定+显示留言）、远程擦除。比 Windows 的 Find My Device 更强大，还能离线定位（靠附近其他 Apple 设备蓝牙中继）。</li>
+      <li><b>iCloud 空间满了怎么办</b>：系统设置 → Apple 账户 → iCloud → 「管理账户存储」。这里列出占用空间最大的 App 和文件类型，可逐项清理：删大附件的 iMessage、清理旧照片、删不需要的备份。最常见的大户是信息和照片。</li>
+      <li><b>与 OneDrive 共存</b>：两者不冲突。iCloud 管 Apple 生态内同步（照片/密码/桌面），OneDrive 管跨平台办公文件（Word/Excel/PPT）。建议：工作文档放 OneDrive，个人生活数据放 iCloud。</li>
+    </ul>
+
+    <!-- C-3 故障恢复 -->
+    <h4><i class="fa-solid fa-screwdriver-wrench"></i> C-3 故障恢复与系统急救</h4>
+    <p>前面模块 18 的急救小抄只有 3 条 FAQ，这里补全完整的故障恢复工具链。Mac 不像 Windows 有 F8 安全模式，恢复路径完全不同。</p>
+    <table class="neon">
+      <thead><tr><th>场景</th><th>操作步骤</th><th>适用芯片</th></tr></thead>
+      <tbody>
+        <tr><td><b>安全模式</b><br>（排查启动项冲突）</td><td>关机 → 按住电源键不放 → 屏幕出现「载入启动选项」→ 选择启动磁盘 → <b>按住 Shift</b> 点「继续安全模式」→ 登录后看是否正常<br>Apple Silicon：按住电源键直到出现启动选项窗口</td><td>Apple Silicon</td></tr>
+        <tr><td><b>安全模式</b><br>（Intel 芯片）</td><td>开机时按住 <kbd>Shift</kbd> 键 → 看到 Apple 标志后松开 → 登录窗口右上角显示「安全启动」</td><td>Intel</td></tr>
+        <tr><td><b>恢复模式</b><br>（重装/磁盘工具/时间机器恢复）</td><td>关机 → 按住电源键不放 → 出现「载入启动选项」→ 选「选项」→ 点「继续」→ 选管理员账户输入密码 → 进入恢复界面（含磁盘工具/重装 macOS/时间机器恢复/终端/终端安全启动密码设置）</td><td>Apple Silicon</td></tr>
+        <tr><td><b>恢复模式</b><br>（Intel 芯片）</td><td>开机时按住 <kbd>Cmd</kbd>+<kbd>R</kbd> → 看到 Apple 标志后松开</td><td>Intel</td></tr>
+        <tr><td><b>互联网恢复</b><br>（本地恢复分区损坏时）</td><td>Apple Silicon：在启动选项界面选「选项」时如果本地恢复损坏，系统会自动连网下载。Intel：开机时按住 <kbd>Option</kbd>+<kbd>Cmd</kbd>+<kbd>R</kbd></td><td>通用</td></tr>
+        <tr><td><b>启动磁盘选择</b><br>（多系统/外接启动盘）</td><td>Apple Silicon：按住电源键 → 启动选项界面选择磁盘。Intel：开机按住 <kbd>Option</kbd> → 选择启动磁盘</td><td>通用</td></tr>
+        <tr><td><b>NVRAM/SMC 重置</b><br>（音量/亮度/启动磁盘等参数异常）</td><td>Apple Silicon：<b>不需要</b>，关机 30 秒再开机即可等效重置 NVRAM。Intel：<kbd>Option</kbd>+<kbd>Cmd</kbd>+<kbd>P</kbd>+<kbd>R</kbd> 按住 20 秒（NVRAM）；SMC 重置方法因型号不同见 Apple 支持</td><td>分芯片</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><b>重装 macOS（不丢数据）</b>：进入恢复模式 → 选「重装 macOS」→ 按提示操作。<b>覆盖安装</b>不会抹掉用户文件（类似 Windows 的「保留个人文件」重置），但建议先备份。如果磁盘出问题需先在恢复界面用「磁盘工具」→「急救」修复，修不好再考虑「抹掉」后重装。</li>
+      <li><b>Apple Silicon 的「 DFU 模式」</b>：连另一台 Mac 用 Apple Configurator 可恢复/重装固件。用于系统完全启动不了的终极恢复。参考：Apple 支持 HT212811。</li>
+    </ul>
+
+    <!-- C-4 多显示器 -->
+    <h4><i class="fa-solid fa-display"></i> C-4 外接显示器与多屏设置</h4>
+    <p>Windows 用户习惯了 Win+P 投屏快捷键，Mac 上逻辑不同但更灵活。Apple Silicon MacBook 单 Type-C 口可输出视频，但可能需要扩展坞。</p>
+    <ul>
+      <li><b>连接方式</b>：MacBook 的 USB-C/雷雳口直出 DisplayPort 信号，用 <b>USB-C → DP/HDMI 线</b>或<b>扩展坞</b>连接外接显示器。M1/M2 基础款仅支持 1 台外接（合盖模式下），M1 Pro/Max/Ultra 及 M3 以上支持多台。M3/M4 基础款合盖状态支持 2 台外接。</li>
+      <li><b>排列显示器</b>：系统设置 → 显示器 → 拖拽显示器方框到与物理摆放一致的位置 → 拖白色菜单栏到主显示器上设置主屏。和 Windows 的「显示设置 → 拖拽排列」一样。</li>
+      <li><b>合盖模式（Clamshell）</b>：MacBook 接电源 + 外接显示器 + 外接键鼠 → 合上盖子 → 外接显示器变主屏。Apple Silicon MacBook 合盖可跑外接，但 <b>M1/M2 基础款限制 1 台外接</b>，Pro 及以上不限制。</li>
+      <li><b>HiDPI 缩放问题</b>：Mac 不像 Windows 可以自由设 DPI 缩放比例。外接 2K/4K 显示器可能出现字体偏小或模糊。解决：系统设置 → 显示器 → 选「缩放」→ 选 Apple 预设的缩放档位（如「较大文字」）。第三方工具 <b>BetterDisplay</b>（开源）可强制开 HiDPI，解决非 4K 屏的清晰度问题。</li>
+      <li><b>颜色配置文件</b>：系统设置 → 显示器 → 颜色配置文件（需点显示器名称旁边「预置」旁的「...」）。默认 sRGB 对大多数显示器够用。专业修图场景需用校色仪（如 Datacolor Spyder）生成 ICC 配置文件后导入。</li>
+      <li><b>跨屏拖窗口</b>：直接拖过去（和 Windows 一样），或用 <kbd>Ctrl</kbd>+<kbd>Cmd</kbd>+<kbd>←/→</kbd>（调度中心方向键）把窗口送到相邻屏。<b>镜像显示</b>：系统设置 → 显示器 → 勾「镜像显示器」（两屏显示相同内容，适合投屏演示）。</li>
+      <li><b>Sidecar（iPad 当副屏）</b>：系统设置 → 副屏 → 选你的 iPad → iPad 变成第二显示器，支持 Apple Pencil 触控。比 Duet Display 更稳定（原生），但仅限同一 Apple ID 的设备。</li>
+    </ul>
+
+    <!-- C-5 蓝牙设备与打印机 -->
+    <h4><i class="fa-solid fa-bluetooth"></i> C-5 蓝牙设备与打印机</h4>
+    <p>Windows 的「设备管理器 → 添加蓝牙设备」在 Mac 上简化为「系统设置 → 蓝牙 → 连接」。</p>
+    <ul>
+      <li><b>AirPods / 蓝牙耳机配对</b>：打开耳机配对模式（AirPods 开盖靠近 Mac 自动弹窗）→ 系统设置 → 蓝牙 → 点击设备名连接。AirPods 连 Mac 后自动走 AAC 编解码；第三方蓝牙耳机连上后可在「蓝牙 → 设备详情」看支持的编码格式。</li>
+      <li><b>音频输出切换</b>：菜单栏音量图标点击 → 下拉选输出设备。或 <kbd>Option</kbd>+点击音量图标快速切换。比 Windows 的右下角音频切换器更直接。</li>
+      <li><b>蓝牙鼠标/键盘</b>：系统设置 → 蓝牙 → 连接。Magic Mouse/Keyboard 直接连，第三方（罗技/雷柏）走各自接收器或蓝牙。蓝牙键盘连上后记得去 <b>系统设置 → 键盘 → 「修饰键」</b> 把 Win 键和 Alt 键的功能对调（如果你想让 Win=Clover、Alt=Option）。</li>
+      <li><b>AirPrint 无线打印</b>：Mac 不需要装打印机驱动。确保打印机和 Mac 在同一 Wi-Fi → 系统设置 → 打印机与扫描仪 → 自动发现 → 点「添加」。Mac 通过 AirPrint 协议直接驱动，90% 的现代打印机都支持。<b>不支持 AirPrint 的老打印机</b>：去打印机厂商官网下载 Mac 驱动（如 HP、Canon、Epson 都有），安装后在「打印机与扫描仪」里手动添加。</li>
+      <li><b>USB 打印机</b>：USB 线直连 → 系统自动识别 → 多数走 AirPrint 协议免驱。不行就去官网找驱动。</li>
+      <li><b>打印队列管理</b>：菜单栏无直接入口。系统设置 → 打印机与扫描仪 → 选中打印机 → 「打开打印队列」可查看/取消/暂停任务。或 <kbd>Cmd</kbd>+<kbd>Option</kbd>+点击程序坞的打印机图标（如果已固定）。</li>
+      <li><b>蓝牙故障排查</b>：设备连不上 → 系统设置 → 蓝牙 → 关再开蓝牙 → 删除设备重新配对 → 仍不行则关机 30 秒再开机（等效重置蓝牙模块）。Apple Silicon 不需要也不支持 SMC 重置。</li>
+    </ul>
+    <p style="font-size:.85rem;color:var(--muted)"><b>参考来源</b>：Apple 支持（support.apple.com）蓝牙、AirPrint、外接显示器指南；macOS 用户指南（磁盘工具/恢复模式）；Apple Silicon 恢复文档 HT212811；BetterDisplay 开源项目 GitHub。</p>
+  </article>
 </section>
 <!-- ============================================================
      实战训练场（互动区：快捷键训练器 + Boss 战测验）
