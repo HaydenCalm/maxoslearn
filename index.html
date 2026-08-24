@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <title>MacBook 从 0 到 1 再到精通 · 二次元完全教程</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,9 +18,9 @@
   --nav-bg:rgba(10,10,30,.90); --purple-text:#C99BFF;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:20px}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.75;padding-left:238px}
-@media(max-width:900px){body{padding-right:0}}
+html{scroll-behavior:smooth;scroll-padding-top:20px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.75;padding-left:238px;-webkit-overflow-scrolling:touch}
+@media(max-width:900px){body{padding-left:0}}
 body::before{content:"";position:fixed;inset:0;z-index:-2;background:
   radial-gradient(ellipse 60% 40% at 12% 0%,rgba(255,46,136,.10),transparent 60%),
   radial-gradient(ellipse 55% 45% at 88% 12%,rgba(0,229,255,.09),transparent 60%),
@@ -46,7 +46,8 @@ code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
 /* ===== 左侧悬浮导航 ===== */
 #nav-toggle{position:fixed;left:16px;top:16px;z-index:1001;width:46px;height:46px;border-radius:14px;
   cursor:pointer;border:2px solid var(--lemon);background:var(--nav-bg);color:var(--lemon);
-  font-size:1.2rem;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);box-shadow:3px 3px 0 rgba(255,46,136,.4)}
+  font-size:1.2rem;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);box-shadow:3px 3px 0 rgba(255,46,136,.4);
+  top:max(16px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left))}
 #topnav{position:fixed;left:18px;top:50%;transform:translateY(-50%);width:198px;z-index:1000;
   display:flex;flex-direction:column;gap:10px;padding:20px 14px;background:var(--nav-bg);
   backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:24px;
@@ -104,7 +105,7 @@ code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
 .chip.c-purple{color:var(--purple-text);border-color:var(--purple);background:var(--purple-soft)}
 .hero .cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 .btn{display:inline-block;padding:13px 34px;border-radius:14px;font-weight:700;font-size:1rem;
-  border:3px solid;transition:transform .18s,box-shadow .18s}
+  border:3px solid;transition:transform .18s,box-shadow .18s;touch-action:manipulation}
 .btn:hover{transform:translate(-2px,-3px);text-decoration:none}
 .btn-main{color:#fff;background:var(--mag);border-color:var(--lemon);box-shadow:5px 5px 0 var(--lemon)}
 .btn-main:hover{box-shadow:8px 8px 0 var(--lemon)}
@@ -198,7 +199,7 @@ kbd{display:inline-block;padding:2px 9px;border-radius:7px;background:#22224E;bo
 .steps li:last-child::after{display:none}
 
 /* ===== 表格 ===== */
-.table-wrap{overflow-x:auto;margin:16px 0;border-radius:14px;border:1px solid var(--line)}
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:14px;border:1px solid var(--line);-webkit-overflow-scrolling:touch}
 table.neon{width:100%;border-collapse:collapse;font-size:.9rem;min-width:560px}
 table.neon th{background:var(--surface2);padding:11px 14px;text-align:left;font-weight:700;
   border-bottom:2px solid var(--purple);white-space:nowrap}
@@ -213,7 +214,7 @@ table.neon td:first-child{white-space:nowrap}
 .empty-hint{color:var(--muted);font-size:.85rem;padding:10px;display:none}
 pre.code-block{background:rgba(0,0,0,.55);border:1px solid var(--line);border-left:3px solid var(--neon);
   border-radius:10px;padding:12px 16px;margin:10px 0;overflow-x:auto;font-size:.82rem;line-height:1.7;
-  font-family:'JetBrains Mono','Noto Sans SC',monospace;color:#DCDCEF}
+  font-family:'JetBrains Mono','Noto Sans SC',monospace;color:#DCDCEF;-webkit-overflow-scrolling:touch}
 
 /* ===== 手风琴 ===== */
 .faq{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0}
@@ -297,7 +298,8 @@ details.refs .ref-tag{display:inline-block;font-size:.68rem;padding:1px 8px;bord
 #backtop{position:fixed;right:26px;bottom:30px;width:52px;height:52px;border-radius:16px;cursor:pointer;
   background:var(--mag);border:3px solid var(--lemon);color:#fff;font-size:1.25rem;z-index:950;
   display:flex;align-items:center;justify-content:center;box-shadow:5px 5px 0 rgba(255,230,0,.4);
-  opacity:0;pointer-events:none;transition:.25s}
+  opacity:0;pointer-events:none;transition:.25s;
+  bottom:max(30px,env(safe-area-inset-bottom));right:max(26px,env(safe-area-inset-right))}
 #backtop.show{opacity:1;pointer-events:auto}
 #backtop:hover{transform:translateY(-4px)}
 
@@ -309,9 +311,72 @@ footer .f-logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.4rem;color:var(--l
 .section-divider::before,.section-divider::after{content:"";flex:1;height:1px;background:var(--line)}
 .section-divider i{color:var(--mag)}
 @media(max-width:720px){
-  .module{padding:22px 18px}
-  .mod-head .tracker{margin-left:0}
-  .hero .stats .stat{padding:0 18px}
+  .module{padding:20px 16px 16px}
+  .mod-head{gap:12px}
+  .mod-num{font-size:2rem;padding:3px 10px}
+  .mod-head h3{font-size:1.22rem}
+  .mod-head .tracker{margin-left:0;font-size:.78rem;padding:5px 12px}
+  .module h4{font-size:1.02rem;margin:20px 0 10px}
+  .hero .stats .stat{padding:0 16px}
+  .hero .stats b{font-size:1.5rem}
+  .hero .stats span{font-size:.74rem}
+  .stage{padding:22px 14px 8px}
+  .stage-banner{padding:24px 18px;margin-bottom:24px;border-radius:18px}
+  .stage-banner .stage-no{font-size:5rem;right:10px;top:-18px}
+  .stage-banner h2{font-size:clamp(1.3rem,5vw,1.8rem)}
+  .hero{padding:72px 16px 44px;min-height:auto}
+  .hero .badge{font-size:.74rem;padding:5px 14px;margin-bottom:18px;letter-spacing:.1em}
+  .hero .sub{font-size:.95rem;margin:18px auto 24px}
+  .hero .chips{gap:8px;margin-bottom:28px}
+  .hero .chips .chip{padding:6px 12px;font-size:.8rem}
+  .hero .cta{gap:10px}
+  .btn{padding:11px 24px;font-size:.9rem;border-width:2px}
+  .hero .stats{gap:8px 0;margin-top:36px}
+  .tip,.warn,.danger{padding:12px 14px;font-size:.88rem}
+  .steps li{padding-left:44px}
+  .steps li::before{width:28px;height:28px;font-size:.9rem}
+  .steps li::after{left:13px}
+  pre.code-block{font-size:.78rem;padding:10px 12px}
+  .table-wrap{border-radius:10px}
+  table.neon{font-size:.82rem;min-width:480px}
+  table.neon th,table.neon td{padding:8px 10px}
+  .glossary-grid{grid-template-columns:1fr;gap:10px}
+  .compare .col{padding:12px 14px}
+  .mock-menubar{font-size:.76rem;padding:6px 10px;gap:2px}
+  .mock-dock{gap:6px;padding:8px 10px}
+  .mock-dock .dicon{width:38px;height:38px;font-size:1.1rem;border-radius:10px}
+  #backtop{right:14px;bottom:18px;width:44px;height:44px;font-size:1.1rem;border-radius:13px;box-shadow:3px 3px 0 rgba(255,230,0,.4)}
+  footer{padding:28px 16px}
+  .section-divider{margin:30px auto;padding:0 14px;gap:10px}
+  .roadmap{padding-left:28px;margin:20px 0}
+  .roadmap .rm h4{font-size:.98rem}
+  .roadmap .rm p{font-size:.86rem}
+  .ar-xpbar{padding:10px 14px;gap:10px}
+  .ar-xpbar .lv-badge{font-size:1.05rem}
+  .ar-xpbar .xp-track{min-width:120px;height:12px}
+  .trainer-stage{padding:18px 14px;border-radius:14px}
+  .trainer-stage.idle{padding:30px 14px}
+  .quiz-panel{padding:18px 14px;border-radius:14px}
+  .qz-q{font-size:1.02rem;margin-bottom:12px}
+  .qz-opt{padding:10px 14px;font-size:.9rem}
+  .boss-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .boss-card{padding:14px;border-radius:13px}
+  .boss-card .bi{font-size:1.6rem}
+  .boss-card h4{font-size:.98rem}
+  .boss-card p{font-size:.78rem}
+  .badge-wall{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+  .badge-cell{padding:14px 8px;border-radius:13px}
+  .badge-cell .bic{font-size:1.8rem}
+  .badge-cell b{font-size:.85rem}
+  .badge-cell span{font-size:.7rem}
+  .tabs .tab-btns button{padding:7px 14px;font-size:.82rem}
+  .tab-panel{padding:14px 14px}
+  .faq summary{padding:11px 14px;font-size:.9rem}
+  .faq .faq-body{padding:12px 14px;font-size:.86rem}
+  details.refs summary{padding:9px 12px;font-size:.82rem}
+  details.refs ol{font-size:.78rem}
+  .search-box{max-width:100%;padding:7px 12px;font-size:.86rem}
+  .ref-section li{padding:8px 10px 8px 44px;font-size:.84rem}
 }
 
 /* ===== 白天模式 · 暖色系二次元 v2（默认夜晚，body.day 切换） ===== */
@@ -1681,7 +1746,7 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 .badge-cell.unlocked{border-color:var(--lemon);background:linear-gradient(160deg,rgba(255,230,0,.10),transparent)}
 .badge-cell.unlocked .bic{filter:none;opacity:1;text-shadow:0 0 18px rgba(255,230,0,.5)}
 .badge-cell.unlocked b{color:var(--lemon)}
-@media(max-width:640px){.tr-task{font-size:1.3rem}.keycap{min-width:42px;height:44px;font-size:.9rem}}
+@media(max-width:640px){.tr-task{font-size:1.2rem}.keycap{min-width:42px;height:44px;font-size:.88rem}.osk button{min-width:38px;height:38px;font-size:.85rem}.osk .osk-submit{min-width:60px}.kb-map .km{font-size:.82rem;padding:6px 10px}.tr-stat{padding:5px 12px;font-size:.8rem}.qz-result .big{font-size:1.7rem}.boss-grid{grid-template-columns:1fr}}
 </style>
 <section class="stage" id="arena">
   <div class="stage-banner b1" data-aos="fade-up">
