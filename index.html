@@ -309,6 +309,13 @@ details.refs[open] summary{color:var(--cyan)}
 details.refs ol{padding:4px 16px 14px 40px;color:var(--muted);font-size:.82rem}
 details.refs li{margin-bottom:6px}
 details.refs .ref-tag{display:inline-block;font-size:.68rem;padding:1px 8px;border-radius:99px;margin-right:6px;border:1px solid var(--cyan);color:var(--cyan)}
+details.deep{margin:10px 0;border:1.5px solid var(--line);border-radius:12px;background:var(--surface2);overflow:hidden}
+details.deep>summary{cursor:pointer;padding:10px 14px;font-weight:700;font-size:.95rem;list-style:none;display:flex;align-items:center;gap:8px;color:var(--text)}
+details.deep>summary::-webkit-details-marker{display:none}
+details.deep>summary::after{content:'▾';margin-left:auto;color:var(--muted);transition:transform .2s}
+details.deep[open]>summary::after{transform:rotate(180deg)}
+details.deep[open]>summary{border-bottom:1px solid var(--line);margin-bottom:2px}
+details.deep .deep-body{padding:4px 14px 12px}
 
 /* ===== 模拟界面 ===== */
 .mock-menubar{display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.55);border:1px solid var(--line);
@@ -863,7 +870,9 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
         <li><b>③ 别去第三方下载站。</b>"太平洋""华军"那类站在 Mac 上照样塞流氓，认准软件<b>官网</b>域名再下。</li>
       </ul>
     </div>
-    <div class="table-wrap" style="margin:10px 0"><table class="neon">
+    <details class="deep"><summary><i class="fa-solid fa-table-list"></i> App Store 版 vs 官网版 · 五维对比（想细看再点开）</summary>
+      <div class="deep-body">
+      <div class="table-wrap" style="margin:8px 0"><table class="neon">
       <thead><tr><th>对比项</th><th>App Store 版</th><th>官网下载版（.dmg / .pkg）</th></tr></thead>
       <tbody>
         <tr><td>安全性</td><td>🟢 苹果审核 + 沙盒隔离</td><td>🟡 靠 Gatekeeper + 自己判断来源</td></tr>
@@ -872,7 +881,9 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
         <tr><td>卸载</td><td>🟢 启动台长按点 × 一键删</td><td>🟡 拖废纸篓 + 清残留（见下方）</td></tr>
         <tr><td>典型软件</td><td>微信、QQ、WPS、剪映、飞书</td><td>Chrome、Adobe、VS Code</td></tr>
       </tbody>
-    </table></div>
+      </table></div>
+      </div>
+    </details>
     <p style="margin:8px 0;color:var(--muted)"><i class="fa-solid fa-arrow-down"></i> 下面四种是<b>具体怎么操作</b>，按上面决策选好渠道后，再看对应那种：</p>
     <div class="tabs">
       <div class="tab-btns">
@@ -917,10 +928,11 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
     </table></div>
     <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i><b>一句话记：</b>App Store 和 .dmg 装的 → AppCleaner 全包；.pkg 系统级装的要额外清 <code>/Library</code>；Homebrew 装的 → 必须用 <code>brew uninstall</code>，别碰 AppCleaner。不确定怎么装的？看「应用程序」里右键 App → 显示简介，沙盒应用会标"沙盒"，或回忆当初是点 App Store 还是下 dmg 装的。</div>
 
-    <h4><i class="fa-solid fa-magnifying-glass-location"></i> 残留数据都藏在哪？（可搜索）</h4>
-    <p>macOS 用 <b>Bundle ID</b>（形如 <code>com.tencent.xinWeChat</code>）标记每个 App 的数据。访达按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入 <code>~/Library</code> 即可进入下表这些目录：</p>
-    <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="resSearch" placeholder="搜索：缓存 / 偏好设置 / 自启动 / 沙盒…"></div>
-    <div class="table-wrap"><table class="neon" id="resTable">
+    <details class="deep"><summary><i class="fa-solid fa-magnifying-glass-location"></i> 残留数据都藏在哪？12 个路径速查（带搜索，点开查阅）</summary>
+      <div class="deep-body">
+      <p>macOS 用 <b>Bundle ID</b>（形如 <code>com.tencent.xinWeChat</code>）标记每个 App 的数据。访达按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入 <code>~/Library</code> 即可进入下表这些目录：</p>
+      <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="resSearch" placeholder="搜索：缓存 / 偏好设置 / 自启动 / 沙盒…"></div>
+      <div class="table-wrap"><table class="neon" id="resTable">
       <thead><tr><th>藏匿点</th><th>装的是什么</th><th>清理优先级</th></tr></thead>
       <tbody>
         <tr><td><code>~/Library/Application Support/</code></td><td>应用主数据：配置、数据库、聊天记录、下载的素材包。<b>体积大头</b>，一个微信能吃几十 GB</td><td>🔴 必清</td></tr>
@@ -936,8 +948,10 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
         <tr><td><code>/Library/Application Support/</code></td><td><b>系统级</b>残留（全局安装的驱动、助手类软件），需要管理员密码</td><td>🟡 谨慎</td></tr>
         <tr><td><code>/Library/LaunchAgents/ 与 /Library/LaunchDaemons/</code></td><td><b>系统级后台服务</b>（注意开头没有 <code>~</code>），某些驱动/助手软件的服务项</td><td>🟡 谨慎</td></tr>
       </tbody>
-    </table></div>
-    <p class="empty-hint" id="resEmpty">😵 没找到，试试"缓存""自启""沙盒"</p>
+      </table></div>
+      <p class="empty-hint" id="resEmpty">😵 没找到，试试"缓存""自启""沙盒"</p>
+      </div>
+    </details>
 
     <h4><i class="fa-solid fa-broom"></i> 四种彻底清理姿势</h4>
     <div class="tabs">
@@ -957,15 +971,19 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
           <li><b>核对列表 · 全选删除</b>：AppCleaner 自动扫描出 ~/Library 下所有关联文件（偏好/缓存/支持文件夹/沙盒容器等），默认全部勾选，<b>建议保持全选</b>，点右下角「删除」/「Remove」</li>
           <li><b>输入系统密码</b>：删除受保护文件需要授权，确认后即可看到「已删除 X 个文件 / 释放 Y MB」</li>
         </ol>
-        <h5 style="margin:14px 0 6px"><i class="fa-solid fa-recycle"></i> 重点：「扫尾」场景怎么用</h5>
-        <p>如果 App 已经被你拖到<b>废纸篓</b>清空了，AppCleaner 拖不进去。两种补救方法：</p>
-        <ul>
-          <li><b>方法 1（推荐）</b>：从废纸篓把 App 放回「应用程序」文件夹（或从 App Store / 官网重下）→ 启动 AppCleaner → 拖进去 → 一键清干净。Apple Silicon 机型可在废纸篓右键「还原」</li>
-          <li><b>方法 2（手动）</b>：按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 进 <code>~/Library</code>，按上表 12 条路径搜 App 名/Bundle ID，把残留拖废纸篓（切到「手动清理」标签页有具体步骤）</li>
-        </ul>
-        <h5 style="margin:14px 0 6px"><i class="fa-solid fa-keyboard"></i> 进阶：设全局快捷键</h5>
-        <p>AppCleaner → Preferences → Shortcut → 设定一个不冲突的组合（推荐 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd>）。之后在访达选中 App 图标按一下，AppCleaner 自动启动并完成扫描删除——比手动拖更顺手。</p>
-        <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i>同类免费选择：<a href="https://github.com/alienator88/Pearcleaner" target="_blank">Pearcleaner</a>（开源、国人开发、界面更现代、支持 Apple Silicon 原生）。付费的 CleanMyMac 功能更全但<b>非必需</b>。</div>
+        <details class="deep"><summary><i class="fa-solid fa-gauge-high"></i> 进阶：扫尾场景 / 全局快捷键 / 替代工具</summary>
+          <div class="deep-body">
+          <h5 style="margin:10px 0 6px"><i class="fa-solid fa-recycle"></i> 「扫尾」场景怎么用</h5>
+          <p>如果 App 已经被你拖到<b>废纸篓</b>清空了，AppCleaner 拖不进去。两种补救方法：</p>
+          <ul>
+            <li><b>方法 1（推荐）</b>：从废纸篓把 App 放回「应用程序」文件夹（或从 App Store / 官网重下）→ 启动 AppCleaner → 拖进去 → 一键清干净。Apple Silicon 机型可在废纸篓右键「还原」</li>
+            <li><b>方法 2（手动）</b>：按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 进 <code>~/Library</code>，按上方「12 个路径速查」表搜 App 名/Bundle ID，把残留拖废纸篓（切到「手动清理」标签页有具体步骤）</li>
+          </ul>
+          <h5 style="margin:14px 0 6px"><i class="fa-solid fa-keyboard"></i> 设全局快捷键</h5>
+          <p>AppCleaner → Preferences → Shortcut → 设定一个不冲突的组合（推荐 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd>）。之后在访达选中 App 图标按一下，AppCleaner 自动启动并完成扫描删除——比手动拖更顺手。</p>
+          <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i>同类免费选择：<a href="https://github.com/alienator88/Pearcleaner" target="_blank">Pearcleaner</a>（开源、国人开发、界面更现代、支持 Apple Silicon 原生）。付费的 CleanMyMac 功能更全但<b>非必需</b>。</div>
+          </div>
+        </details>
       </div>
       <div class="tab-panel" id="t5f">
         <p>不想装任何软件？访达手动清理三连：</p>
@@ -995,14 +1013,17 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
           <li><b>AppCleaner 扫尾</b>：把 Adobe 任意一个组件（如 Photoshop.app）从「应用程序」拖进 AppCleaner → 全选删除。通常还能清出几十 MB 的 preferences/缓存/沙盒容器（详见上方 AppCleaner 标签页的「扫尾场景」）</li>
           <li><b>重启验证</b>：卸完重启一次，观察「系统设置 → 通用 → 登录项」与「活动监视器」里是否还有残留进程</li>
         </ol>
-        <h5 style="margin:14px 0 6px"><i class="fa-solid fa-list"></i> 常见需要官方卸载器的软件清单</h5>
-        <ul>
-          <li><b>Adobe 全家桶</b>：Creative Cloud / Photoshop / Premiere / Acrobat —— 用 Creative Cloud 客户端卸载</li>
-          <li><b>虚拟化</b>：Parallels Desktop、VMware Fusion、VirtualBox —— 各自有专用卸载脚本（Parallels 还需手动清 <code>~/Library/Preferences/com.parallels.*</code>）</li>
-          <li><b>外设驱动</b>：DisplayLink（外接显卡）、Logi Options+（罗技外设）、部分声卡驱动 —— 装一个卸一个，不要直接拖废纸篓</li>
-          <li><b>Microsoft Office</b>：用 <a href="https://aka.ms/SaRA-officeUninstallFromMac" target="_blank">Microsoft 官方卸载工具 SaRA</a>，比拖废纸篓干净</li>
-          <li><b>安全软件</b>：Avast、Norton、Kaspersky —— 各自有「卸载助手」（如 <code>Avast Security Uninstaller.app</code>），卸完再用 AppCleaner 扫一次</li>
-        </ul>
+        <details class="deep"><summary><i class="fa-solid fa-list"></i> 哪些软件必须用官方卸载器？（五类清单）</summary>
+          <div class="deep-body">
+          <ul>
+            <li><b>Adobe 全家桶</b>：Creative Cloud / Photoshop / Premiere / Acrobat —— 用 Creative Cloud 客户端卸载</li>
+            <li><b>虚拟化</b>：Parallels Desktop、VMware Fusion、VirtualBox —— 各自有专用卸载脚本（Parallels 还需手动清 <code>~/Library/Preferences/com.parallels.*</code>）</li>
+            <li><b>外设驱动</b>：DisplayLink（外接显卡）、Logi Options+（罗技外设）、部分声卡驱动 —— 装一个卸一个，不要直接拖废纸篓</li>
+            <li><b>Microsoft Office</b>：用 <a href="https://aka.ms/SaRA-officeUninstallFromMac" target="_blank">Microsoft 官方卸载工具 SaRA</a>，比拖废纸篓干净</li>
+            <li><b>安全软件</b>：Avast、Norton、Kaspersky —— 各自有「卸载助手」（如 <code>Avast Security Uninstaller.app</code>），卸完再用 AppCleaner 扫一次</li>
+          </ul>
+          </div>
+        </details>
         <div class="danger" style="margin:10px 0"><i class="fa-solid fa-triangle-exclamation"></i><b>红线：</b>这些软件<b>绝不能</b>直接拖废纸篓——内核扩展/系统服务会残留，导致下次更新系统失败、键盘失灵、网卡异常等疑难杂症。判断方法：装的时候弹了「需要系统扩展/辅助功能权限」的 App，卸的时候都用官方卸载器。</div>
       </div>
     </div>
@@ -1270,8 +1291,11 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
       <li>点右下角浮出缩略图可直接<b>修剪</b>或用「标记」工具批注，或右滑保存</li>
     </ol>
 
-    <h4><i class="fa-solid fa-scissors"></i> 顺带解锁：预览（Preview）批注</h4>
-    <p>截图后双击打开（默认就是"预览"App），工具栏自带<b>标记</b>：箭头、文字、马赛克、签名（触控板手写签名后可反复贴到任何 PDF）。「预览」还能合并 PDF、裁剪、调色——很多人装了 Acrobat 才发现预览全能干。</p>
+    <details class="deep"><summary><i class="fa-solid fa-scissors"></i> 顺带解锁：预览（Preview）批注 —— 截图标注 / 合并 PDF / 手写签名</summary>
+      <div class="deep-body">
+      <p>截图后双击打开（默认就是"预览"App），工具栏自带<b>标记</b>：箭头、文字、马赛克、签名（触控板手写签名后可反复贴到任何 PDF）。「预览」还能合并 PDF、裁剪、调色——很多人装了 Acrobat 才发现预览全能干。</p>
+      </div>
+    </details>
 
     <div class="warn"><i class="fa-solid fa-triangle-exclamation"></i><b>默认保存位置在桌面</b>，截图多了桌面会很乱。在 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>5</kbd> 的「选项 → 存储到」里改到专门的截图文件夹。</div>
 
