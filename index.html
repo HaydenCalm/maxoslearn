@@ -108,6 +108,8 @@ code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
 .g1 .nv-sub a.active::before{background:var(--mag);box-shadow:0 0 8px var(--mag)}
 .g3 .nv-sub a.active{color:var(--lemon);background:var(--lemon-soft)}
 .g3 .nv-sub a.active::before{background:var(--lemon);box-shadow:0 0 8px var(--lemon)}
+.g4 .nv-sub a.active{color:var(--purple);background:var(--purple-soft)}
+.g4 .nv-sub a.active::before{background:var(--purple);box-shadow:0 0 8px var(--purple)}
 
 /* —— 快捷入口 —— */
 .nv-quick{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:10px 2px 4px;border-top:1px solid var(--line);margin-top:8px;flex-shrink:0}
@@ -196,6 +198,8 @@ body.navhidden #nav-toggle{display:flex}
 .stage-banner.b2 .stage-no{color:var(--cyan)}
 .stage-banner.b3{border-color:var(--lemon);background:linear-gradient(120deg,var(--lemon-soft),transparent 70%);box-shadow:6px 6px 0 rgba(255,230,0,.3)}
 .stage-banner.b3 .stage-no{color:var(--lemon)}
+.stage-banner.b4{border-color:var(--purple);background:linear-gradient(120deg,var(--purple-soft),transparent 70%);box-shadow:6px 6px 0 rgba(26,107,196,.3)}
+.stage-banner.b4 .stage-no{color:var(--purple)}
 
 /* ===== 模块卡片 ===== */
 .module{background:var(--surface);border:1px solid var(--line);border-left:6px solid;border-radius:20px;
@@ -546,6 +550,24 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
     </div>
   </div>
 
+  <div class="nv-group g4" data-stage="stage4">
+    <button class="nv-stage"><span class="nv-ico">Ⅳ</span><span class="nv-t">生活实战</span><span class="nv-cnt">12</span><i class="fa-solid fa-chevron-right nv-chev"></i></button>
+    <div class="nv-sub">
+      <a href="#m21"><span class="nv-no">21</span><span class="nv-nm">原生应用全家桶</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m22"><span class="nv-no">22</span><span class="nv-nm">办公三件套</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m23"><span class="nv-no">23</span><span class="nv-nm">照片管理</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m24"><span class="nv-no">24</span><span class="nv-nm">视频剪辑入门</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m25"><span class="nv-no">25</span><span class="nv-nm">电池保养</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m26"><span class="nv-no">26</span><span class="nv-nm">存储空间管理</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m27"><span class="nv-no">27</span><span class="nv-nm">配件与购机售后</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m28"><span class="nv-no">28</span><span class="nv-nm">远程控制</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m29"><span class="nv-no">29</span><span class="nv-nm">听写与辅助功能</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m30"><span class="nv-no">30</span><span class="nv-nm">网络设置排障</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m31"><span class="nv-no">31</span><span class="nv-nm">菜单栏与美化</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m32"><span class="nv-no">32</span><span class="nv-nm">快捷指令实例库</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+    </div>
+  </div>
+
   <div class="nv-quick">
     <a href="#arena" class="q1"><i class="fa-solid fa-gamepad"></i> 训练场</a>
     <a href="#roadmap" class="q2"><i class="fa-solid fa-map"></i> 路线图</a>
@@ -566,11 +588,11 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
     <span class="line1">MacBook 从 0 到 1</span>
     <span class="line2">再到精通完全攻略</span>
   </h1>
-  <p class="sub">专为 <b style="color:var(--cyan)">Windows 老玩家</b> 量身打造的二次元通关手册 —— 18 个模块、三个大关卡，把你在 Windows 上十年练就的肌肉记忆，一次性翻译成 Mac 语。每一步都有官方文档背书，拒绝道听途说。</p>
+  <p class="sub">专为 <b style="color:var(--cyan)">Windows 老玩家</b> 量身打造的二次元通关手册 —— 32 个模块、四个大关卡，把你在 Windows 上十年练就的肌肉记忆，一次性翻译成 Mac 语。每一步都有官方文档背书，拒绝道听途说。</p>
   <div class="chips">
     <span class="chip c-mag"><i class="fa-brands fa-apple"></i> 零基础友好</span>
     <span class="chip c-cyan"><i class="fa-solid fa-arrows-left-right"></i> Win↔Mac 双语对照</span>
-    <span class="chip c-lemon"><i class="fa-solid fa-graduation-cap"></i> 入门→精通三阶段</span>
+    <span class="chip c-lemon"><i class="fa-solid fa-graduation-cap"></i> 入门→精通 + 生活实战</span>
     <span class="chip c-purple"><i class="fa-solid fa-book-open"></i> 官方文档考证</span>
   </div>
   <div class="cta">
@@ -578,8 +600,8 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
     <a href="#roadmap" class="btn btn-ghost"><i class="fa-solid fa-map"></i> 先看通关路线</a>
   </div>
   <div class="stats">
-    <div class="stat"><b>18</b><span>核心模块</span></div>
-    <div class="stat"><b>3</b><span>难度阶段</span></div>
+    <div class="stat"><b>32</b><span>核心模块</span></div>
+    <div class="stat"><b>4</b><span>难度阶段</span></div>
     <div class="stat"><b>100+</b><span>Win↔Mac 对照</span></div>
     <div class="stat"><b>30+</b><span>考证来源</span></div>
   </div>
@@ -2154,6 +2176,713 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 
 </section>
 
+<!--
+============================================================
+     阶段四 · 生活实战
+============================================================ -->
+<section class="stage" id="stage4">
+  <div class="stage-banner b4" data-aos="fade-up">
+    <div class="stage-no">Ⅳ</div>
+    <h2><i class="fa-solid fa-mug-hot"></i> 阶段四 · 生活实战（真正用起来）</h2>
+    <p>系统玩熟只是开始。这一阶段解决"过日子"的问题：邮件日历备忘录、办公文档、照片视频、电池存储、配件售后、远程协助、美化与自动化实例 —— 12 个模块全部来自真实使用场景，按需查阅。</p>
+  </div>
+
+  <!-- ===== 模块21 · 原生应用全家桶 ===== -->
+  <article class="module c-mag" id="m21" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">21</div>
+      <div>
+        <h3>原生应用全家桶：邮件、日历、提醒、备忘录</h3>
+        <p class="mod-sub">不装 Office 三件套之前，先认识这四位免费内置选手</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <div class="tip" style="margin:0 0 14px"><i class="fa-solid fa-lightbulb"></i> 这四个 App <b>全部免费、无广告、登录 Apple ID 即全设备同步</b>，和 Windows 时代"Outlook + 便签 + 手机日历各装一个"是两种思路 —— 先别急着装第三方，试试原生的够不够用。</div>
+
+    <h4><i class="fa-solid fa-envelope"></i> 邮件（Mail）：第三方邮箱一键接入</h4>
+    <ol class="steps">
+      <li><b>添加邮箱</b>：系统设置 → <b>互联网账户</b> → 添加 QQ / 163 / Gmail / Exchange……苹果已经预置了主流服务商的配置，<b>不用手动填 IMAP 服务器</b>（Windows 上 Outlook 配邮箱的痛苦，这里基本没有）</li>
+      <li><b>QQ 邮箱注意</b>：需要先去 QQ 邮箱网页版 → 设置 → 账户 → 开启 <code>IMAP/SMTP</code> 并生成<b>授权码</b>（不是 QQ 密码），Mac 上填授权码即可</li>
+      <li><b>高效三招</b>：重要联系人设 <b>VIP</b>（单独收件箱 + 专属通知）、旗标 + <b>稍后提醒</b>（右键邮件选时间，到点通知中心弹提醒）、<b>取消发送</b>（发送后 10 秒内可撤回，设置里可延长）</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-calendar-days"></i> 日历（Calendar）：让生活有节律</h4>
+    <ul>
+      <li><b>订阅日历</b>：日历 → 文件 → 新建日历订阅，粘贴订阅链接即可获得<b>法定节假日 + 调休安排</b>（搜"中国大陆节假日 ical"有官方订阅源），再也不用手动记哪天补班</li>
+      <li><b>颜色分类</b>：工作 / 生活 / 健身各建一个日历配不同颜色，一眼看清今天被谁占用</li>
+      <li><b>新建事件直接打字</b>：输入"周五下午 3 点牙医"自动识别时间和标题，跟 Windows 时代的填表式建事件说再见</li>
+      <li><b>共享给家人</b>：右键日历 → 共享日历，家人 iPhone 上实时同步家庭日程</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-circle-check"></i> 提醒事项（Reminders）：比你想的强</h4>
+    <ul>
+      <li><b>自然语言</b>：新建提醒输入"明天上午 9 点带伞"，时间自动识别并挂上闹钟</li>
+      <li><b>地点提醒</b>：加位置"到家时"，人一到家就弹提醒（基于定位，比 Windows 任务计划实用得多）</li>
+      <li><b>智能清单</b>：顶部"今天 / 已标记 / 全部"自动归类；可建购物、工作等列表，还能给每项加子任务和备注</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-note-sticky"></i> 备忘录（Notes）：隐藏功能最多</h4>
+    <ul>
+      <li><b>扫描文稿</b>：新建笔记 → 相机按钮 → 扫描文稿，直接把纸质文件拍成 PDF（自动裁边纠偏），不用装扫描 App</li>
+      <li><b>锁定笔记</b>：右键 → 锁定，存密码 / 银行卡等敏感信息（Touch ID 解锁）</li>
+      <li><b>标签与文件夹</b>：<code>#工作</code> <code>#灵感</code> 随手打标签，搜索时一键过滤</li>
+      <li><b>协作</b>：右上角分享按钮邀请他人共同编辑，家人共享购物清单最合适</li>
+    </ul>
+
+    <details class="deep"><summary><i class="fa-solid fa-gears"></i> 各家邮箱在 Mac 上的配置速查（点开查阅）</summary>
+      <div class="deep-body">
+        <div class="table-wrap"><table class="neon">
+          <thead><tr><th>邮箱</th><th>添加方式</th><th>坑</th></tr></thead>
+          <tbody>
+            <tr><td>iCloud 邮箱</td><td>登录 Apple ID 自动有</td><td>无</td></tr>
+            <tr><td>QQ 邮箱</td><td>互联网账户 → QQ</td><td>必须先在网页版开 IMAP 并生成<b>授权码</b></td></tr>
+            <tr><td>163 / 126</td><td>互联网账户 → 选择"其他"填 IMAP</td><td>同样要开授权码；服务器自动填</td></tr>
+            <tr><td>Gmail</td><td>互联网账户 → Google</td><td>国内网络环境可能连不上，视自身网络情况</td></tr>
+            <tr><td>企业 Exchange</td><td>互联网账户 → Exchange</td><td>需公司服务器地址；支持日历 / 通讯录一起同步</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 习惯（改掉）</h5>
+        <ul>
+          <li>装 Outlook / Foxmail，手动填 IMAP/SMTP 服务器</li>
+          <li>桌面便签丢了重启就没了</li>
+          <li>手机和电脑各记一份待办</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 思路</h5>
+        <ul>
+          <li>互联网账户一键接入，全系统通知统一收</li>
+          <li>备忘录云同步 + 锁定 + 扫描，一个顶四个</li>
+          <li>提醒事项带时间 / 地点触发，iPhone 上同屏出现</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== 模块22 · 办公三件套 ===== -->
+  <article class="module c-cyan" id="m22" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">22</div>
+      <div>
+        <h3>办公三件套：iWork 还是 Office / WPS？</h3>
+        <p class="mod-sub">Pages、Numbers、Keynote 与微软全家桶的取舍</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <div class="tip" style="margin:0 0 14px"><i class="fa-solid fa-lightbulb"></i> <b>先给结论</b>：文档只在 Mac/iPhone 生态内流转 → 用免费 iWork；要和同事交换 .docx/.xlsx 修改往返 → 直接装 Office 或 WPS；两套共存也完全没问题（iWork 免费，Office 学生版有优惠）。</div>
+
+    <h4><i class="fa-solid fa-scale-balanced"></i> 三套方案怎么选</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>方案</th><th>价格</th><th>强项</th><th>弱项</th><th>适合谁</th></tr></thead>
+      <tbody>
+        <tr><td><b>iWork</b>（Pages/Numbers/Keynote）</td><td>免费内置</td><td>Keynote 动画业界天花板；与 iPhone 无缝；Keynote 双指翻页遥控</td><td>.docx 兼容性一般，复杂排版导出会跑版</td><td>苹果生态用户、做演示多的人</td></tr>
+        <tr><td><b>Microsoft 365</b></td><td>订阅 / 一次性买断</td><td>格式兼容 100%，Excel 高级功能（透视表/VBA）无敌</td><td>Mac 版 Office 部分功能比 Windows 版滞后</td><td>办公刚需、和 Windows 同事深度协作</td></tr>
+        <tr><td><b>WPS Office</b></td><td>免费（会员增值）</td><td>轻量、中文体验好、PDF 工具全</td><td>广告和多开会员提示需要习惯性关闭</td><td>轻办公、学生党</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-wand-magic-sparkles"></i> iWork 三件套的高光时刻</h4>
+    <ul>
+      <li><b>Keynote</b>：苹果发布会同款"神奇移动"转场（两页之间元素自动补间动画）；iPhone 装 Keynote 当<b>翻页遥控器</b>（演示时捏合缩放还能看下一页备注）</li>
+      <li><b>Numbers</b>：自由画布式表格（一个表里放多个小表格+图表），做轻量报表比 Excel 直观；模板自带的家庭收支表很精致</li>
+      <li><b>Pages</b>：批注与修改跟踪齐全；导出 EPUB 电子书一键完成</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-triangle-exclamation"></i> 兼容性三大坑（必读）</h4>
+    <div class="warn" style="margin:10px 0"><i class="fa-solid fa-exclamation-triangle"></i>
+      <ol style="margin:6px 0 0">
+        <li><b>.pages 文件发给 Windows 同事 = 打不开</b>。发之前：文件 → 导出为 → Word（.docx）/ PDF。同理 Numbers 导 .xlsx、Keynote 导 .pptx</li>
+        <li><b>复杂 Word 文档用 Pages 打开会跑版</b>（页眉页脚、艺术字、VBA 宏全丢）。别人发来的合同/标书，务必用 Office/WPS 打开核对</li>
+        <li><b>Excel 宏（.xlsm）在 Mac 上能跑但不能保证全兼容</b>，涉及宏的工作流别迁移</li>
+      </ol>
+    </div>
+
+    <details class="deep"><summary><i class="fa-solid fa-download"></i> Office / WPS 安装与字体问题（点开查阅）</summary>
+      <div class="deep-body">
+        <ul>
+          <li><b>Microsoft 365 安装</b>：App Store 搜 Microsoft 365（含全家桶启动器），或官网下 .pkg 安装包（功能更新更快）；登录微软账号激活，见模块 5 安装方法</li>
+          <li><b>WPS</b>：App Store 直接装，免费</li>
+          <li><b>字体缺失</b>：Windows 文档里常用的<b>宋体、黑体、微软雅黑版权在微软/方正</b>，Mac 不自带。对策：① 文档里的关键字体随文件"嵌入字体"后转发（Word Windows 端导出时勾选）；② 装开源替代（思源黑体/霞鹜文楷，免费可商用）；③ 公司统一字体就装对应字体的 Mac 版授权</li>
+          <li><b>卸载 Office</b>：用微软官方 SaRA 工具，见模块 5</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- ===== 模块23 · 照片管理 ===== -->
+  <article class="module c-lemon" id="m23" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">23</div>
+      <div>
+        <h3>照片管理：iPhone 照片进 Mac 的正确姿势</h3>
+        <p class="mod-sub">导入、整理、编辑、共享，一条龙</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-mobile-screen"></i> 第一步：照片怎么进来（三条路）</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>方式</th><th>适合</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><b>数据线导入</b></td><td>一次性大量照片</td><td>iPhone 连 Mac → 照片 App 自动弹出导入面板 → 勾选导入（默认排除已导入的，不会重复）</td></tr>
+        <tr><td><b>iCloud 照片图库</b></td><td>长期自动同步</td><td>iPhone 拍的照片 Mac 上自动出现，删一处全设备同步删。详见附录 C-2</td></tr>
+        <tr><td><b>隔空投送（AirDrop）</b></td><td>临时传几张</td><td>iPhone 分享 → 隔空投送 → 选你的 Mac，秒到</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="warn" style="margin:10px 0"><i class="fa-solid fa-exclamation-triangle"></i> <b>硬盘小的注意</b>：照片 App → 设置 → 如果选了"将原图下载到此 Mac"，几十 GB 的图库会塞满 256G 机器。建议选<b>"优化 Mac 储存空间"</b>（原图在 iCloud，本机存缩略图，需要时自动下载）。</div>
+
+    <h4><i class="fa-solid fa-folder-tree"></i> 第二步：整理</h4>
+    <ul>
+      <li><b>智能分类白拿</b>：照片 App 自动按<b>人物 / 地点 / 场景</b>归类（叫"图库"顶部标签），搜"猫""火锅""海边"直接出结果，不用你打过任何标签</li>
+      <li><b>相簿自己建</b>：手动相簿按项目整理；<b>智能相簿</b>可以设规则（如"今年拍的所有视频"自动滚动更新）</li>
+      <li><b>精选与收藏</b>：心形收藏的好照片会进"已收藏"相簿，翻旧照片从收藏开始</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-sliders"></i> 第三步：编辑（比 Windows 时代的画图强太多）</h4>
+    <ul>
+      <li>选中照片回车进编辑：<b>一键自动增强</b>（魔法棒）、光影曲线、白平衡吸管、透视矫正、裁剪拉直</li>
+      <li><b>Live Photo</b>：可以转循环视频 / 长曝光（拍水流瀑布直接出丝绢效果）</li>
+      <li>所有编辑<b>非破坏性</b>——随时"复原到原始"回退</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-share-nodes"></i> 第四步：共享</h4>
+    <ul>
+      <li><b>共享相簿</b>：新建共享相簿邀请家人，各自往里加照片互相可见（不占双方 iCloud 空间的常规额度限制，家人旅游合影首选）</li>
+      <li><b>导出原图</b>：选中照片 → 文件 → 导出 → 未修改的原图（要发给别人修图时用这个，别直接拖，会带上你的编辑）</li>
+    </ul>
+
+    <details class="deep"><summary><i class="fa-solid fa-camera-retro"></i> 进阶：RAW、截图管理、第三方替代（点开查阅）</summary>
+      <div class="deep-body">
+        <ul>
+          <li><b>RAW 修图</b>：相机拍 RAW 拷进 Mac，照片 App 直接能读主流 RAW 格式；要专业修图上 Lightroom / Darktable（免费开源）</li>
+          <li><b>截图堆积</b>：截图默认全进图库，多了很乱。对策：截图后直接在预览里改名归档，或用 Raycast 管理剪贴板历史（模块 20）</li>
+          <li><b>第三方看图</b>：需要看 PSD / 大量翻图时，Pixea（免费）、Mylio 也不错；但 90% 场景原生照片 App 够了</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 习惯（改掉）</h5>
+        <ul>
+          <li>数据线 + "Apple 设备"App / 微信传文件助手导照片</li>
+          <li>按年月建文件夹手动分</li>
+          <li>修图装美图秀秀 / PS</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 思路</h5>
+        <ul>
+          <li>iCloud 图库自动同步，隔空投送秒传</li>
+          <li>智能归类 + 搜索，从不手动整理</li>
+          <li>原生编辑覆盖 90% 日常，非破坏性随时回退</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== 模块24 · 视频剪辑入门 ===== -->
+  <article class="module c-purple" id="m24" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">24</div>
+      <div>
+        <h3>视频剪辑入门：从录屏到成片</h3>
+        <p class="mod-sub">剪映专业版 / iMovie / Final Cut 三选一 + 通用剪辑流程</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-film"></i> 先选工具</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>价格</th><th>特色</th><th>适合谁</th></tr></thead>
+      <tbody>
+        <tr><td><b>剪映专业版</b></td><td>免费（会员增值）</td><td>中文生态、模板海量、<b>自动字幕识别</b>、一键成片</td><td>发抖音/B站/视频号的普通人，新手首选</td></tr>
+        <tr><td><b>iMovie</b></td><td>免费内置</td><td>零门槛、预告片模板、和照片图库无缝</td><td>剪家庭录像、旅行 vlog</td></tr>
+        <tr><td><b>Final Cut Pro</b></td><td>买断（教育优惠更低）</td><td>专业级性能（M 芯片优化极佳）、磁性时间线</td><td>认真做视频的人，进阶再买</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-scissors"></i> 通用剪辑五步流程（以剪映为例）</h4>
+    <ol class="steps">
+      <li><b>素材先行</b>：新建项目 → 把视频/图片/音乐全部拖进素材池。录屏素材直接用模块 10 的方法录好</li>
+      <li><b>粗剪</b>：拖上时间线，<b>I / O 键</b>（入点出点）切掉废片段——先剪掉所有口误、空白、抖动，节奏感立现</li>
+      <li><b>字幕</b>：剪映"智能字幕"一键识别语音生成字幕，检查错别字（专有名词容易错）；iMovie 用自带字幕模板</li>
+      <li><b>声音</b>：BGM 音量压到 -15dB 左右别盖过人声；开头 3 秒别上字幕先抓耳</li>
+      <li><b>导出</b>：见下方参数表，别用默认"推荐"参数闭眼导</li>
+    </ol>
+
+    <details class="deep"><summary><i class="fa-solid fa-gauge-high"></i> 导出参数速查 + 剪辑快捷键（点开查阅）</summary>
+      <div class="deep-body">
+        <div class="table-wrap"><table class="neon">
+          <thead><tr><th>发布平台</th><th>分辨率</th><th>帧率</th><th>码率</th><th>格式</th></tr></thead>
+          <tbody>
+            <tr><td>抖音 / 视频号（竖屏）</td><td>1080×1920</td><td>30fps</td><td>8-12 Mbps</td><td>MP4 (H.264)</td></tr>
+            <tr><td>B站 / YouTube（横屏）</td><td>1920×1080 或 4K</td><td>30/60fps</td><td>16-24 Mbps</td><td>MP4 (H.264/HEVC)</td></tr>
+            <tr><td>微信发送（求小体积）</td><td>720p 足够</td><td>30fps</td><td>4-6 Mbps</td><td>MP4</td></tr>
+            <tr><td>存档母版</td><td>原素材分辨率</td><td>原帧率</td><td>最高档</td><td>ProRes（硬盘够才用）</td></tr>
+          </tbody>
+        </table></div>
+        <p><b>高频快捷键</b>（剪映专业版）：空格=播放/暂停、<kbd>Cmd</kbd>+<kbd>B</kbd>=分割、<kbd>Cmd</kbd>+<kbd>Z</kbd>=撤销、<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd>=重做、<kbd>Del</kbd>=删除片段、方向键=逐帧移动。</p>
+      </div>
+    </details>
+
+    <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i> <b>冷知识</b>：M 系芯片剪 4K 比 Windows 同价位轻薄本流畅得多（ProRes 硬件编解码），这也是很多 up 主换 Mac 的直接原因。录屏（模块 10）+ 剪映 + 自动字幕，一台 Mac 就是一条流水线。</div>
+  </article>
+
+  <!-- ===== 模块25 · 电池保养 ===== -->
+  <article class="module c-mag" id="m25" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">25</div>
+      <div>
+        <h3>电池保养策略：循环、80% 限制与充电习惯</h3>
+        <p class="mod-sub">MacBook 电池是消耗品，但你可以让它老得慢一点</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-heart-pulse"></i> 第一步：学会看体检报告</h4>
+    <ol class="steps">
+      <li><b>健康度</b>：系统设置 → 电池 → <b>电池健康</b>（显示"正常"或最大容量百分比）</li>
+      <li><b>循环次数</b>：按住 <kbd>Option</kbd> 点左上角苹果菜单 → <b>系统信息</b> → 电源 → "循环次数"。苹果官方标准：<b>1000 次循环</b>后仍应保有 80% 容量</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-percent"></i> 循环次数是什么（一次讲清）</h4>
+    <p>用掉 100% 电量算一次循环——今天用到 50% 充满，明天再用 50%，<b>两天合计才是 1 次循环</b>。所以"频繁插拔电源"并不费电池，深度完整耗尽才是大头。正常通勤使用，一年大约 100-200 次循环，<b>五年内基本不用担心</b>。</p>
+
+    <h4><i class="fa-solid fa-plug-circle-bolt"></i> 充电习惯：辟谣 + 正解</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>流传的说法</th><th>真相</th></tr></thead>
+      <tbody>
+        <tr><td>"必须用光再充"</td><td>❌ 锂电池深度放电反而伤；随用随充没问题</td></tr>
+        <tr><td>"整夜充电会充爆"</td><td>❌ 充满自动断充，可以放心睡</td></tr>
+        <tr><td>"边充边用伤电池"</td><td>❌ 没问题；唯一例外是边充边跑重负载让机身长期高温</td></tr>
+        <tr><td>"高温才是头号杀手"</td><td>✅ 长期 35°C 以上环境 + 满电存放，是电池老化最快组合</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-battery-half"></i> 80% 限制与优化充电</h4>
+    <ul>
+      <li><b>系统设置 → 电池 → 充电</b>：开启"优化电池充电"（学习你的作息，先充到 80%，预测你要用时才充满最后 20%）</li>
+      <li>新系统还提供 <b>80% 上限</b>选项——长期插电使用（外接显示器办公党）建议打开</li>
+      <li>长期不用：充到 <b>50% 左右关机存放</b>，每半年补一次电；别满电或空电长期搁置</li>
+    </ul>
+
+    <details class="deep"><summary><i class="fa-solid fa-bolt"></i> 排查耗电大户 & 低电量模式（点开查阅）</summary>
+      <div class="deep-body">
+        <ul>
+          <li><b>谁在吃电</b>：系统设置 → 电池 → 往下翻"用量"图表，按 App 排序；Chrome 开一堆标签页常年霸榜是正常现象</li>
+          <li><b>活动监视器</b>（模块 18）：按"能耗"列排序，能看到比电池设置更细的功率数据</li>
+          <li><b>低电量模式</b>：菜单栏电池图标 → 低电量模式，牺牲性能换续航；赶稿赶车时救命用</li>
+          <li><b>两个偷电大户</b>：① 键盘背光（自动调节开着即可）；② 蓝牙外设持续唤醒——排查时先断开蓝牙设备对比</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 笔记本习惯</h5>
+        <ul>
+          <li>装电池管家 / 电源管理软件设置充电阈值</li>
+          <li>担心"记忆效应"刻意用光电</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 思路</h5>
+        <ul>
+          <li>系统自带优化充电 / 80% 上限，不用装任何管家</li>
+          <li>随用随充，避开高温，五年不用焦虑</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== 模块26 · 存储空间管理 ===== -->
+  <article class="module c-cyan" id="m26" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">26</div>
+      <div>
+        <h3>存储空间管理：256G 生存指南</h3>
+        <p class="mod-sub">空间都去哪了 + 大文件怎么找 + 外接盘格式怎么选</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-chart-pie"></i> 第一步：看清楚空间去哪了</h4>
+    <p>系统设置 → 通用 → <b>储存空间</b>：彩色分类条按"应用 / 照片 / 文稿 / 系统数据"分块。重点盯两个：<b>文稿</b>（你自己放的大文件）和神秘的<b>系统数据</b>。</p>
+
+    <h4><i class="fa-solid fa-magnifying-glass"></i> 大文件三招定位</h4>
+    <ul>
+      <li><b>聚焦搜索语法</b>（模块 9 进阶用法）：<code>大小:&gt;1GB</code>、<code>种类:影片</code>，直接全盘筛出大块头</li>
+      <li><b>按文件夹逐层排查</b>：访达 → 显示简介看"应用程序 / 资源库 / 电影 / 图片"四个目录谁最大，往里钻</li>
+      <li><b>Xcode 党注意</b>：装过 Xcode 的 <code>~/Library/Developer</code> 动辄几十 GB（模拟器+旧版缓存），终端跑 <code>xcrun simctl delete unavailable</code> 清旧模拟器</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-broom"></i> 清理优先级（先安全后激进）</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>目标</th><th>位置 / 方法</th><th>安全度</th></tr></thead>
+      <tbody>
+        <tr><td>废纸篓</td><td>右键 → 清倒废纸篓</td><td>🟢 无脑清</td></tr>
+        <tr><td>下载文件夹堆积</td><td>访达 → 下载，按大小排序删旧安装包</td><td>🟢 无脑清</td></tr>
+        <tr><td>iPhone/iPad 备份</td><td><code>~/Library/Application Support/MobileSync/Backup</code>（多个旧备份动辄 50GB+）</td><td>🟡 确认最新备份后再删旧的</td></tr>
+        <tr><td>App 缓存</td><td>AppCleaner / 手动 <code>~/Library/Caches</code>（模块 5 残留路径表）</td><td>🟡 删了会自动重建</td></tr>
+        <tr><td>系统数据</td><td>重启通常回落；不行再考虑重启进安全模式</td><td>🟡 别信"清理大师"，系统数据多数是缓存+快照</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="warn" style="margin:10px 0"><i class="fa-solid fa-exclamation-triangle"></i> <b>别装"清理大师"类软件去压"系统数据"</b>——那串数字大头是系统快照 / Spotlight 索引 / 缓存，第三方工具清不干净还可能误删。重启一次常能回落几十 GB。</div>
+
+    <h4><i class="fa-solid fa-hard-drive"></i> 外接硬盘格式怎么选</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>格式</th><th>Mac 读/写</th><th>Windows 读/写</th><th>适合</th></tr></thead>
+      <tbody>
+        <tr><td><b>APFS</b></td><td>✅ / ✅</td><td>❌ / ❌</td><td>只在 Mac 用的备份盘 / 素材盘（Time Machine 首选）</td></tr>
+        <tr><td><b>ExFAT</b></td><td>✅ / ✅</td><td>✅ / ✅</td><td><b>双系统交换盘默认选它</b>（U盘/移动硬盘通用）</td></tr>
+        <tr><td><b>NTFS</b></td><td>✅ / <b>❌ 只读</b></td><td>✅ / ✅</td><td>Windows 盘直插 Mac 只能读不能写！要写入需装第三方驱动或格式化</td></tr>
+      </tbody>
+    </table></div>
+
+    <details class="deep"><summary><i class="fa-solid fa-clock-rotate-left"></i> Time Machine 本地快照也在偷空间（点开查阅）</summary>
+      <div class="deep-body">
+        <ul>
+          <li>开过 Time Machine 的机器会在本盘留<b>本地快照</b>（算进"系统数据"），快照会自动清理，空间紧张时也可手动：<code>tmutil listlocalsnapshots /</code> 查看、<code>tmutil deletelocalsnapshots 日期</code> 删除</li>
+          <li><b>容量建议</b>：外接备份盘 ≥ Mac 内置盘的 2 倍；只存冷数据 1TB 起步的 SSD 现在价格已经友好</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- ===== 模块27 · 配件与购机售后 ===== -->
+  <article class="module c-lemon" id="m27" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">27</div>
+      <div>
+        <h3>配件选购、购机指南与售后</h3>
+        <p class="mod-sub">扩展坞避坑、教育优惠、AppleCare+ 值不值</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-plug"></i> 扩展坞：直连派 vs 坞站派</h4>
+    <ul>
+      <li><b>多合一扩展坞</b>（HDMI+网口+USB-A+SD 卡槽）：选<b>自带供电</b>（PD 100W 直通）的型号，否则充电和扩展只能二选一</li>
+      <li><b>避坑点</b>：外接 4K 高刷屏认准 <b>HDMI 2.1</b> 或标注"4K@60Hz"的坞；百元以下坞的网口多为百兆；读卡器看是否支持 SD UHS-II</li>
+      <li><b>纯转接头</b>（USB-C → HDMI / USB-A）适合"只外接投影"的轻需求，几十块搞定</li>
+      <li><b>充电器</b>：Mac 支持 USB-C PD 快充，第三方氮化镓（GaN）完全可用；MacBook Air 30W+、Pro 按原装功率配</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-list-check"></i> 值得买的配件清单</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>配件</th><th>选购要点</th></tr></thead>
+      <tbody>
+        <tr><td>内胆包</td><td>四角加厚防震；注意量好尺寸（14/16 寸）</td></tr>
+        <tr><td>笔记本支架</td><td>抬高视线护颈椎，配外接键鼠组成桌面站</td></tr>
+        <tr><td>外接 SSD</td><td>雷电口盘快但贵；日常备份 USB 3.2（10Gbps）足够</td></tr>
+        <tr><td>键鼠</td><td>罗技 MX 键鼠对 macOS 手势支持最好；妙控板看模块 3</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-cart-shopping"></i> 购机指南（买下一台 / 给朋友建议时用）</h4>
+    <ul>
+      <li><b>内存买大不买小</b>：Apple Silicon 内存<b>焊死不可升级</b>——16G 起步，重度多任务/虚拟机直接 24G+；这是最不能省的一项</li>
+      <li><b>硬盘</b>：256G 紧张（见模块 26），512G 是甜点；预算不够宁可外接盘也别上 8G 内存</li>
+      <li><b>教育优惠</b>：高校学生/教职工在 Apple 教育商店买 Mac 立减（开学季还送耳机等配件），资格审核宽松、和官网同享分期</li>
+      <li><b>官翻机（Refurbished）</b>：苹果官方翻新，全新电池+外壳、全套配件、同样新机保修，约 85 折——比第三方二手靠谱得多</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-shield-halved"></i> AppleCare+ 与售后</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>情况</th><th>建议</th></tr></thead>
+      <tbody>
+        <tr><td>经常外带、有摔碰风险</td><td>值得买：AppleCare+ 意外损坏每次维修只收服务费（远低于换屏换壳全价）</td></tr>
+        <tr><td>基本固定桌面使用</td><td>可不买：Mac 自带一年保修+中国三包；省下的钱存着当维修基金</td></tr>
+        <tr><td>想省钱</td><td>教育优惠购买 AppleCare+ 同样有折扣</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>送修渠道</b>：① "支持" App 或官网预约 Genius Bar（天才吧）直营店现场检测；② 授权服务商（地图搜 Apple 授权）就近送修。先预约再出门，别空跑。<b>送修前</b>：Time Machine 备份（模块 14）+ 关闭"查找我的 Mac"。</p>
+
+    <details class="deep"><summary><i class="fa-solid fa-box-open"></i> 新机开箱验机清单（点开查阅）</summary>
+      <div class="deep-body">
+        <ol>
+          <li>包装塑封完整、封条无重贴痕迹；序列号在官网查保修状态（设置 → 通用 → 关于本机）</li>
+          <li>首次开机检查屏幕：纯色背景下看有无亮点坏点（开一张全屏白色/黑色图片）</li>
+          <li>键盘逐键敲一遍、触控板四角点按、每个接口插一遍</li>
+          <li>摄像头拍一张、麦克风录音一段、扬声器左右声道放歌</li>
+          <li>循环次数应为 <b>0-3 次</b>以内（系统信息 → 电源，见模块 25）</li>
+        </ol>
+      </div>
+    </details>
+  </article>
+
+  <!-- ===== 模块28 · 远程控制 ===== -->
+  <article class="module c-purple" id="m28" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">28</div>
+      <div>
+        <h3>远程控制：帮人排障 & 远程访问自己的 Mac</h3>
+        <p class="mod-sub">ToDesk / 向日葵 / 系统自带屏幕共享怎么选</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-route"></i> 先分清三种场景</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>场景</th><th>推荐方案</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>帮爸妈 / 朋友远程操作 Mac</td><td><b>ToDesk / 向日葵</b>（国内）</td><td>被控端装好 → 报"临时密码"给你 → 输码即连，无需公网 IP，免费够用</td></tr>
+        <tr><td>Mac 远程连 Windows 电脑</td><td><b>Microsoft Remote Desktop</b>（App Store 免费）</td><td>微软官方 RDP 客户端，连公司电脑 / 实验室服务器，体验顺滑</td></tr>
+        <tr><td>外出访问自己家里 Mac</td><td><b>系统自带屏幕共享</b> + 路由器配置，或 Tailscale</td><td>同一 Apple ID 两台 Mac 最简单（控制随行，见模块 13）</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-desktop"></i> 被远程控制前：打开系统的门</h4>
+    <ol class="steps">
+      <li><b>开启屏幕共享</b>：系统设置 → 通用 → <b>共享</b> → 打开"屏幕共享"（旧系统的"远程管理"同理）</li>
+      <li><b>授予权限</b>：第三方远程软件首次运行会弹窗要"屏幕录制 / 辅助功能"权限——系统设置 → 隐私与安全性里手动勾上，否则连上了也控制不了</li>
+      <li><b>安全设置</b>：系统设置 → 锁定屏幕 → 关闭"客人访问"；远程软件里设独立密码，用完关掉常驻服务</li>
+    </ol>
+
+    <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i> <b>开源之选</b>：RustDesk（开源免费、可自建中继）适合不想用商业软件的人；Tailscale 组网后配合系统屏幕共享，等于免费私有的"异地局域网"。</div>
+
+    <details class="deep"><summary><i class="fa-solid fa-network-wired"></i> 进阶：不在同一网络也能连（原理一页纸）</summary>
+      <div class="deep-body">
+        <ul>
+          <li>家庭宽带大多没有公网 IP，所以直连行不通——ToDesk/向日葵靠厂商中继服务器打洞转发（简单但走第三方）；Tailscale 用 WireGuard 组虚拟局域网（数据端到端，需两端登录同一账号）</li>
+          <li><b>懒人路线</b>：两台设备都登录同一 Apple ID，"切换控制 / 屏幕共享"在访达侧边栏直接点对方设备名就能连（需开启模块 13 的连续互通）</li>
+          <li><b>安全红线</b>：不要把 Mac 的 SSH（远程登录）暴露到公网再用弱密码——Mac 上的服务器被爆破是真实存在的，开就必须用密钥登录</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- ===== 模块29 · 听写与辅助功能 ===== -->
+  <article class="module c-mag" id="m29" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">29</div>
+      <div>
+        <h3>听写与辅助功能：被低估的效率金矿</h3>
+        <p class="mod-sub">系统设置里藏着的免费语音输入、缩放与指针控制</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <div class="tip" style="margin:0 0 14px"><i class="fa-solid fa-lightbulb"></i> 这章标题叫"辅助功能"，但对<b>所有正常人都是效率工具</b>——语音打字、滚轮缩放、键盘控鼠标，Windows 上要装第三方软件的功能这里全都免费内置。</div>
+
+    <h4><i class="fa-solid fa-microphone"></i> 听写：按住说话，标点口令直接念</h4>
+    <ol class="steps">
+      <li><b>开启</b>：系统设置 → 键盘 → 听写 → 打开（快捷键默认<b>连按两下 <kbd>Fn</kbd> / <kbd>🌐</kbd> 键</b>，可改成右 Command）</li>
+      <li><b>使用</b>：任意输入框按快捷键 → 说话 → <kbd>Esc</kbd> 或快捷键结束。识别率相当能打，中英混说都行</li>
+      <li><b>标点口令</b>：直接念"逗号""句号""问号""换行""新段落"，全部自动转符号——这比后期改标点快得多</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-magnifying-glass-plus"></i> 缩放：全屏随意放大任何内容</h4>
+    <ul>
+      <li><b>滚轮缩放</b>（强烈推荐）：辅助功能 → 缩放 → 高级 → "配合修饰键使用滚动手势"（选 <kbd>Ctrl</kbd>）——之后按住 Ctrl 滚滚轮，屏幕任何区域都能放大缩小，比 Windows 的放大镜流畅百倍</li>
+      <li><b>悬停文本</b>：辅助功能 → 悬停文本，鼠标停在某行小字上按 <kbd>Cmd</kbd>，弹大字号窗口——看网页小说排版极小的注释时救星</li>
+      <li>触控板双指张合也能在浏览器里缩放（模块 3 手势回顾）</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-keyboard"></i> 指针控制：键盘控鼠标 & 头部追踪</h4>
+    <ul>
+      <li><b>键盘控鼠标</b>：辅助功能 → 指针控制 → 备用指针控制——小键盘当鼠标用，触控板坏时的应急通道</li>
+      <li><b>头部追踪</b>：用摄像头跟踪头部移动控制指针（无须额外硬件），配合"停留"控制点击</li>
+      <li><b>连按三次锁</b>：触控板/鼠标按键的粘滞键、慢速键都在这组设置里</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-volume-high"></i> 朗读与旁白</h4>
+    <ul>
+      <li><b>朗读所选项</b>：系统设置 → 辅助功能 → 朗读内容——选中文字右键"朗读"，校对稿子的听写神器；快捷键可自定义为 <kbd>Option</kbd>+<kbd>Esc</kbd></li>
+      <li><b>旁白 VoiceOver</b>：完整屏幕阅读器（<kbd>Cmd</kbd>+<kbd>F5</kbd> 开关）。⚠️ 新手误触会疯狂播报，<b>不会关就按 Cmd+F5</b> 关掉</li>
+      <li><b>减弱动态效果</b>：觉得窗口动画眩晕的，辅助功能 → 显示 → 减弱动态效果，一秒变"老实模式"</li>
+    </ul>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 习惯</h5>
+        <ul>
+          <li>Win+H 语音输入（依赖网络+识别一般）</li>
+          <li>放大镜 Win + 加号，全屏卡顿</li>
+          <li>辅助功能=给特殊人群用的，从不打开</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 思路</h5>
+        <ul>
+          <li>双击 Fn 全局听写，标点口令直接念</li>
+          <li>Ctrl+滚轮全屏丝滑缩放 + 悬停放大</li>
+          <li>辅助功能=效率设置面板，人人该翻一遍</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+
+  <!-- ===== 模块30 · 网络设置与排障 ===== -->
+  <article class="module c-cyan" id="m30" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">30</div>
+      <div>
+        <h3>网络设置与排障：Wi-Fi、DNS 与热点共享</h3>
+        <p class="mod-sub">断网先别重启，按这个顺序排查</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-wifi"></i> Wi-Fi 基础设置</h4>
+    <ul>
+      <li><b>忘记网络</b>：系统设置 → Wi-Fi → 已知网络右侧 ⓘ → 忘记此网络（密码错了/换了路由器时用，相当于 Windows 的"忘记网络"）</li>
+      <li><b>关掉"自动加入"</b>：在咖啡店连过一次的烂网，之后路过总自动连上拖慢一切——到"已知网络"里把不靠谱的 Wi-Fi 自动加入关掉</li>
+      <li><b>看网络详情</b>：Wi-Fi 右侧"详细信息"——IP、路由器、DNS 一目了然；<b>按住 <kbd>Option</kbd> 点菜单栏 Wi-Fi 图标</b>还能看信道、信号强度（RSSI）、传输速率</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-gauge-high"></i> 改 DNS：一行设置，全网变快</h4>
+    <p>默认 DNS（运营商）经常抽风——网页打不开第一秒就该怀疑它。设置：<b>系统设置 → 网络 → Wi-Fi → 详细信息 → DNS</b>，把 DNS 改成下面任一组（可填两个互为备份）：</p>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>DNS</th><th>地址</th><th>特点</th></tr></thead>
+      <tbody>
+        <tr><td>阿里 DNS</td><td>223.5.5.5 / 223.6.6.6</td><td>国内解析快，日常首选</td></tr>
+        <tr><td>腾讯 DNSPod</td><td>119.29.29.29</td><td>同为国内大厂，可作备选</td></tr>
+        <tr><td>114 DNS</td><td>114.114.114.114</td><td>老牌公共 DNS</td></tr>
+      </tbody>
+    </table></div>
+    <p>改完在终端跑 <code>sudo dscacheutil -flushcache</code> 清 DNS 缓存立生效。</p>
+
+    <h4><i class="fa-solid fa-antenna"></i> Mac 当热点 & 网线转 Wi-Fi</h4>
+    <p>Mac 没有安卓的"热点"开关，但可以：插 USB-C 网线转接器（或 iPhone USB 共享网络）→ 系统设置 → <b>共享</b> → 互联网共享 → "共享以下来源的连接"选网口，"通过以下方式共享"勾 Wi-Fi → 设置密码开启。宿舍 / 出差临时给手机 Pad 发网够用。</p>
+
+    <h4><i class="fa-solid fa-screwdriver-wrench"></i> 断网排查三板斧（按顺序）</h4>
+    <ol class="steps">
+      <li><b>先定位断在哪</b>：菜单栏 Wi-Fi 图标有无感叹号；终端 <code>ping 192.168.1.1</code>（通=到路由器没问题，是外网/DNS 的事；不通=本机到路由器的事）</li>
+      <li><b>本机侧</b>：Wi-Fi 关开一次 → 不行就"忘记网络"重连 → 还不行把 DNS 改成 223.5.5.5 再试</li>
+      <li><b>路由器侧</b>：手机等设备也断 → 重启光猫/路由器；只有 Mac 断 → 试试"系统设置 → 网络 → 详细信息 → TCP/IP → 续订 DHCP 租约"</li>
+    </ol>
+
+    <details class="deep"><summary><i class="fa-solid fa-stethoscope"></i> 无线诊断 & VPN 配置（点开查阅）</summary>
+      <div class="deep-body">
+        <ul>
+          <li><b>无线诊断</b>：按住 Option 点菜单栏 Wi-Fi 图标 → 打开无线诊断 → "监视"模式跑几分钟，给出 Wi-Fi 质量报告（信道拥挤建议换 5GHz 频段）</li>
+          <li><b>VPN</b>：系统设置 → VPN → 添加 VPN 配置（公司给 L2TP/IKEv2 参数就填这里）；第三方客户端（企业 VPN）按模块 5 正常安装即可</li>
+          <li><b>网络位置</b>：家里 / 公司不同 DNS 和代理？终端 <code>networksetup -createlocation</code> 或"网络"设置里建多个位置一键切换，免得每次手改</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- ===== 模块31 · 菜单栏与桌面美化 ===== -->
+  <article class="module c-lemon" id="m31" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">31</div>
+      <div>
+        <h3>菜单栏与桌面美化：把 Mac 调成你的形状</h3>
+        <p class="mod-sub">图标管理、Dock 调教、桌面小组件与壁纸</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <h4><i class="fa-solid fa-window-maximize"></i> 菜单栏：图标爆炸治理</h4>
+    <p>装软件越多，右上角图标越多——三招治理：</p>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>工具</th><th>渠道</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td><b>隐藏自带项</b></td><td>系统自带</td><td>系统设置 → 控制中心，把蓝牙/聚焦/时钟等图标设为"不在菜单栏显示"；Siri 图标可直接拖出去</td></tr>
+        <tr><td><b>Hidden Bar</b></td><td>App Store 免费</td><td>把不常用图标折叠进一个"〈"按钮后（模块 20 提过）</td></tr>
+        <tr><td><b>Ice</b></td><td>GitHub 开源</td><td>Hidden Bar 的开源新秀，分区折叠更现代</td></tr>
+        <tr><td><b>Bartender</b></td><td>官网付费</td><td>付费天花板：图标搜索、动态显示（连蓝牙耳机时才显示蓝牙）</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-rocket"></i> Dock 调教六步</h4>
+    <ul>
+      <li><b>大小与放大</b>：系统设置 → 桌面与 Dock → 拖"大小"滑杆；开"放大"后鼠标扫过去图标弹性放大（找回 Win 任务栏预览的爽感）</li>
+      <li><b>自动隐藏</b>：勾选后 Dock 平时藏起，鼠标到底部弹出——小屏幕立刻多出一条高度</li>
+      <li><b>位置</b>：放左侧竖排是资深用户标配（竖屏空间比横屏金贵）</li>
+      <li><b>最近使用的 App</b>：控制中心可让 Dock 显示"最近用过"，常用软件自动排队</li>
+      <li><b>最小化效果</b>：选"缩放"比默认"神奇效果"利落；<kbd>Cmd</kbd>+<kbd>M</kbd> 最小化可改成收入 Dock 图标而非右侧缩略图（系统设置 → 桌面与 Dock）</li>
+      <li><b>堆栈文件夹</b>：把"下载"拖进 Dock 右侧，右键设"扇状/网格"浏览，比开访达快</li>
+    </ul>
+
+    <h4><i class="fa-solid fa-table-cells-large"></i> 桌面小组件与壁纸</h4>
+    <ul>
+      <li><b>桌面小组件</b>：桌面空白处右键 → 编辑 → 拖入时钟 / 日历 / 天气 / 提醒事项小组件，还能放<b>iPhone 的小组件镜像</b>（如手机的日程、电量）；小组件支持"点击完成待办"</li>
+      <li><b>壁纸</b>：系统设置 → 墙纸有动态壁纸（随时间变天色）；第三方 Aerial 屏保（GitHub 开源）有航拍大片</li>
+      <li><b>图标统一风</b>：访达里复制新图标 → 选中 App → 显示简介 → 点左上图标粘贴即可替换（图省事可用 icon 资源站的均一风图标包）；教程网站风格就是自己改的</li>
+    </ul>
+
+    <div class="warn" style="margin:10px 0"><i class="fa-solid fa-exclamation-triangle"></i> <b>美化红线</b>：别为了"Dock 分隔线""图标透明"装来路不明的美化插件（尤其网上的"主题包"）——菜单栏/Dock 注入类工具是木马重灾区。只装本页列出的知名开源/付费工具，渠道认准 App Store / GitHub 官方仓库 / 官网。</div>
+  </article>
+
+  <!-- ===== 模块32 · 快捷指令实例库 ===== -->
+  <article class="module c-purple" id="m32" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">32</div>
+      <div>
+        <h3>快捷指令实例库：10 个拿来即用的自动化</h3>
+        <p class="mod-sub">模块 17 学了原理，这里给成品（快捷指令中心直接搜关键词）</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <div class="tip" style="margin:0 0 14px"><i class="fa-solid fa-lightbulb"></i> 获取方式：打开"快捷指令"App → 右侧<b>图库（Gallery）</b> → 搜索下表关键词 → 点"添加快捷指令"。绝大多数不需要自己搭积木。</div>
+
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>#</th><th>指令</th><th>用途</th><th>搜索关键词</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>一键清废纸篓</b></td><td>清倒废纸篓不用去访达</td><td>清倒废纸篓</td></tr>
+        <tr><td>2</td><td><b>切换外观</b></td><td>亮/暗模式一键切换（比设置里翻找快）</td><td>切换外观</td></tr>
+        <tr><td>3</td><td><b>视频转 GIF</b></td><td>拖入视频片段直接吐 GIF，斗图做动效两用</td><td>视频转 GIF / make GIF</td></tr>
+        <tr><td>4</td><td><b>合并 PDF</b></td><td>选中多个 PDF 右键 → 快速操作合并（扫描合同必备）</td><td>合并 PDF / combine PDF</td></tr>
+        <tr><td>5</td><td><b>翻译剪贴板</b></td><td>复制外文 → 跑指令 → 剪贴板直接是译文</td><td>翻译剪贴板</td></tr>
+        <tr><td>6</td><td><b>截图加水印 / 拼图</b></td><td>多张截图自动拼接、加边框（发周报用）</td><td>拼接图像 / combine images</td></tr>
+        <tr><td>7</td><td><b>批量改文件名</b></td><td>规则化重命名（比访达自带重命名更自由：序号+日期+前后缀）</td><td>重命名文件</td></tr>
+        <tr><td>8</td><td><b>查网速</b></td><td>菜单栏点一下出下载/上传速率</td><td>速度测试 / speed test</td></tr>
+        <tr><td>9</td><td><b>倒计时专注</b></td><td>番茄钟：开勿扰 + 计时 + 结束提示</td><td>计时器 / focus timer</td></tr>
+        <tr><td>10</td><td><b>早上好</b></td><td>一条指令播天气 + 打开日历 + 放歌，开局仪式感</td><td>早上好 / good morning</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-bolt"></i> 进阶两个必杀技</h4>
+    <ul>
+      <li><b>定时无人值守</b>：快捷指令 → 指令信息（ⓘ）→ 添加"自动化"——比如"每天 22:00 自动把下载文件夹里的安装包清掉"或"连上家里 Wi-Fi 自动开灯"？前者可行，后者需要智能家居。自动化不弹窗静默跑（首次会要权限）</li>
+      <li><b>Mac ↔ iPhone 同步</b>：iCloud 开"快捷指令"同步，Mac 建的指令 iPhone 上直接用（iPhone 的自动化更丰富：到公司自动开勿扰、扫码自动连充电提醒等）</li>
+    </ul>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 习惯</h5>
+        <ul>
+          <li>PowerToys Run / AutoHotkey 写脚本</li>
+          <li>任务计划程序定时跑批处理</li>
+          <li>想都不敢想手机电脑脚本互通</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 思路</h5>
+        <ul>
+          <li>图库直接添加成品，拖积木自己搭</li>
+          <li>自动化按时间/Wi-Fi/NFC 触发，静默执行</li>
+          <li>iCloud 同步，电脑上建手机上跑</li>
+        </ul>
+      </div>
+    </div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 电池循环计数 <a href="https://support.apple.com/zh-cn/HT201585" target="_blank">support.apple.com/zh-cn/HT201585</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 在 Mac 上听写 <a href="https://support.apple.com/zh-cn/guide/mac-help/mh40584" target="_blank">support.apple.com/zh-cn/mh40584</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · Mac 上的磁盘格式 <a href="https://support.apple.com/zh-cn/HT208497" target="_blank">support.apple.com/zh-cn/HT208497</a></li>
+        <li><span class="ref-tag">官方</span>Apple 教育 / 官方翻新商店 <a href="https://www.apple.com.cn-edu.cn/shop/refurbished" target="_blank">apple.com.cn</a></li>
+      </ol>
+    </details>
+  </article>
+
+</section>
+
 <div class="section-divider"><i class="fa-solid fa-star"></i> 毕业答辩 · 附录区 <i class="fa-solid fa-star"></i></div>
 
 <section class="stage" id="appendix">
@@ -2604,7 +3333,7 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 <footer>
   <div class="f-logo">Mac · 通关手册</div>
   <p>从 0 到 1 再到精通 · 专为 Windows 移民打造 · 基于 macOS 26 Tahoe</p>
-  <p style="margin-top:6px">18 模块 / 3 阶段 / 100+ 快捷键对照 / 30+ 参考来源 —— 打完收工，恭喜毕业 🎉</p>
+  <p style="margin-top:6px">32 模块 / 4 阶段 / 100+ 快捷键对照 / 30+ 参考来源 —— 打完收工，恭喜毕业 🎉</p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -3191,7 +3920,18 @@ boss3:[
  {q:'Apple Silicon Mac 进入恢复模式的正确方法是？',o:['开机时按 Cmd+R','关机后长按电源键直到出现「载入启动选项」','开机时按 Option 键','插入 U 盘自动进入'],a:1,e:'Apple Silicon：关机 → 长按电源键 → 出现「载入启动选项」松开 → 点「选项」继续。Intel 机型才是 Cmd+R。见模块 19。'},
  {q:'卖掉 Mac 前必须做的关键步骤是？',o:['直接拖废纸篓清空文件','退出 Apple ID + 关闭「查找」+ 抹掉磁盘 + 重装','只删浏览器历史','恢复出厂设置按钮'],a:1,e:'必须先退出 Apple ID 和关闭「查找我的 Mac」，否则激活锁会让下任机主无法激活。然后磁盘工具抹掉 + 重装。见模块 19。'},
  {q:'刚换 Mac，想找回 Windows 的窗口分屏（Snap）体验，推荐装？',o:['Rectangle','Photoshop','Docker Desktop','Flux'],a:0,e:'Rectangle 免费开源，快捷键分屏（左半屏/右半屏/最大化），是 Mac 窗口管理首选。见模块 20。'},
- {q:'下面哪个 Mac 软件推荐渠道最不推荐？',o:['Mac App Store','软件官网下载 .dmg','Homebrew 安装命令行工具','百度搜软件名点第一个下载站'],a:3,e:'第三方下载站是捆绑流氓软件重灾区。优先 App Store → 官网 → Homebrew。见模块 5 和模块 20。'}
+ {q:'下面哪个 Mac 软件推荐渠道最不推荐？',o:['Mac App Store','软件官网下载 .dmg','Homebrew 安装命令行工具','百度搜软件名点第一个下载站'],a:3,e:'第三方下载站是捆绑流氓软件重灾区。优先 App Store → 官网 → Homebrew。见模块 5 和模块 20。'},
+ {q:'在 Mac 上给 Pages 文档加密码保护，最合适的做法是？',o:['压缩加密码','备忘录里再存一份','Pages 里直接导出 PDF 勾选密码 / 备忘录锁定敏感信息','截图保存'],a:2,e:'备忘录可整篇锁定（Touch ID 解锁），导出 PDF 可带密码。见模块 21。'},
+ {q:'同事用 Windows，你用 Keynote 做的演示稿要发给他，正确做法是？',o:['直接发 .key 文件','导出为 .pptx 或 PDF 再发','截图发图','发邮件让他装 Keynote'],a:1,e:'.key 对方打不开。文件 → 导出为 → PowerPoint 或 PDF。复杂排版建议 PDF 保真。见模块 22。'},
+ {q:'Mac 硬盘空间紧张且照片很多，照片 App 里建议选哪个设置？',o:['将原图下载到此 Mac','优化 Mac 储存空间','关掉 iCloud 照片','删除图库重来'],a:1,e:'"优化 Mac 储存空间"本机只存缩略图、原图放 iCloud，需要时自动下载。见模块 23。'},
+ {q:'关于 MacBook 电池，下面哪个说法是对的？',o:['必须用光电再充电','整夜充电会损坏电池','随用随充没问题，高温才是老化主因','每周必须完整充放电一次'],a:2,e:'锂电池没有记忆效应，充满自动断充；长期高温+满电才是最伤的组合。见模块 25。'},
+ {q:'Windows 格式化的 NTFS 移动硬盘插到 Mac 上，会怎样？',o:['完全正常读写','只能读不能写','完全识别不了','自动格式化'],a:1,e:'macOS 原生只支持 NTFS 只读。要在 Mac 和 Windows 之间交换文件，格式化成 ExFAT。见模块 26。'},
+ {q:'买新 MacBook 时，哪一项是"买了之后无法后悔"的？',o:['内存大小','贴膜颜色','内胆包','充电器功率'],a:0,e:'Apple Silicon 的内存焊死在主板上，买后不可升级；外设随时能补。见模块 27。'},
+ {q:'帮爸妈远程操作他们的 Mac（他们在另一座城市），最省事的方式是？',o:['邮寄电脑','用 ToDesk/向日葵 报临时密码远程连','让他们拍照给你看','坐高铁过去'],a:1,e:'国内远程工具走厂商中继，无需公网 IP，被控端报码即可连上。见模块 28。'},
+ {q:'想让"按住 Ctrl + 滚动滚轮"就能放大屏幕任何区域，该去哪里设置？',o:['显示器设置','辅助功能 → 缩放 → 高级','鼠标设置','浏览器设置'],a:1,e:'辅助功能 → 缩放 → 高级 → 配合修饰键使用滚动手势。辅助功能是效率金矿。见模块 29。'},
+ {q:'网页突然打不开但微信还能聊天，第一秒该怀疑什么？',o:['网卡坏了','系统要重装','DNS 抽风','内存不足'],a:2,e:'微信能聊说明网络通，是 DNS 解析挂了——把 DNS 改成 223.5.5.5 通常立竿见影。见模块 30。'},
+ {q:'菜单栏图标多到爆炸，哪个是免费的治理方案？',o:['Hidden Bar / Ice','换一台 Mac','重装系统','删掉所有 App'],a:0,e:'Hidden Bar（App Store 免费）/ Ice（开源）都能折叠不常用图标。见模块 31。'},
+ {q:'想每天 22:00 自动清理下载文件夹里的旧安装包，用哪个功能？',o:['日历闹钟','快捷指令的定时自动化','备忘录提醒','终端挂后台脚本'],a:1,e:'快捷指令 → 指令信息 → 添加自动化 → 按时间触发，静默执行。见模块 32。'}
 ]};
 var qz={boss:null,order:[],idx:0,score:0,combo:0,maxCombo:0,answered:false,wrong:[]};
 function bossState(b){
