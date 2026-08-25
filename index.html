@@ -914,8 +914,10 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
       <li><b>第二步 · 残留体检</b>：用下面任一方法扫描 <code>~/Library</code> 里的关联文件（见下方"四种清理姿势"）</li>
       <li><b>第三步 · 清倒废纸篓</b>：别让"已删除"的 App 在废纸篓里继续躺尸占空间</li>
     </ol>
+    <div class="tip" style="margin:6px 0 14px;padding:10px 12px"><i class="fa-solid fa-map-signs"></i><b>本页快速跳转：</b><a href="#m5-channels">📍分渠道卸载速查表</a>　·　<a href="#m5-res">📍残留数据 12 路径</a>　·　<a href="#m5-appcleaner">📍AppCleaner 五步</a>　·　<a href="#m5-official">📍官方卸载器清单</a></div>
 
-    <h4><i class="fa-solid fa-route"></i> 不同渠道装的，卸载方式不一样</h4>
+    <h4 id="m5-channels"><i class="fa-solid fa-route"></i> 不同渠道装的，卸载方式不一样</h4>
+    <p style="margin:2px 0 0"><a href="#m5" style="font-size:.72rem;color:var(--muted);text-decoration:none">↩ 返回模块5目录</a></p>
     <p>装法不同，残留数据藏的位置、该用什么工具卸也不一样。别一个 AppCleaner 走天下——<b>Homebrew 装的不能用 AppCleaner</b>，.pkg 系统级装的要额外清 <code>/Library</code>。</p>
     <div class="table-wrap" style="margin:10px 0"><table class="neon">
       <thead><tr><th>怎么装的</th><th>怎么删本体</th><th>残留主要藏在</th><th>AppCleaner 适用？</th><th>特别提醒</th></tr></thead>
@@ -928,7 +930,7 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
     </table></div>
     <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i><b>一句话记：</b>App Store 和 .dmg 装的 → AppCleaner 全包；.pkg 系统级装的要额外清 <code>/Library</code>；Homebrew 装的 → 必须用 <code>brew uninstall</code>，别碰 AppCleaner。不确定怎么装的？看「应用程序」里右键 App → 显示简介，沙盒应用会标"沙盒"，或回忆当初是点 App Store 还是下 dmg 装的。</div>
 
-    <details class="deep"><summary><i class="fa-solid fa-magnifying-glass-location"></i> 残留数据都藏在哪？12 个路径速查（带搜索，点开查阅）</summary>
+    <details class="deep" id="m5-res"><summary><i class="fa-solid fa-magnifying-glass-location"></i> 残留数据都藏在哪？12 个路径速查（带搜索，点开查阅）</summary>
       <div class="deep-body">
       <p>macOS 用 <b>Bundle ID</b>（形如 <code>com.tencent.xinWeChat</code>）标记每个 App 的数据。访达按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入 <code>~/Library</code> 即可进入下表这些目录：</p>
       <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="resSearch" placeholder="搜索：缓存 / 偏好设置 / 自启动 / 沙盒…"></div>
@@ -961,7 +963,7 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
         <button data-tab="t5g"><i class="fa-solid fa-terminal"></i> 终端命令</button>
         <button data-tab="t5h"><i class="fa-solid fa-file-shield"></i> 官方卸载器</button>
       </div>
-      <div class="tab-panel active" id="t5e">
+      <div class="tab-panel active" id="t5e" data-anchor="m5-appcleaner">
         <p><b>AppCleaner</b>（<a href="https://freemacsoft.net/appcleaner/" target="_blank">freemacsoft.net/appcleaner</a>，免费）是 macOS 圈口碑最好的免费卸载工具。适合 99% 的场景，<b>新手首选</b>。</p>
         <h5 style="margin:10px 0 6px"><i class="fa-solid fa-list-ol"></i> 五步操作流程</h5>
         <ol class="steps">
@@ -1004,7 +1006,7 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
 launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev/null</pre>
         <div class="danger" style="margin:8px 0"><i class="fa-solid fa-triangle-exclamation"></i><b>红线：</b><code>com.apple.*</code> 前缀的是系统组件，<b>绝对不要删</b>；终端命令详见模块 15，看不懂的命令先别跑。</div>
       </div>
-      <div class="tab-panel" id="t5h">
+      <div class="tab-panel" id="t5h" data-anchor="m5-official">
         <p>带内核扩展、虚拟化驱动、后台服务的软件（Adobe 全家桶、Parallels Desktop、VMware、部分声卡驱动），卸不干净会留下<b>系统级驱动和后台服务</b>。这类软件官网都提供<b>官方卸载器</b>（如 Adobe Creative Cloud Uninstaller），优先用它。</p>
         <h5 style="margin:10px 0 6px"><i class="fa-solid fa-list-ol"></i> 官方卸载 + AppCleaner 扫尾流程</h5>
         <ol class="steps">
@@ -2482,6 +2484,47 @@ document.querySelectorAll('.tabs .tab-btns button').forEach(function(btn){
     wrap.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ===== 子锚点跳转：打开 tab / 展开折叠 + 平滑滚动 ===== */
+function jumpTo(hash){
+  if(!hash) return;
+  var target=null;
+  if(hash==='#m5-appcleaner' || hash==='#m5-official'){
+    var panel=document.querySelector(hash==='#m5-appcleaner'?'#t5e':'#t5h');
+    if(panel){
+      var wrap=panel.closest('.tabs');
+      wrap.querySelectorAll('.tab-btns button').forEach(function(b){b.classList.remove('active');});
+      wrap.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+      wrap.querySelector('.tab-btns button[data-tab="'+panel.id+'"]').classList.add('active');
+      panel.classList.add('active');
+      target=panel;
+    }
+  } else if(hash==='#m5-res'){
+    var d=document.getElementById('m5-res');
+    if(d){ d.open=true; target=d; }
+  } else {
+    target=document.querySelector(hash);
+  }
+  if(target){
+    setTimeout(function(){
+      var navH=document.querySelector('#topnav')?document.querySelector('#topnav').offsetHeight+24:0;
+      var y=target.getBoundingClientRect().top+window.pageYOffset-navH;
+      window.scrollTo({top:y,behavior:'smooth'});
+    },50);
+  }
+}
+window.addEventListener('hashchange',function(){jumpTo(location.hash);});
+document.addEventListener('DOMContentLoaded',function(){if(location.hash) jumpTo(location.hash);});
+document.querySelectorAll('a[href^="#m5-"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var href=a.getAttribute('href');
+    if(document.querySelector(href) || href==='#m5-appcleaner' || href==='#m5-official' || href==='#m5-res'){
+      e.preventDefault();
+      history.pushState(null,'',href);
+      jumpTo(href);
+    }
   });
 });
 
