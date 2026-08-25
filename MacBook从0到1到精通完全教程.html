@@ -19,7 +19,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:20px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.75;padding-left:238px;-webkit-overflow-scrolling:touch}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.75;padding-left:248px;-webkit-overflow-scrolling:touch}
 @media(max-width:900px){body{padding-left:0}}
 body::before{content:"";position:fixed;inset:0;z-index:-2;background:
   radial-gradient(ellipse 60% 40% at 12% 0%,rgba(255,46,136,.10),transparent 60%),
@@ -48,33 +48,94 @@ code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
   cursor:pointer;border:2px solid var(--lemon);background:var(--nav-bg);color:var(--lemon);
   font-size:1.2rem;display:none;align-items:center;justify-content:center;backdrop-filter:blur(10px);box-shadow:3px 3px 0 rgba(255,46,136,.4);
   top:max(16px,env(safe-area-inset-top));left:max(16px,env(safe-area-inset-left))}
-#topnav{position:fixed;left:18px;top:50%;transform:translateY(-50%);width:198px;z-index:1000;
-  display:flex;flex-direction:column;gap:10px;padding:20px 14px;background:var(--nav-bg);
-  backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:24px;
+#topnav{position:fixed;left:18px;top:50%;transform:translateY(-50%);width:216px;z-index:1000;
+  display:flex;flex-direction:column;padding:14px 12px 12px;background:var(--nav-bg);
+  backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:22px;
   box-shadow:6px 6px 0 rgba(255,46,136,.16),0 18px 50px rgba(0,0,0,.35);
-  max-height:calc(100vh - 44px);overflow-y:auto;transition:transform .3s ease,opacity .25s ease}
-#topnav .logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.1rem;color:var(--lemon);
-  text-shadow:2px 2px 0 var(--mag);text-align:center;padding-bottom:10px;border-bottom:1px solid var(--line)}
-#topnav .stage-links{display:flex;flex-direction:column;gap:7px}
-#topnav .stage-links a{padding:8px 14px;border-radius:12px;font-size:.84rem;border:1.5px solid transparent;white-space:nowrap;transition:.2s}
-#topnav .stage-links a:hover{transform:translateX(-3px);text-decoration:none}
-#topnav .stage-links a.s1{color:var(--mag);border-color:var(--mag)}
-#topnav .stage-links a.s1:hover{background:var(--mag-soft)}
-#topnav .stage-links a.s2{color:var(--cyan);border-color:var(--cyan)}
-#topnav .stage-links a.s2:hover{background:var(--cyan-soft)}
-#topnav .stage-links a.s3{color:var(--lemon);border-color:var(--lemon)}
-#topnav .stage-links a.s3:hover{background:var(--lemon-soft)}
-#theme-toggle{margin-top:4px;padding:9px 14px;border-radius:12px;cursor:pointer;font-size:.84rem;font-weight:700;font-family:inherit;
-  border:1.5px solid var(--purple);color:var(--purple-text);background:var(--purple-soft);display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+  max-height:calc(100vh - 44px);overflow-y:auto;overflow-x:hidden;
+  transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .25s ease;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+#topnav::-webkit-scrollbar{width:4px}
+#topnav::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+#topnav::-webkit-scrollbar-track{background:transparent}
+
+/* —— 头部：logo + 收起键 —— */
+.nv-head{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:2px 2px 10px;border-bottom:1px solid var(--line);margin-bottom:8px;flex-shrink:0}
+.nv-logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.02rem;color:var(--lemon);text-shadow:2px 2px 0 var(--mag);white-space:nowrap;display:flex;align-items:center;gap:7px;min-width:0}
+.nv-logo i{flex-shrink:0}
+.nv-logo b{font-weight:400;overflow:hidden;text-overflow:ellipsis}
+#nav-collapse{width:26px;height:26px;border-radius:9px;border:1.5px solid var(--line);background:transparent;color:var(--muted);
+  cursor:pointer;font-size:.72rem;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
+#nav-collapse:hover{color:var(--lemon);border-color:var(--lemon);transform:translateX(-2px)}
+
+/* —— 阶段手风琴组 —— */
+.nv-group{margin-bottom:2px}
+.nv-stage{display:flex;align-items:center;gap:8px;width:100%;padding:7px 9px;border-radius:12px;cursor:pointer;
+  background:transparent;border:none;font-family:inherit;font-size:.8rem;font-weight:700;text-align:left;transition:.2s;position:relative}
+.nv-stage .nv-ico{width:23px;height:23px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.66rem;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:700}
+.nv-stage .nv-t{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nv-stage .nv-cnt{font-family:'JetBrains Mono',monospace;font-size:.6rem;opacity:.75;padding:1px 6px;border-radius:99px;border:1px solid currentColor;flex-shrink:0}
+.nv-stage .nv-chev{font-size:.6rem;color:var(--muted);transition:transform .28s ease;flex-shrink:0;width:9px}
+.nv-group.open .nv-chev{transform:rotate(90deg)}
+.g1 .nv-stage{color:var(--mag)} .g1 .nv-ico{background:var(--mag-soft);color:var(--mag);border:1px solid var(--mag)}
+.g2 .nv-stage{color:var(--cyan)} .g2 .nv-ico{background:var(--cyan-soft);color:var(--cyan);border:1px solid var(--cyan)}
+.g3 .nv-stage{color:var(--lemon)} .g3 .nv-ico{background:var(--lemon-soft);color:var(--lemon);border:1px solid var(--lemon)}
+.g1 .nv-stage:hover{background:var(--mag-soft)}
+.g2 .nv-stage:hover{background:var(--cyan-soft)}
+.g3 .nv-stage:hover{background:var(--lemon-soft)}
+.nv-group.all-done .nv-stage .nv-cnt{color:var(--neon);border-color:var(--neon);background:rgba(0,255,159,.08)}
+.nv-group.all-done .nv-ico{box-shadow:0 0 10px rgba(0,255,159,.5)}
+
+/* —— 模块子链接 —— */
+.nv-sub{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
+.nv-group.open .nv-sub{max-height:320px}
+.nv-sub a{display:flex;align-items:center;gap:7px;padding:4.5px 9px 4.5px 13px;margin:1px 0;border-radius:10px;
+  font-size:.73rem;color:var(--muted);text-decoration:none;white-space:nowrap;transition:.18s;position:relative}
+.nv-sub a .nv-no{font-family:'JetBrains Mono',monospace;font-size:.6rem;opacity:.6;width:16px;flex-shrink:0}
+.nv-sub a .nv-nm{flex:1;overflow:hidden;text-overflow:ellipsis}
+.nv-sub a .nv-ck{font-size:.62rem;color:var(--neon);opacity:0;transform:scale(.4);transition:.22s;flex-shrink:0}
+.nv-sub a.done .nv-ck{opacity:1;transform:scale(1)}
+.nv-sub a.done .nv-no{color:var(--neon);opacity:1}
+.nv-sub a:hover{color:var(--text);background:var(--surface);transform:translateX(3px)}
+.nv-sub a.active{color:var(--cyan);background:var(--cyan-soft)}
+.nv-sub a.active::before{content:'';position:absolute;left:0;top:18%;bottom:18%;width:2.5px;border-radius:3px;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.g1 .nv-sub a.active{color:var(--mag);background:var(--mag-soft)}
+.g1 .nv-sub a.active::before{background:var(--mag);box-shadow:0 0 8px var(--mag)}
+.g3 .nv-sub a.active{color:var(--lemon);background:var(--lemon-soft)}
+.g3 .nv-sub a.active::before{background:var(--lemon);box-shadow:0 0 8px var(--lemon)}
+
+/* —— 快捷入口 —— */
+.nv-quick{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:10px 2px 4px;border-top:1px solid var(--line);margin-top:8px;flex-shrink:0}
+.nv-quick a{display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 4px;border-radius:10px;
+  font-size:.71rem;font-weight:700;border:1.5px solid;white-space:nowrap;transition:.2s;text-decoration:none}
+.nv-quick a:hover{transform:translateY(-2px);text-decoration:none}
+.nv-quick .q1{color:var(--mag);border-color:var(--mag);background:var(--mag-soft)}
+.nv-quick .q2{color:var(--neon);border-color:var(--neon);background:rgba(0,255,159,.07)}
+.nv-quick .q3{color:var(--purple-text);border-color:var(--purple);background:var(--purple-soft)}
+.nv-quick .q4{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-soft)}
+
+/* —— 底部：主题 + 进度 —— */
+#theme-toggle{margin-top:10px;padding:9px 12px;border-radius:12px;cursor:pointer;font-size:.8rem;font-weight:700;font-family:inherit;
+  border:1.5px solid var(--purple);color:var(--purple-text);background:var(--purple-soft);display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s;flex-shrink:0}
 #theme-toggle:hover{transform:translateY(-2px)}
-#topnav .progress-pill{margin-top:auto;font-size:.76rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
-#topnav .progress-pill b{color:var(--neon);font-size:1rem}
-#topnav .progress-bar-mini{width:100%;height:8px;background:var(--surface);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
-#topnav .progress-bar-mini i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--neon));transition:width .4s}
+.progress-pill{margin-top:10px;font-size:.72rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:7px;padding-top:10px;border-top:1px solid var(--line);flex-shrink:0}
+.progress-pill b{color:var(--neon);font-size:.95rem}
+.progress-bar-mini{width:100%;height:8px;background:var(--surface);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+.progress-bar-mini i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--neon));transition:width .4s}
+
+/* —— 桌面端整体收起（腾出全宽阅读） —— */
+body.navhidden{padding-left:0}
+body.navhidden #topnav{transform:translateY(-50%) translateX(-130%);opacity:0;pointer-events:none}
+body.navhidden #nav-toggle{display:flex}
+/* —— 移动端抽屉遮罩 —— */
+#nav-backdrop{position:fixed;inset:0;z-index:999;background:rgba(5,5,20,.55);backdrop-filter:blur(2px);
+  opacity:0;pointer-events:none;transition:opacity .3s}
+#nav-backdrop.show{opacity:1;pointer-events:auto}
 @media(max-width:900px){
   #nav-toggle{display:flex}
-  #topnav{transform:translateY(-50%) translateX(-130%);opacity:0;pointer-events:none}
-  #topnav.open{transform:translateY(-50%) translateX(0);opacity:1;pointer-events:auto}
+  #topnav{transform:translateY(-50%) translateX(-130%);opacity:0;pointer-events:none;left:14px;width:230px;box-shadow:12px 0 40px rgba(0,0,0,.5)}
+  #topnav.open{transform:translateY(-50%) translateX(0)!important;opacity:1;pointer-events:auto}
 }
 
 /* ===== 霓虹粒子 ===== */
@@ -424,18 +485,58 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(194,37,92,.20)}
 
 <div id="particles"></div>
 
+<div id="nav-backdrop"></div>
 <button id="nav-toggle" aria-label="打开导航"><i class="fa-solid fa-bars"></i></button>
 
 <nav id="topnav">
-  <span class="logo"><i class="fa-solid fa-laptop-code" style="color:var(--cyan)"></i> Mac·通关手册</span>
-  <div class="stage-links">
-    <a href="#stage1" class="s1">① 新手村</a>
-    <a href="#stage2" class="s2">② 进阶</a>
-    <a href="#stage3" class="s3">③ 精通</a>
-    <a href="#arena" class="s2" style="color:var(--mag);border-color:var(--mag)">训练场</a>
-    <a href="#roadmap" class="s1" style="color:var(--neon);border-color:var(--neon)">路线图</a>
-    <a href="#refs-all" class="s2" style="color:var(--purple-text);border-color:var(--purple)">参考文献</a>
+  <div class="nv-head">
+    <span class="nv-logo"><i class="fa-solid fa-laptop-code" style="color:var(--cyan)"></i><b>Mac·通关手册</b></span>
+    <button id="nav-collapse" title="收起导航，全宽阅读"><i class="fa-solid fa-angles-left"></i></button>
   </div>
+
+  <div class="nv-group g1 open" data-stage="stage1">
+    <button class="nv-stage"><span class="nv-ico">Ⅰ</span><span class="nv-t">新手村</span><span class="nv-cnt">6</span><i class="fa-solid fa-chevron-right nv-chev"></i></button>
+    <div class="nv-sub">
+      <a href="#m1"><span class="nv-no">01</span><span class="nv-nm">开箱与首次设置</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m2"><span class="nv-no">02</span><span class="nv-nm">认识界面</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m3"><span class="nv-no">03</span><span class="nv-nm">触控板手势</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m4"><span class="nv-no">04</span><span class="nv-nm">访达与文件</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m5"><span class="nv-no">05</span><span class="nv-nm">安装卸载应用</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m6"><span class="nv-no">06</span><span class="nv-nm">系统设置</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+    </div>
+  </div>
+
+  <div class="nv-group g2" data-stage="stage2">
+    <button class="nv-stage"><span class="nv-ico">Ⅱ</span><span class="nv-t">进阶</span><span class="nv-cnt">6</span><i class="fa-solid fa-chevron-right nv-chev"></i></button>
+    <div class="nv-sub">
+      <a href="#m7"><span class="nv-no">07</span><span class="nv-nm">键盘与中文输入</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m8"><span class="nv-no">08</span><span class="nv-nm">多任务与窗口</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m9"><span class="nv-no">09</span><span class="nv-nm">聚焦搜索</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m10"><span class="nv-no">10</span><span class="nv-nm">截图与录屏</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m11"><span class="nv-no">11</span><span class="nv-nm">快捷键对照大全</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m12"><span class="nv-no">12</span><span class="nv-nm">文件迁移协同</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+    </div>
+  </div>
+
+  <div class="nv-group g3" data-stage="stage3">
+    <button class="nv-stage"><span class="nv-ico">Ⅲ</span><span class="nv-t">精通</span><span class="nv-cnt">6</span><i class="fa-solid fa-chevron-right nv-chev"></i></button>
+    <div class="nv-sub">
+      <a href="#m13"><span class="nv-no">13</span><span class="nv-nm">生态连续互通</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m14"><span class="nv-no">14</span><span class="nv-nm">Time Machine</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m15"><span class="nv-no">15</span><span class="nv-nm">终端入门</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m16"><span class="nv-no">16</span><span class="nv-nm">Homebrew</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m17"><span class="nv-no">17</span><span class="nv-nm">自动化</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m18"><span class="nv-no">18</span><span class="nv-nm">安全与维护</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+    </div>
+  </div>
+
+  <div class="nv-quick">
+    <a href="#arena" class="q1"><i class="fa-solid fa-gamepad"></i> 训练场</a>
+    <a href="#roadmap" class="q2"><i class="fa-solid fa-map"></i> 路线图</a>
+    <a href="#appendix" class="q3"><i class="fa-solid fa-book"></i> 附录区</a>
+    <a href="#refs-all" class="q4"><i class="fa-solid fa-graduation-cap"></i> 参考文献</a>
+  </div>
+
   <button id="theme-toggle" title="切换到白天模式"><i class="fa-solid fa-sun"></i><span>白天模式</span></button>
   <div class="progress-pill">
     <span><i class="fa-solid fa-gamepad"></i> 通关进度 <b id="progress-num">0%</b></span>
@@ -2072,25 +2173,131 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 AOS.init({duration:700,once:true,offset:60});
 setTimeout(()=>AOS.refresh(),1200);
 
-/* ===== 移动端导航开关 ===== */
+/* ===== 导航系统：手风琴 + 滚动高亮 + 完成度联动 + 收起 ===== */
 (function(){
   var btn=document.getElementById('nav-toggle');
   var nav=document.getElementById('topnav');
-  if(!btn||!nav)return;
-  btn.addEventListener('click',function(){
-    var open=nav.classList.toggle('open');
-    btn.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';
-    btn.setAttribute('aria-label',open?'关闭导航':'打开导航');
-  });
-  // 点击导航链接后自动收起（移动端）
-  nav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      if(window.innerWidth<=900){
-        nav.classList.remove('open');
-        btn.innerHTML='<i class="fa-solid fa-bars"></i>';
-      }
+  var collapseBtn=document.getElementById('nav-collapse');
+  if(!nav)return;
+
+  /* —— 手风琴：点阶段头展开/收起 —— */
+  var groups=nav.querySelectorAll('.nv-group');
+  groups.forEach(function(g){
+    g.querySelector('.nv-stage').addEventListener('click',function(){
+      var wasOpen=g.classList.contains('open');
+      groups.forEach(function(x){x.classList.remove('open');});
+      if(!wasOpen)g.classList.add('open');
     });
   });
+
+  /* —— 滚动高亮（scroll-spy）+ 自动展开当前阶段 —— */
+  var links=[].slice.call(nav.querySelectorAll('.nv-sub a'));
+  var ids=links.map(function(a){return a.getAttribute('href').slice(1);});
+  var anchors=ids.map(function(id){return document.getElementById(id);});
+  var ticking=false;
+  function spy(){
+    ticking=false;
+    var pos=window.scrollY+150;
+    var cur=-1;
+    anchors.forEach(function(el,i){
+      if(el && el.getBoundingClientRect().top+window.scrollY<=pos)cur=i;
+    });
+    links.forEach(function(a){a.classList.remove('active');});
+    if(cur>=0){
+      var a=links[cur];
+      a.classList.add('active');
+      var g=a.closest('.nv-group');
+      if(g && !g.classList.contains('open')){
+        groups.forEach(function(x){x.classList.remove('open');});
+        g.classList.add('open');
+      }
+      /* 保持激活项可见 */
+      var sub=a.parentElement;
+      var nr=nav.getBoundingClientRect(),ar=a.getBoundingClientRect();
+      if(ar.top<nr.top+60||ar.bottom>nr.bottom-30){
+        nav.scrollTop+=ar.top-nr.top-nr.height*0.4;
+      }
+    }else{
+      /* 页面顶部：若没有任何组展开，默认展开第一组 */
+      var anyOpen=[].some.call(groups,function(x){return x.classList.contains('open');});
+      if(!anyOpen)groups[0].classList.add('open');
+    }
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){ticking=true;requestAnimationFrame(spy);}
+  },{passive:true});
+  spy();
+
+  /* —— 完成度联动：模块勾选 → 导航打勾 + 阶段计数 —— */
+  function syncDone(){
+    try{
+      var saved=JSON.parse(localStorage.getItem('mac-tutorial-neon-progress')||'{}');
+    }catch(e){saved={};}
+    links.forEach(function(a){
+      var id=a.getAttribute('href').slice(1);
+      a.classList.toggle('done',!!saved[id]);
+    });
+    groups.forEach(function(g){
+      var cnt=g.querySelector('.nv-cnt');
+      var total=g.querySelectorAll('.nv-sub a').length;
+      var done=g.querySelectorAll('.nv-sub a.done').length;
+      if(cnt){
+        cnt.textContent=done+'/'+total;
+        g.classList.toggle('all-done',done===total&&total>0);
+      }
+    });
+  }
+  document.addEventListener('change',function(e){
+    if(e.target && e.target.classList && e.target.classList.contains('mod-check'))syncDone();
+  });
+  syncDone();
+
+  /* —— 移动端：汉堡开合 + 遮罩 —— */
+  var backdrop=document.getElementById('nav-backdrop');
+  function closeDrawer(){
+    nav.classList.remove('open');
+    btn.innerHTML='<i class="fa-solid fa-bars"></i>';
+    btn.setAttribute('aria-label','打开导航');
+    if(backdrop)backdrop.classList.remove('show');
+  }
+  if(backdrop){
+    backdrop.addEventListener('click',function(){
+      document.body.classList.remove('navhidden');
+      closeDrawer();
+      try{localStorage.setItem('mb-nav','show');}catch(e){}
+    });
+  }
+  if(btn){
+    btn.addEventListener('click',function(){
+      if(document.body.classList.contains('navhidden')){
+        document.body.classList.remove('navhidden');
+        try{localStorage.setItem('mb-nav','show');}catch(e){}
+        return;
+      }
+      var open=nav.classList.toggle('open');
+      btn.innerHTML=open?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>';
+      btn.setAttribute('aria-label',open?'关闭导航':'打开导航');
+      if(backdrop)backdrop.classList.toggle('show',open);
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        if(window.innerWidth<=900)closeDrawer();
+      });
+    });
+  }
+
+  /* —— 桌面端：收起导航全宽阅读（localStorage 记忆） —— */
+  if(collapseBtn){
+    collapseBtn.addEventListener('click',function(){
+      document.body.classList.add('navhidden');
+      try{localStorage.setItem('mb-nav','hidden');}catch(e){}
+    });
+  }
+  try{
+    if(localStorage.getItem('mb-nav')==='hidden' && window.innerWidth>900){
+      document.body.classList.add('navhidden');
+    }
+  }catch(e){}
 })();
 
 /* ===== 日夜主题切换 ===== */
