@@ -443,39 +443,42 @@ footer .f-logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.4rem;color:var(--l
 /* ===== 白天模式 · 暖色系二次元 v2（默认夜晚，body.day 切换） ===== */
 /* 配色原则：暖底 + 降饱和强调色（文字对比度均 ≥4.5:1 WCAG AA）
    樱红(主) / 焦糖橙(辅) / 蜂蜜金(点缀) / 新海诚蓝(冷平衡) / 松石绿(成长进度) */
+/* ===== 白天模式 · 柔和薄荷绿 v3（默认夜晚，body.day 切换） ===== */
+/* 配色原则：低饱和鼠尾草绿背景（不刺眼）+ 松石绿主辉光 + 暖/蓝撞色点缀（二次元感）
+   文字对比度均 ≥4.5:1 WCAG AA */
 body.day{
-  --bg:#FFF9F3; --bg2:#FFFDF9; --surface:#FFF2E4; --surface2:#FFE9D4;
-  --mag:#C2255C; --cyan:#C2410C; --lemon:#A16207; --purple:#1A6BC4; --neon:#0F766E;
-  --text:#44312A; --muted:#8A7360; --line:rgba(180,110,60,.22);
-  --mag-soft:rgba(194,37,92,.10); --cyan-soft:rgba(194,65,12,.10); --lemon-soft:rgba(161,98,7,.12); --purple-soft:rgba(26,107,196,.10);
-  --nav-bg:rgba(255,251,244,.92); --purple-text:#14508F;
+  --bg:#E9F2EA; --bg2:#F4FAF4; --surface:#F2F8F2; --surface2:#E4EFE6;
+  --mag:#C03A66; --cyan:#C2410C; --lemon:#A16207; --purple:#1A6BC4; --neon:#0F766E;
+  --text:#2E3C30; --muted:#5E7567; --line:rgba(60,110,75,.20);
+  --mag-soft:rgba(192,58,102,.10); --cyan-soft:rgba(194,65,12,.10); --lemon-soft:rgba(161,98,7,.12); --purple-soft:rgba(26,107,196,.10);
+  --nav-bg:rgba(237,246,238,.92); --purple-text:#14508F;
 }
 body.day::before{background:
-  radial-gradient(ellipse 60% 40% at 12% 0%,rgba(194,37,92,.07),transparent 60%),
-  radial-gradient(ellipse 55% 45% at 88% 12%,rgba(26,107,196,.06),transparent 60%),
-  radial-gradient(ellipse 50% 40% at 50% 100%,rgba(255,190,80,.10),transparent 60%)}
+  radial-gradient(ellipse 60% 40% at 12% 0%,rgba(15,118,110,.07),transparent 60%),
+  radial-gradient(ellipse 55% 45% at 88% 12%,rgba(26,107,196,.05),transparent 60%),
+  radial-gradient(ellipse 50% 40% at 50% 100%,rgba(192,58,102,.05),transparent 60%)}
 body.day::after{opacity:.35}
-body.day .module p,body.day .module ul,body.day .module ol{color:#6B5240}
-body.day .faq .faq-body{color:#6B5240}
-body.day code{color:#8A5A2E}
-body.day kbd{background:#FFF3DD;border-color:#EAC99A;color:#7A4E1E;box-shadow:0 2px 0 rgba(180,120,60,.28)}
-body.day #topnav{box-shadow:6px 6px 0 rgba(194,37,92,.16),0 18px 50px rgba(180,120,60,.16)}
-body.day #nav-toggle{box-shadow:3px 3px 0 rgba(194,37,92,.30)}
-body.day #read-progress{box-shadow:0 0 12px rgba(194,37,92,.45)}
-body.day #backtop{box-shadow:5px 5px 0 rgba(194,37,92,.26)}
+body.day .module p,body.day .module ul,body.day .module ol{color:#516050}
+body.day .faq .faq-body{color:#516050}
+body.day code{color:#2F6E54}
+body.day kbd{background:#E6F3E8;border-color:#BFDDC6;color:#2C5A42;box-shadow:0 2px 0 rgba(60,110,75,.28)}
+body.day #topnav{box-shadow:6px 6px 0 rgba(15,118,110,.14),0 18px 50px rgba(80,120,90,.18)}
+body.day #nav-toggle{box-shadow:3px 3px 0 rgba(15,118,110,.30)}
+body.day #read-progress{box-shadow:0 0 12px rgba(15,118,110,.42)}
+body.day #backtop{box-shadow:5px 5px 0 rgba(15,118,110,.24)}
 body.day #particles{opacity:.4}
-body.day .mock-dock{background:rgba(60,40,20,.55)}
-body.day table.neon tr:hover td{background:rgba(194,65,12,.05)}
-body.day ::selection{background:var(--mag);color:#fff}
-/* 白天阴影/辉光同步暖色化 */
-body.day .btn-ghost{box-shadow:5px 5px 0 rgba(194,65,12,.25)}
-body.day .btn-ghost:hover{box-shadow:8px 8px 0 rgba(194,65,12,.25)}
-body.day .stage-banner.b1{box-shadow:6px 6px 0 rgba(194,37,92,.20)}
-body.day .stage-banner.b2{box-shadow:6px 6px 0 rgba(194,65,12,.20)}
-body.day .stage-banner.b3{box-shadow:6px 6px 0 rgba(161,98,7,.24)}
-body.day .keycap.on{box-shadow:0 0 18px rgba(194,37,92,.45)}
-body.day .osk button.sel{box-shadow:0 0 12px rgba(194,65,12,.4)}
-body.day .boss-card:hover{box-shadow:0 8px 26px rgba(194,37,92,.20)}
+body.day .mock-dock{background:rgba(40,70,50,.55)}
+body.day table.neon tr:hover td{background:rgba(15,118,110,.05)}
+body.day ::selection{background:var(--neon);color:#fff}
+/* 白天阴影/辉光同步绿调（强调色保留暖/蓝点缀形成撞色） */
+body.day .btn-ghost{box-shadow:5px 5px 0 rgba(15,118,110,.22)}
+body.day .btn-ghost:hover{box-shadow:8px 8px 0 rgba(15,118,110,.22)}
+body.day .stage-banner.b1{box-shadow:6px 6px 0 rgba(192,58,102,.18)}
+body.day .stage-banner.b2{box-shadow:6px 6px 0 rgba(194,65,12,.18)}
+body.day .stage-banner.b3{box-shadow:6px 6px 0 rgba(161,98,7,.20)}
+body.day .keycap.on{box-shadow:0 0 18px rgba(192,58,102,.42)}
+body.day .osk button.sel{box-shadow:0 0 12px rgba(194,65,12,.38)}
+body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
 
 </style>
 </head>
