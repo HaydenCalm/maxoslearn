@@ -533,7 +533,7 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
   </div>
 
   <div class="nv-group g3" data-stage="stage3">
-    <button class="nv-stage"><span class="nv-ico">Ⅲ</span><span class="nv-t">精通</span><span class="nv-cnt">6</span><i class="fa-solid fa-chevron-right nv-chev"></i></button>
+    <button class="nv-stage"><span class="nv-ico">Ⅲ</span><span class="nv-t">精通</span><span class="nv-cnt">8</span><i class="fa-solid fa-chevron-right nv-chev"></i></button>
     <div class="nv-sub">
       <a href="#m13"><span class="nv-no">13</span><span class="nv-nm">生态连续互通</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
       <a href="#m14"><span class="nv-no">14</span><span class="nv-nm">Time Machine</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
@@ -541,6 +541,8 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
       <a href="#m16"><span class="nv-no">16</span><span class="nv-nm">Homebrew</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
       <a href="#m17"><span class="nv-no">17</span><span class="nv-nm">自动化</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
       <a href="#m18"><span class="nv-no">18</span><span class="nv-nm">安全与维护</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m19"><span class="nv-no">19</span><span class="nv-nm">重装系统</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
+      <a href="#m20"><span class="nv-no">20</span><span class="nv-nm">软件推荐</span><i class="fa-solid fa-circle-check nv-ck"></i></a>
     </div>
   </div>
 
@@ -1810,6 +1812,346 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
     </details>
   </article>
 
+  <!-- ===== 模块19 · 重装系统 ===== -->
+  <article class="module c-lemon" id="m19" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">19</div>
+      <div>
+        <h3>重装 macOS 系统</h3>
+        <p class="mod-sub">万不得已才需要——但真到那天，这篇能救命</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <div class="warn" style="margin:0 0 14px"><i class="fa-solid fa-circle-exclamation"></i> <b>先别急着重装！</b>Windows 的"重装保平安"思维在 Mac 上基本不需要。macOS 的系统文件受 SIP 保护、不会像 Windows 那样被日常使用搞坏。90% 的"系统变慢/出怪问题"通过<b>安全模式启动 → 重启</b>就能修复（见模块18急救小抄）。重装是<b>最后手段</b>，不是日常操作。</div>
+
+    <h4><i class="fa-solid fa-circle-question"></i> 什么时候才需要重装？</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>场景</th><th>需要重装吗</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>系统越用越慢</td><td>🟢 基本不需要</td><td>先查登录项/存储空间/活动监视器（模块18）</td></tr>
+        <tr><td>某个 App 反复崩溃</td><td>🟢 不需要</td><td>删该 App 偏好文件 <code>~/Library/Preferences/</code> 或重装该 App</td></tr>
+        <tr><td>系统频繁内核崩溃（panic）</td><td>🟡 可能需要</td><td>先试安全模式，排除第三方驱动；仍崩才考虑重装</td></tr>
+        <tr><td>磁盘工具「急救」修复失败</td><td>🔴 建议重装</td><td>磁盘宗卷有逻辑错误，重装可重建系统文件</td></tr>
+        <tr><td>卖掉/转让这台 Mac</td><td>🔴 必须重装</td><td>抹掉磁盘 + 重装，清空所有个人数据</td></tr>
+        <tr><td>买二手 Mac 想全新开始</td><td>🔴 建议重装</td><td>抹掉前主人留的一切</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-list-ol"></i> 重装前：三件必须做的事</h4>
+    <ol class="steps">
+      <li><b>备份（最重要）</b>：Time Machine 完整备份（模块14）。重装会重写系统，万一出意外备份是你的救命稻草。额外把重要文件拷到 U 盘/云盘做双保险</li>
+      <li><b>记下 Apple ID 和密码</b>：重装后激活需要。如果开了「查找我的 Mac」，抹盘后必须用原 Apple ID 解锁激活锁——<b>忘了 Apple ID 密码 = 机器变砖</b></li>
+      <li><b>充够电</b>：至少 50% 电量，或全程接电源。重装中途断电会导致系统损坏</li>
+    </ol>
+
+    <h4><i class="fa-solid fa-route"></i> 两种重装方式：选哪种？</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>对比</th><th>macOS 恢复（推荐）</th><th>U 盘安装器</th></tr></thead>
+      <tbody>
+        <tr><td>适合场景</td><td>99% 的情况</td><td>无网络/多台机器/想装特定旧版系统</td></tr>
+        <tr><td>需要什么</td><td>稳定的 Wi-Fi</td><td>≥16GB U 盘 + 另一台能上网的 Mac</td></tr>
+        <tr><td>操作难度</td><td>⭐ 简单</td><td>⭐⭐⭐ 需要命令行</td></tr>
+        <tr><td>系统版本</td><td>自动装当前兼容的最新版</td><td>可指定安装特定版本</td></tr>
+      </tbody>
+    </table></div>
+
+    <details class="deep"><summary><i class="fa-solid fa-cloud-arrow-down"></i> 方式一：macOS 恢复（标准流程，点开查看完整步骤）</summary>
+    <div class="deep-body">
+      <h5 style="margin:14px 0 6px">第 1 步：进入恢复模式</h5>
+      <div class="compare">
+        <div class="col mac">
+          <h5><i class="fa-brands fa-apple"></i> Apple Silicon（M1/M2/M3/M4）</h5>
+          <ul>
+            <li>关机 → 按住电源键不放 → 屏幕出现「载入启动选项」后松开</li>
+            <li>点「选项」→ 点齿轮图标「继续」→ 选管理员账号输入密码</li>
+          </ul>
+        </div>
+        <div class="col win">
+          <h5><i class="fa-solid fa-microchip"></i> Intel 芯片</h5>
+          <ul>
+            <li>关机 → 按 <kbd>Cmd</kbd>+<kbd>R</kbd> 同时按电源键</li>
+            <li>看到 Apple Logo 后松开，等进度条走完进入恢复界面</li>
+          </ul>
+        </div>
+      </div>
+
+      <h5 style="margin:14px 0 6px">第 2 步：选「重新安装 macOS」</h5>
+      <p>在恢复界面点「重新安装 macOS [版本名]」→ 继续 → 同意条款 → 选你的磁盘（通常叫 Macintosh HD）→ 点安装。系统会先联网下载安装包（约 12-15 GB，视网速 20 分钟到 1 小时）。</p>
+
+      <h5 style="margin:14px 0 6px">第 3 步：等它装完（全自动）</h5>
+      <p>下载完后 Mac 会自动重启并开始安装。期间会重启好几次，<b>不要动、不要断电</b>。Apple Silicon 机型全程约 20-30 分钟，Intel 略久。装完自动进入设置助理。</p>
+
+      <h5 style="margin:14px 0 6px">第 4 步：设置助理——恢复数据 or 全新开始？</h5>
+      <div class="table-wrap"><table class="neon">
+        <thead><tr><th>选择</th><th>效果</th><th>适合</th></tr></thead>
+        <tbody>
+          <tr><td>从 Time Machine 恢复</td><td>系统重装但 App/文件/设置全回来</td><td>系统坏了但数据没坏</td></tr>
+          <tr><td>从另一台 Mac 迁移</td><td>从旧机器搬数据过来</td><td>换新机</td></tr>
+          <tr><td>现在不传输信息</td><td>全新空白系统，什么都没有</td><td>卖机/二手/想彻底重来</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i><b>想恢复 Time Machine？</b>选「从 Time Machine 恢复」→ 接上备份盘 → 选最近的备份点 → 全自动恢复（视数据量 30 分钟到数小时）。恢复后 App、文件、设置和重装前一模一样。</div>
+    </div>
+    </details>
+
+    <details class="deep"><summary><i class="fa-solid fa-usb"></i> 方式二：抹掉磁盘 + 全新重装（卖机/二手/彻底重来，点开查看）</summary>
+    <div class="deep-body">
+      <p>如果选「现在不传输信息」还不够——比如要卖掉这台 Mac，你需要<b>抹掉整个磁盘</b>再重装，确保个人数据彻底清除：</p>
+      <ol class="steps">
+        <li><b>退出 Apple ID / 关闭「查找」</b>：系统设置 → 点你的名字 → 退出登录（不退出会导致激活锁，下任机主无法激活）</li>
+        <li>进入恢复模式（同上第 1 步）</li>
+        <li>选「磁盘工具」→ 选中你的主磁盘 <code>Macintosh HD</code> → 点「抹掉」</li>
+        <li>格式选 <b>APFS</b>（Apple Silicon 必选），方案选「GUID 分区图」→ 抹掉</li>
+        <li>退出磁盘工具 → 回到恢复界面 → 选「重新安装 macOS」→ 正常安装</li>
+      </ol>
+      <div class="danger" style="margin:10px 0"><i class="fa-solid fa-ban"></i> <b>抹掉磁盘 = 磁盘上所有数据永久消失</b>。一定要先备份！一旦抹掉不可恢复（除非有 Time Machine 备份）。</div>
+      <div class="tip" style="margin:8px 0"><i class="fa-solid fa-lightbulb"></i>Apple Silicon 机器有<b>硬件加密</b>，抹掉磁盘只是删了加密密钥，数据瞬间变为乱码——比传统擦写快得多也更安全。</div>
+    </div>
+    </details>
+
+    <details class="deep"><summary><i class="fa-solid fa-hard-drive"></i> 方式三：制作 U 盘安装器（无网络/批量装机，点开查看）</summary>
+    <div class="deep-body">
+      <p>适合没网、装多台机器、或想装特定旧版 macOS 的情况：</p>
+      <ol class="steps">
+        <li>在另一台 Mac 上从 App Store 下载目标 macOS 安装器（搜「macOS」会出 Install macOS [名称] 的 App）</li>
+        <li>准备一个 ≥16GB 的 U 盘，用磁盘工具抹掉为 <b>Mac OS 扩展（日志式）</b>，命名为 <code>MyVolume</code></li>
+        <li>打开终端，运行命令（以 macOS Sonoma 为例）：
+<pre style="background:var(--surface2);padding:10px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:.82rem;overflow-x:auto">sudo /Applications/Install\ macOS\ Sonoma.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume</pre>
+        </li>
+        <li>输入密码确认，等 15-20 分钟制作完成</li>
+        <li>插到目标 Mac 上 → 开机时按住 <kbd>Option</kbd>（Intel）或长按电源键选启动项（Apple Silicon）→ 选 U 盘启动 → 按正常重装流程走</li>
+      </ol>
+      <p style="color:var(--muted);font-size:.85rem">不同 macOS 版本命令名称不同，把 <code>Sonoma</code> 换成你下载的版本名即可。</p>
+    </div>
+    </details>
+
+    <h4><i class="fa-solid fa-triangle-exclamation"></i> 重装后常见坑</h4>
+    <div class="faq">
+      <details><summary>重装后提示「激活锁」，输入 Apple ID 说不对？</summary><div class="faq-body">说明这台 Mac 开过「查找我的 Mac」。必须用<b>重装前绑定在这台机器上的那个 Apple ID</b>解锁。如果你是买的二手，联系卖家退出他的 Apple ID，否则机器无法激活。这是防盗功能，不是 bug。</div></details>
+      <details><summary>重装后发现某些 App 不见了？</summary><div class="faq-body">macOS 恢复重装<b>只重装系统</b>，不会动你的 App 和文件（如果你选了从 Time Machine 恢复则全回来）。全新安装则什么都没有，需要重新安装所有 App——这正是为什么要先备份的原因。</div></details>
+      <details><summary>重装完系统还是原来的版本，没升级？</summary><div class="faq-body">「macOS 恢复」装的是<b>这台 Mac 当前兼容的最高版本</b>，不一定是最新的 macOS。想升到最新版：重装后 → 系统设置 → 软件更新 → 检查更新。</div></details>
+      <details><summary>Apple Silicon 重装完要输入恢复密钥？</summary><div class="faq-body">如果你开过 FileVault 全盘加密，重装/抹盘后需要 FileVault 恢复密钥解锁。密钥在开启 FileVault 时生成过，找你的备份记录。找不到恢复密钥但记得 Apple ID 密码也能通过 iCloud 恢复。</div></details>
+    </div>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 经验对照</h5>
+        <ul>
+          <li>Windows 重装频繁（半年到一年一次很常见）</li>
+          <li>需要 U 盘 PE 系统 / Ghost 镜像</li>
+          <li>重装后要装驱动、激活系统、装运行库</li>
+          <li>重装 = 全部清空</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> macOS 的区别</h5>
+        <ul>
+          <li>正常使用<b>几年都不需要重装</b></li>
+          <li>恢复模式内置在芯片 ROM 里，不需要 U 盘</li>
+          <li>驱动和运行库全部系统自带，重装即就绪</li>
+          <li>选「从 Time Machine 恢复」= 数据和设置原样回来</li>
+        </ul>
+      </div>
+    </div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 如何重新安装 macOS <a href="https://support.apple.com/zh-cn/HT204904" target="_blank">support.apple.com/zh-cn/HT204904</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 如何为全新安装准备 Mac <a href="https://support.apple.com/zh-cn/HT212749" target="_blank">support.apple.com/zh-cn/HT212749</a></li>
+        <li><span class="ref-tag">官方</span>Apple 支持 · 制作可引导 macOS 安装器 <a href="https://support.apple.com/zh-cn/HT201372" target="_blank">support.apple.com/zh-cn/HT201372</a></li>
+      </ol>
+    </details>
+  </article>
+
+  <!-- ===== 模块20 · Mac 软件推荐 ===== -->
+  <article class="module c-purple" id="m20" data-aos="fade-up">
+    <div class="mod-head">
+      <div class="mod-num">20</div>
+      <div>
+        <h3>Mac 软件推荐清单</h3>
+        <p class="mod-sub">从 Windows 搬过来的第一周，这些就够了</p>
+      </div>
+      <label class="tracker"><input type="checkbox" class="mod-check"> 已掌握</label>
+    </div>
+
+    <div class="tip" style="margin:0 0 14px"><i class="fa-solid fa-lightbulb"></i> <b>安装渠道回顾</b>：能 App Store 搜到就优先 App Store；搜不到或需要完整版去软件官网下 .dmg；命令行工具用 Homebrew（模块16）。下面每类都标注了推荐渠道。</div>
+
+    <h4><i class="fa-solid fa-window-restore"></i> 类别一：浏览器与网络</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>Google Chrome</b></td><td>Chrome（跨平台同步）</td><td>官网 .dmg</td><td>跨设备同步书签/密码/扩展，开发者必备</td></tr>
+        <tr><td><b>Arc Browser</b></td><td>—</td><td>官网 .dmg</td><td>Mac 原生设计美学浏览器，侧边栏管理标签页，颜值党首选</td></tr>
+        <tr><td><b>Firefox</b></td><td>Firefox</td><td>App Store / 官网</td><td>隐私优先，独立渲染引擎（非 Chromium 内核）</td></tr>
+        <tr><td><b>ClashX Pro / Surge</b></td><td>—</td><td>官网</td><td>网络代理工具（需要自行配置节点）</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-keyboard"></i> 类别二：效率与窗口管理</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>Raycast</b></td><td>PowerToys Run</td><td>官网（免费）</td><td>替代 Spotlight，启动器 + 剪贴板历史 + 窗口管理 + 代码片段，Mac 效率神器 No.1</td></tr>
+        <tr><td><b>Rectangle</b></td><td>Windows Snap</td><td>App Store / GitHub</td><td>快捷键分屏（左半屏/右半屏/最大化），<b>免费开源</b></td></tr>
+        <tr><td><b>Magnet</b></td><td>同上</td><td>App Store（¥18）</td><td>Rectangle 的付费替代，界面更精致</td></tr>
+        <tr><td><b>AltTab</b></td><td>Alt+Tab 切窗口</td><td>官网（免费）</td><td>让 Mac 的 Cmd+Tab 显示窗口预览缩略图，更像 Windows 习惯</td></tr>
+        <tr><td><b>Hidden Bar</b></td><td>—</td><td>App Store（免费）</td><td>折叠菜单栏图标，保持顶部栏整洁</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-file-lines"></i> 类别三：文档与办公</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>Microsoft Office</b></td><td>Office</td><td>官网 .pkg</td><td>Word/Excel/PPT 完整版，用 SaRA 工具卸载（见模块5）</td></tr>
+        <tr><td><b>WPS Office</b></td><td>WPS</td><td>App Store / 官网</td><td>免费轻量，兼容 .docx/.xlsx，中文环境体验好</td></tr>
+        <tr><td><b>Notion</b></td><td>—</td><td>官网 / App Store</td><td>一体化笔记/知识库/项目管理</td></tr>
+        <tr><td><b>Obsidian</b></td><td>—</td><td>官网（免费）</td><td>本地 Markdown 笔记，双链知识图谱</td></tr>
+        <tr><td><b>PDF Expert</b></td><td>Adobe Acrobat</td><td>App Store（付费）</td><td>Mac 上最好用的 PDF 编辑/签名/合并工具</td></tr>
+        <tr><td><b>腾讯文档 / 飞书</b></td><td>同上</td><td>App Store / 官网</td><td>多人协作在线文档</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-code"></i> 类别四：开发工具</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>VS Code</b></td><td>VS Code</td><td>官网 .dmg</td><td>通用编辑器之王，跨平台配置同步</td></tr>
+        <tr><td><b>Homebrew</b></td><td>—</td><td>终端安装（见模块16）</td><td>Mac 命令行包管理器，装一切开发工具的入口</td></tr>
+        <tr><td><b>iTerm2</b></td><td>Windows Terminal</td><td>官网（免费）</td><td>比自带终端强大百倍：分屏、热键窗口、主题</td></tr>
+        <tr><td><b>Cursor</b></td><td>—</td><td>官网</td><td>AI 辅助编程编辑器，基于 VS Code</td></tr>
+        <tr><td><b>Docker Desktop</b></td><td>Docker Desktop</td><td>官网 .dmg</td><td>容器开发，Apple Silicon 原生支持</td></tr>
+        <tr><td><b>Postman</b></td><td>Postman</td><td>官网 / App Store</td><td>API 调试测试</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-image"></i> 类别五：图片与设计</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>Pixelmator Pro</b></td><td>Photoshop（轻量替代）</td><td>App Store（付费）</td><td>Mac 原生修图，比 PS 轻快，支持 AI 抠图</td></tr>
+        <tr><td><b>Adobe Photoshop</b></td><td>Photoshop</td><td>Adobe 官网</td><td>专业修图，用 Creative Cloud 卸载（见模块5）</td></tr>
+        <tr><td><b>Figma</b></td><td>—</td><td>官网 / App Store</td><td>UI/UX 协作设计，免费版够用</td></tr>
+        <tr><td><b>CleanShot X</b></td><td>Snipaste</td><td>官网（付费）</td><td>截图标注+滚动截图+录屏 GIF，比自带截图强</td></tr>
+        <tr><td><b>剪映专业版</b></td><td>剪映</td><td>App Store / 官网</td><td>免费视频剪辑，中文用户首选</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-wrench"></i> 类别六：实用工具</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>AppCleaner</b></td><td>Geek Uninstaller</td><td>官网（免费）</td><td>彻底卸载 App 的残留（见模块5），<b>必装</b></td></tr>
+        <tr><td><b>Keka / The Unarchiver</b></td><td>7-Zip / Bandizip</td><td>App Store / 官网</td><td>解压 RAR/7z 等格式，Keka 还能压缩打包</td></tr>
+        <tr><td><b>IINA</b></td><td>PotPlayer</td><td>官网（免费开源）</td><td>Mac 上最好用的视频播放器，界面现代</td></tr>
+        <tr><td><b>Bob</b></td><td>—</td><td>App Store（免费+付费）</td><td>划词翻译/截图翻译， Mac 原生设计</td></tr>
+        <tr><td><b>Motrix</b></td><td>IDM</td><td>官网（免费开源）</td><td>多线程下载工具，支持 BT/磁力链</td></tr>
+        <tr><td><b>Downie 4</b></td><td>—</td><td>官网（付费）</td><td>视频下载神器，支持 1000+ 网站</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-comments"></i> 类别七：通讯社交</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>微信</b></td><td>微信</td><td>App Store / 官网</td><td>日常通讯，App Store 版自动更新更省心</td></tr>
+        <tr><td><b>QQ</b></td><td>QQ</td><td>App Store / 官网</td><td>同上</td></tr>
+        <tr><td><b>飞书 / 钉钉</b></td><td>同上</td><td>App Store / 官网</td><td>办公协作</td></tr>
+        <tr><td><b>Telegram</b></td><td>—</td><td>官网 / App Store</td><td>轻量加密通讯</td></tr>
+        <tr><td><b>Discord</b></td><td>—</td><td>官网</td><td>游戏社区语音</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4><i class="fa-solid fa-shield-halved"></i> 类别八：安全与系统</h4>
+    <div class="table-wrap"><table class="neon">
+      <thead><tr><th>软件</th><th>替代 Windows 的</th><th>渠道</th><th>推荐理由</th></tr></thead>
+      <tbody>
+        <tr><td><b>1Password / Bitwarden</b></td><td>同上</td><td>App Store / 官网</td><td>密码管理器，跨平台同步</td></tr>
+        <tr><td><b>Tuxera NTFS / Mounty</b></td><td>—</td><td>官网</td><td>读写 NTFS U 盘/移动硬盘（Mac 默认只读 NTFS）</td></tr>
+        <tr><td><b>CheatSheet</b></td><td>—</td><td>官网（免费）</td><td>长按 Cmd 显示当前 App 所有快捷键，学快捷键神器</td></tr>
+        <tr><td><b>Flux</b></td><td>f.lux</td><td>官网（免费）</td><td>护眼色温调节（macOS 自带夜览也够用）</td></tr>
+      </tbody>
+    </table></div>
+
+    <details class="deep"><summary><i class="fa-solid fa-rocket"></i> 新手第一周速装清单（点开查看）</summary>
+    <div class="deep-body">
+      <p>刚换 Mac 不知道装什么？这 10 个够用：</p>
+      <ol class="steps">
+        <li><b>Raycast</b>——替代 Spotlight，效率翻倍</li>
+        <li><b>Rectangle</b>——窗口分屏，找回 Windows 的 Snap 习惯</li>
+        <li><b>AppCleaner</b>——卸载软件不留垃圾</li>
+        <li><b>IINA</b>——看视频</li>
+        <li><b>The Unarchiver</b>——解压各种格式</li>
+        <li><b>Chrome</b>——浏览器（Safari 也行，看你习惯）</li>
+        <li><b>微信</b>——通讯</li>
+        <li><b>VS Code</b>（如果写代码）</li>
+        <li><b>Homebrew</b>（如果折腾命令行）</li>
+        <li><b>CheatSheet</b>——学快捷键</li>
+      </ol>
+      <p style="color:var(--muted);font-size:.85rem">这 10 个里 7 个免费，3 个免费开源。先装这些，用到缺什么再补。</p>
+    </div>
+    </details>
+
+    <details class="deep"><summary><i class="fa-solid fa-store"></i> Windows 软件 → Mac 对应速查（点开查看）</summary>
+    <div class="deep-body">
+      <div class="table-wrap"><table class="neon">
+        <thead><tr><th>Windows 软件</th><th>Mac 对应</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>资源管理器</td><td>访达（Finder）</td><td>系统自带，无需装</td></tr>
+          <tr><td>任务管理器</td><td>活动监视器</td><td>系统自带</td></tr>
+          <tr><td>记事本</td><td>文本编辑（TextEdit）</td><td>系统自带</td></tr>
+          <tr><td>截图工具</td><td>快捷键截图（Cmd+Shift+3/4）</td><td>系统自带（模块10）</td></tr>
+          <tr><td>Snipaste</td><td>CleanShot X / Shottr</td><td>进阶截图标注</td></tr>
+          <tr><td>7-Zip / Bandizip</td><td>Keka / The Unarchiver</td><td>解压缩</td></tr>
+          <tr><td>PotPlayer</td><td>IINA</td><td>视频播放</td></tr>
+          <tr><td>IDM</td><td>Motrix / Downie</td><td>下载工具</td></tr>
+          <tr><td>Everything</td><td>Raycast / 聚焦搜索</td><td>快速搜索文件</td></tr>
+          <tr><td>PowerToys Run</td><td>Raycast</td><td>启动器</td></tr>
+          <tr><td>Geek Uninstaller</td><td>AppCleaner</td><td>卸载工具</td></tr>
+          <tr><td>Snipaste 截图贴图</td><td>Snipaste（有 Mac 版）/ CleanShot X</td><td>截图贴图</td></tr>
+          <tr><td>Office</td><td>Office for Mac / WPS</td><td>办公套件</td></tr>
+          <tr><td>Notepad++</td><td>VS Code / CotEditor</td><td>文本编辑器</td></tr>
+          <tr><td>Xshell / Putty</td><td>终端（自带）/ iTerm2</td><td>SSH 连接</td></tr>
+          <tr><td>Everything 搜索</td><td>聚焦搜索（Cmd+Space）</td><td>全盘文件搜索</td></tr>
+          <tr><td>输入法</td><td>系统自带拼音 / 搜狗 / Rime</td><td>输入法</td></tr>
+          <tr><td>壁纸软件</td><td>动态壁纸引擎（付费）/ 系统自带</td><td>壁纸</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    </details>
+
+    <div class="compare">
+      <div class="col win">
+        <h5><i class="fa-brands fa-windows"></i> Windows 装软件习惯（改掉）</h5>
+        <ul>
+          <li>百度搜软件名 → 点第一个下载站 → 一路下一步</li>
+          <li>装完发现捆绑了 3 个全家桶</li>
+          <li>到处找破解版/绿色版</li>
+          <li>每次重装系统都要重装一遍所有软件</li>
+        </ul>
+      </div>
+      <div class="col mac">
+        <h5><i class="fa-brands fa-apple"></i> Mac 装软件好习惯</h5>
+        <ul>
+          <li>App Store 优先搜 → 搜不到去软件官网下</li>
+          <li>.dmg 拖进 Applications 就装好了，没有"下一步"</li>
+          <li>命令行工具用 Homebrew 一条命令装</li>
+          <li>换机用「迁移助理」全自动搬运 App 和数据</li>
+        </ul>
+      </div>
+    </div>
+
+    <details class="refs"><summary><i class="fa-solid fa-book"></i> 参考来源</summary>
+      <ol>
+        <li><span class="ref-tag">社区</span>Awesome Mac（GitHub 开源 Mac 软件精选清单） <a href="https://github.com/jaywcjlove/awesome-mac" target="_blank">github.com/jaywcjlove/awesome-mac</a></li>
+        <li><span class="ref-tag">社区</span>少数派 · Mac 软件推荐专栏 <a href="https://sspai.com/tag/Mac" target="_blank">sspai.com/tag/Mac</a></li>
+        <li><span class="ref-tag">官方</span>Mac App Store 精选 <a href="https://apps.apple.com/cn/charts/mac" target="_blank">apps.apple.com/cn/charts/mac</a></li>
+      </ol>
+    </details>
+  </article>
+
 </section>
 
 <div class="section-divider"><i class="fa-solid fa-star"></i> 毕业答辩 · 附录区 <i class="fa-solid fa-star"></i></div>
@@ -2844,7 +3186,12 @@ boss3:[
  {q:'想实现"每天早上 9 点自动执行某操作"，macOS 上最简单的图形化工具是？',o:['任务计划程序','快捷指令（Shortcuts）的自动化','活动监视器','磁盘工具'],a:1,e:'快捷指令 → 自动化 → 新建 → 选时间触发。图形化无代码，Windows 的任务计划程序对应物。见模块 18。'},
  {q:'FileVault 是什么？',o:['系统防火墙','全盘加密功能','杀毒软件','备份工具'],a:1,e:'FileVault 用 XTS-AES-128 加密整个磁盘，丢失电脑时数据不可被读取。防火墙是另一项独立设置。见模块 19（安全）。'},
  {q:'打开 App 提示"无法验证开发者"，正确的处理是？',o:['终端里输 sudo 强制打开','系统设置 → 隐私与安全性 → 底部点「仍要打开」','关掉 Wi-Fi 再开','重装系统'],a:1,e:'Gatekeeper 拦截非 App Store 应用：去隐私与安全性里「仍要打开」，或右键 App → 打开。确认来源可信再放行。见安全模块。'},
- {q:'判断 Mac 内存够不够用，活动监视器里最该看的指标是？',o:['已用内存大小','内存压力颜色（绿/黄/红）','缓存文件大小','电池循环次数'],a:1,e:'macOS 会尽量占满内存做缓存，"已用内存高"是正常现象；内存压力绿色 = 健康。见性能维护模块。'}
+ {q:'判断 Mac 内存够不够用，活动监视器里最该看的指标是？',o:['已用内存大小','内存压力颜色（绿/黄/红）','缓存文件大小','电池循环次数'],a:1,e:'macOS 会尽量占满内存做缓存，"已用内存高"是正常现象；内存压力绿色 = 健康。见性能维护模块。'},
+ {q:'Mac 系统越用越慢，正确的第一反应是？',o:['立刻重装系统','先查登录项/活动监视器/存储空间','格式化磁盘','关掉 SIP'],a:1,e:'Windows 的"重装保平安"思维在 Mac 上不需要。90% 的问题通过查登录项、清理存储、重启即可解决。重装是最后手段。见模块 19。'},
+ {q:'Apple Silicon Mac 进入恢复模式的正确方法是？',o:['开机时按 Cmd+R','关机后长按电源键直到出现「载入启动选项」','开机时按 Option 键','插入 U 盘自动进入'],a:1,e:'Apple Silicon：关机 → 长按电源键 → 出现「载入启动选项」松开 → 点「选项」继续。Intel 机型才是 Cmd+R。见模块 19。'},
+ {q:'卖掉 Mac 前必须做的关键步骤是？',o:['直接拖废纸篓清空文件','退出 Apple ID + 关闭「查找」+ 抹掉磁盘 + 重装','只删浏览器历史','恢复出厂设置按钮'],a:1,e:'必须先退出 Apple ID 和关闭「查找我的 Mac」，否则激活锁会让下任机主无法激活。然后磁盘工具抹掉 + 重装。见模块 19。'},
+ {q:'刚换 Mac，想找回 Windows 的窗口分屏（Snap）体验，推荐装？',o:['Rectangle','Photoshop','Docker Desktop','Flux'],a:0,e:'Rectangle 免费开源，快捷键分屏（左半屏/右半屏/最大化），是 Mac 窗口管理首选。见模块 20。'},
+ {q:'下面哪个 Mac 软件推荐渠道最不推荐？',o:['Mac App Store','软件官网下载 .dmg','Homebrew 安装命令行工具','百度搜软件名点第一个下载站'],a:3,e:'第三方下载站是捆绑流氓软件重灾区。优先 App Store → 官网 → Homebrew。见模块 5 和模块 20。'}
 ]};
 var qz={boss:null,order:[],idx:0,score:0,combo:0,maxCombo:0,answered:false,wrong:[]};
 function bossState(b){
