@@ -854,6 +854,26 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
     </div>
 
     <h4><i class="fa-solid fa-download"></i> 四种安装姿势</h4>
+    <div class="tip" style="margin:10px 0">
+      <i class="fa-solid fa-circle-question"></i><b>先搞清楚一件事：到底去哪下？</b>
+      Mac 装软件有两条主渠道。新手最常犯的错就是"全部去搜索引擎搜、然后下到一堆捆绑安装包"。记住这个优先级：
+      <ul style="margin:6px 0 0">
+        <li><b>① 能在 App Store 搜到 → 优先用 App Store。</b>苹果审核过、沙盒隔离更安全，还能自动更新、启动台一键卸载。微信、QQ、WPS、剪映、飞书……绝大多数日常软件都有。</li>
+        <li><b>② App Store 没有 / 官网版功能更全 → 去软件官网下 .dmg 或 .pkg。</b>典型如 Chrome 浏览器（App Store 根本没有）、Adobe 全家桶（官网版功能更完整）、VS Code 等开发工具。</li>
+        <li><b>③ 别去第三方下载站。</b>"太平洋""华军"那类站在 Mac 上照样塞流氓，认准软件<b>官网</b>域名再下。</li>
+      </ul>
+    </div>
+    <div class="table-wrap" style="margin:10px 0"><table class="neon">
+      <thead><tr><th>对比项</th><th>App Store 版</th><th>官网下载版（.dmg / .pkg）</th></tr></thead>
+      <tbody>
+        <tr><td>安全性</td><td>🟢 苹果审核 + 沙盒隔离</td><td>🟡 靠 Gatekeeper + 自己判断来源</td></tr>
+        <tr><td>更新</td><td>🟢 全自动更新</td><td>🟡 多数软件内置更新提示，需手动点</td></tr>
+        <tr><td>功能完整度</td><td>🟡 受沙盒限制，少数功能被阉（如不能访问任意文件）</td><td>🟢 完整功能</td></tr>
+        <tr><td>卸载</td><td>🟢 启动台长按点 × 一键删</td><td>🟡 拖废纸篓 + 清残留（见下方）</td></tr>
+        <tr><td>典型软件</td><td>微信、QQ、WPS、剪映、飞书</td><td>Chrome、Adobe、VS Code</td></tr>
+      </tbody>
+    </table></div>
+    <p style="margin:8px 0;color:var(--muted)"><i class="fa-solid fa-arrow-down"></i> 下面四种是<b>具体怎么操作</b>，按上面决策选好渠道后，再看对应那种：</p>
     <div class="tabs">
       <div class="tab-btns">
         <button class="active" data-tab="t5a"><i class="fa-brands fa-app-store-ios"></i> App Store</button>
@@ -2719,6 +2739,7 @@ boss1:[
  {q:'点击窗口左上角的红色按钮后，应用通常会？',o:['彻底退出','后台继续运行（菜单栏还在）','进入休眠','自动最小化'],a:1,e:'macOS 设计哲学：关窗口 ≠ 退应用。⌘Q 才是真退出。这是 Windows 移民最容易踩的第一个坑。见模块 2。'},
  {q:'把文件移入废纸篓的快捷键是？',o:['Ctrl+D','Delete','⌘+Delete','⌘+D'],a:2,e:'⌘⌫（Command+退格）= 移入废纸篓。空格预览、⌘⌫ 删除，是访达双绝。见模块 4。'},
  {q:'下载了一个 .dmg 安装包，正确的安装方式是？',o:['双击后一路"下一步"','右键以管理员身份运行','打开后把 App 图标拖进 Applications 文件夹','必须先用杀毒软件扫描'],a:2,e:'.dmg 是磁盘镜像：挂载后把 App 拖到 Applications 即完成安装，装完推出 .dmg。见模块 5。'},
+ {q:'微信、QQ 这类日常软件，推荐从哪装？',o:['百度搜"微信下载"点第一个结果','优先 App Store，搜不到或官网版功能更全再去官网','只去第三方下载站','让别人传安装包给你'],a:1,e:'优先 App Store：苹果审核+沙盒+自动更新+一键卸载，最省心。App Store 没有或官网版功能更全才去官网下 .dmg。第三方下载站是捆绑流氓重灾区。见模块 5。'},
  {q:'在访达里"不打开文件、快速看一眼内容"的方法是？',o:['双击','选中后按空格键','右键 → 预览','⌘+P'],a:1,e:'空格键 = 快速查看 Quick Look，再按空格关闭。看图、看文档神器。见模块 4。'},
  {q:'触控板"双指捏合"手势的作用是？',o:['切换桌面','缩放图片/网页','旋转图片','呼出调度中心'],a:1,e:'双指捏合 = 放大缩小；双指张开可以呼出启动台。见模块 3 手势速查表。'},
  {q:'想打开一个不在程序坞里的应用，最快的方式是？',o:['翻访达一个文件夹一个文件夹找','打开启动台或聚焦搜索','去 App Store 重新下载','重启电脑'],a:1,e:'启动台（F4/四指捏合）看全部 App；聚焦搜索（⌘Space）直接敲名字回车。见模块 2。'},
