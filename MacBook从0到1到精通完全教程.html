@@ -908,8 +908,24 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(194,37,92,.20)}
         <button data-tab="t5h"><i class="fa-solid fa-file-shield"></i> 官方卸载器</button>
       </div>
       <div class="tab-panel active" id="t5e">
-        <p><b>AppCleaner</b>（<a href="https://freemacsoft.net/appcleaner/" target="_blank">freemacsoft.net/appcleaner</a>，免费）是 macOS 圈口碑最好的免费卸载工具：把 App 图标拖进它的窗口，它会自动扫描出上面表格里所有关联文件，勾选后一键全删。适合 99% 的场景，<b>新手首选</b>。</p>
-        <div class="tip" style="margin:8px 0"><i class="fa-solid fa-lightbulb"></i>同类免费选择：<a href="https://github.com/alienator88/Pearcleaner" target="_blank">Pearcleaner</a>（开源、国人开发、更现代）。付费的 CleanMyMac 功能更全但非必需。</div>
+        <p><b>AppCleaner</b>（<a href="https://freemacsoft.net/appcleaner/" target="_blank">freemacsoft.net/appcleaner</a>，免费）是 macOS 圈口碑最好的免费卸载工具。适合 99% 的场景，<b>新手首选</b>。</p>
+        <h5 style="margin:10px 0 6px"><i class="fa-solid fa-list-ol"></i> 五步操作流程</h5>
+        <ol class="steps">
+          <li><b>下载安装</b>：去官网下载（免费、~3MB），把 AppCleaner.app 拖入"应用程序"文件夹完成安装</li>
+          <li><b>启动并置顶</b>：从启动台打开，窗口会浮在所有窗口之上（拖动 App 进去时不会被遮）</li>
+          <li><b>拖入要卸载的 App</b>：到"应用程序"文件夹或 Launchpad，把目标 App 图标<b>直接拖进</b>AppCleaner 窗口（不是从访达侧栏）</li>
+          <li><b>核对列表 · 全选删除</b>：AppCleaner 自动扫描出 ~/Library 下所有关联文件（偏好/缓存/支持文件夹/沙盒容器等），默认全部勾选，<b>建议保持全选</b>，点右下角「删除」/「Remove」</li>
+          <li><b>输入系统密码</b>：删除受保护文件需要授权，确认后即可看到「已删除 X 个文件 / 释放 Y MB」</li>
+        </ol>
+        <h5 style="margin:14px 0 6px"><i class="fa-solid fa-recycle"></i> 重点：「扫尾」场景怎么用</h5>
+        <p>如果 App 已经被你拖到<b>废纸篓</b>清空了，AppCleaner 拖不进去。两种补救方法：</p>
+        <ul>
+          <li><b>方法 1（推荐）</b>：从废纸篓把 App 放回「应用程序」文件夹（或从 App Store / 官网重下）→ 启动 AppCleaner → 拖进去 → 一键清干净。Apple Silicon 机型可在废纸篓右键「还原」</li>
+          <li><b>方法 2（手动）</b>：按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 进 <code>~/Library</code>，按上表 12 条路径搜 App 名/Bundle ID，把残留拖废纸篓（切到「手动清理」标签页有具体步骤）</li>
+        </ul>
+        <h5 style="margin:14px 0 6px"><i class="fa-solid fa-keyboard"></i> 进阶：设全局快捷键</h5>
+        <p>AppCleaner → Preferences → Shortcut → 设定一个不冲突的组合（推荐 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd>）。之后在访达选中 App 图标按一下，AppCleaner 自动启动并完成扫描删除——比手动拖更顺手。</p>
+        <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i>同类免费选择：<a href="https://github.com/alienator88/Pearcleaner" target="_blank">Pearcleaner</a>（开源、国人开发、界面更现代、支持 Apple Silicon 原生）。付费的 CleanMyMac 功能更全但<b>非必需</b>。</div>
       </div>
       <div class="tab-panel" id="t5f">
         <p>不想装任何软件？访达手动清理三连：</p>
@@ -931,7 +947,23 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
         <div class="danger" style="margin:8px 0"><i class="fa-solid fa-triangle-exclamation"></i><b>红线：</b><code>com.apple.*</code> 前缀的是系统组件，<b>绝对不要删</b>；终端命令详见模块 15，看不懂的命令先别跑。</div>
       </div>
       <div class="tab-panel" id="t5h">
-        <p>带内核扩展、虚拟化驱动、后台服务的软件（Adobe 全家桶、Parallels Desktop、VMware、部分声卡驱动），卸不干净会留下系统级驱动。这类软件官网都提供<b>官方卸载器</b>（如 Adobe Creative Cloud Uninstaller），优先用它，删完再用 AppCleaner 扫尾。</p>
+        <p>带内核扩展、虚拟化驱动、后台服务的软件（Adobe 全家桶、Parallels Desktop、VMware、部分声卡驱动），卸不干净会留下<b>系统级驱动和后台服务</b>。这类软件官网都提供<b>官方卸载器</b>（如 Adobe Creative Cloud Uninstaller），优先用它。</p>
+        <h5 style="margin:10px 0 6px"><i class="fa-solid fa-list-ol"></i> 官方卸载 + AppCleaner 扫尾流程</h5>
+        <ol class="steps">
+          <li><b>运行官方卸载器</b>：以 Adobe Creative Cloud 为例——打开 Creative Cloud 客户端 → 右上角「≡」→ 所有应用 → 找到目标 App → 点「卸载」（会同时清理主程序和支持文件）</li>
+          <li><b>卸载 Creative Cloud 本身</b>：回到 Creative Cloud → 偏好设置 → 卸载 Creative Cloud（很多人漏掉这步，会残留十几 MB）</li>
+          <li><b>AppCleaner 扫尾</b>：把 Adobe 任意一个组件（如 Photoshop.app）从「应用程序」拖进 AppCleaner → 全选删除。通常还能清出几十 MB 的 preferences/缓存/沙盒容器（详见上方 AppCleaner 标签页的「扫尾场景」）</li>
+          <li><b>重启验证</b>：卸完重启一次，观察「系统设置 → 通用 → 登录项」与「活动监视器」里是否还有残留进程</li>
+        </ol>
+        <h5 style="margin:14px 0 6px"><i class="fa-solid fa-list"></i> 常见需要官方卸载器的软件清单</h5>
+        <ul>
+          <li><b>Adobe 全家桶</b>：Creative Cloud / Photoshop / Premiere / Acrobat —— 用 Creative Cloud 客户端卸载</li>
+          <li><b>虚拟化</b>：Parallels Desktop、VMware Fusion、VirtualBox —— 各自有专用卸载脚本（Parallels 还需手动清 <code>~/Library/Preferences/com.parallels.*</code>）</li>
+          <li><b>外设驱动</b>：DisplayLink（外接显卡）、Logi Options+（罗技外设）、部分声卡驱动 —— 装一个卸一个，不要直接拖废纸篓</li>
+          <li><b>Microsoft Office</b>：用 <a href="https://aka.ms/SaRA-officeUninstallFromMac" target="_blank">Microsoft 官方卸载工具 SaRA</a>，比拖废纸篓干净</li>
+          <li><b>安全软件</b>：Avast、Norton、Kaspersky —— 各自有「卸载助手」（如 <code>Avast Security Uninstaller.app</code>），卸完再用 AppCleaner 扫一次</li>
+        </ul>
+        <div class="danger" style="margin:10px 0"><i class="fa-solid fa-triangle-exclamation"></i><b>红线：</b>这些软件<b>绝不能</b>直接拖废纸篓——内核扩展/系统服务会残留，导致下次更新系统失败、键盘失灵、网卡异常等疑难杂症。判断方法：装的时候弹了「需要系统扩展/辅助功能权限」的 App，卸的时候都用官方卸载器。</div>
       </div>
     </div>
 
