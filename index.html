@@ -904,6 +904,19 @@ body.day .boss-card:hover{box-shadow:0 8px 26px rgba(15,118,110,.18)}
       <li><b>第三步 · 清倒废纸篓</b>：别让"已删除"的 App 在废纸篓里继续躺尸占空间</li>
     </ol>
 
+    <h4><i class="fa-solid fa-route"></i> 不同渠道装的，卸载方式不一样</h4>
+    <p>装法不同，残留数据藏的位置、该用什么工具卸也不一样。别一个 AppCleaner 走天下——<b>Homebrew 装的不能用 AppCleaner</b>，.pkg 系统级装的要额外清 <code>/Library</code>。</p>
+    <div class="table-wrap" style="margin:10px 0"><table class="neon">
+      <thead><tr><th>怎么装的</th><th>怎么删本体</th><th>残留主要藏在</th><th>AppCleaner 适用？</th><th>特别提醒</th></tr></thead>
+      <tbody>
+        <tr><td><b>App Store</b></td><td>启动台长按图标抖动 → 点 <b>×</b></td><td><code>~/Library/Containers/</code>（沙盒，整个文件夹都是它的）</td><td>✅ 完美适用</td><td>沙盒隔离最干净，删掉 Containers 即彻底；最省心</td></tr>
+        <tr><td><b>官网 .dmg</b></td><td>「应用程序」文件夹拖进废纸篓</td><td><code>Application Support/</code>、<code>Caches/</code>、<code>Preferences/</code> 散落多处</td><td>✅ 最该用</td><td>数据散落各处，AppCleaner 一次扫全最省事，手动找容易漏</td></tr>
+        <tr><td><b>.pkg 向导</b></td><td>「应用程序」文件夹拖进废纸篓</td><td>除用户目录外，可能往 <code>/Library</code>（系统级）写驱动/服务</td><td>⚠️ 部分适用</td><td>AppCleaner 默认只扫用户目录，<b>系统级残留要手动清 /Library</b>，或用官方卸载器</td></tr>
+        <tr><td><b>Homebrew</b></td><td><code>brew uninstall --cask 名字</code></td><td>brew 自己管，元数据在 <code>/opt/homebrew</code></td><td>❌ 别用</td><td>必须用 brew 命令卸载；手动删会留"已卸载"脱钩记录；命令行工具去掉 <code>--cask</code></td></tr>
+      </tbody>
+    </table></div>
+    <div class="tip" style="margin:10px 0"><i class="fa-solid fa-lightbulb"></i><b>一句话记：</b>App Store 和 .dmg 装的 → AppCleaner 全包；.pkg 系统级装的要额外清 <code>/Library</code>；Homebrew 装的 → 必须用 <code>brew uninstall</code>，别碰 AppCleaner。不确定怎么装的？看「应用程序」里右键 App → 显示简介，沙盒应用会标"沙盒"，或回忆当初是点 App Store 还是下 dmg 装的。</div>
+
     <h4><i class="fa-solid fa-magnifying-glass-location"></i> 残留数据都藏在哪？（可搜索）</h4>
     <p>macOS 用 <b>Bundle ID</b>（形如 <code>com.tencent.xinWeChat</code>）标记每个 App 的数据。访达按 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>G</kbd> 输入 <code>~/Library</code> 即可进入下表这些目录：</p>
     <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="resSearch" placeholder="搜索：缓存 / 偏好设置 / 自启动 / 沙盒…"></div>
@@ -2740,6 +2753,7 @@ boss1:[
  {q:'把文件移入废纸篓的快捷键是？',o:['Ctrl+D','Delete','⌘+Delete','⌘+D'],a:2,e:'⌘⌫（Command+退格）= 移入废纸篓。空格预览、⌘⌫ 删除，是访达双绝。见模块 4。'},
  {q:'下载了一个 .dmg 安装包，正确的安装方式是？',o:['双击后一路"下一步"','右键以管理员身份运行','打开后把 App 图标拖进 Applications 文件夹','必须先用杀毒软件扫描'],a:2,e:'.dmg 是磁盘镜像：挂载后把 App 拖到 Applications 即完成安装，装完推出 .dmg。见模块 5。'},
  {q:'微信、QQ 这类日常软件，推荐从哪装？',o:['百度搜"微信下载"点第一个结果','优先 App Store，搜不到或官网版功能更全再去官网','只去第三方下载站','让别人传安装包给你'],a:1,e:'优先 App Store：苹果审核+沙盒+自动更新+一键卸载，最省心。App Store 没有或官网版功能更全才去官网下 .dmg。第三方下载站是捆绑流氓重灾区。见模块 5。'},
+ {q:'下面哪个渠道装的软件，不适合用 AppCleaner 卸载？',o:['从 App Store 装的','从官网下 .dmg 装的','从 .pkg 向导装的','用 Homebrew 装的'],a:3,e:'Homebrew 装的必须用 brew uninstall --cask 卸载，手动删或用 AppCleaner 会留"已卸载"脱钩记录。App Store 和 .dmg 装的最适合用 AppCleaner。见模块 5。'},
  {q:'在访达里"不打开文件、快速看一眼内容"的方法是？',o:['双击','选中后按空格键','右键 → 预览','⌘+P'],a:1,e:'空格键 = 快速查看 Quick Look，再按空格关闭。看图、看文档神器。见模块 4。'},
  {q:'触控板"双指捏合"手势的作用是？',o:['切换桌面','缩放图片/网页','旋转图片','呼出调度中心'],a:1,e:'双指捏合 = 放大缩小；双指张开可以呼出启动台。见模块 3 手势速查表。'},
  {q:'想打开一个不在程序坞里的应用，最快的方式是？',o:['翻访达一个文件夹一个文件夹找','打开启动台或聚焦搜索','去 App Store 重新下载','重启电脑'],a:1,e:'启动台（F4/四指捏合）看全部 App；聚焦搜索（⌘Space）直接敲名字回车。见模块 2。'},
