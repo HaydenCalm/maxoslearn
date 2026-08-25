@@ -6,11 +6,14 @@
 <title>MacBook 从 0 到 1 再到精通 · 二次元完全教程</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <style>
 :root{
+  --font-title:'ZCOOL QingKe HuangYou','ZCOOL KuaiLe','Noto Sans SC',sans-serif;
+  --font-body:'LXGW WenKai Screen','LXGW WenKai','Noto Sans SC',sans-serif;
   --bg:#0A0A1E; --bg2:#101030; --surface:#16163A; --surface2:#1C1C46;
   --mag:#FF2E88; --cyan:#00E5FF; --lemon:#FFE600; --purple:#9D4EDD; --neon:#00FF9F;
   --text:#F2F2FF; --muted:#A0A0D0; --line:rgba(255,255,255,.09);
@@ -19,7 +22,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:20px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:'Noto Sans SC',sans-serif;overflow-x:hidden;line-height:1.75;padding-left:248px;-webkit-overflow-scrolling:touch}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.85;padding-left:248px;-webkit-overflow-scrolling:touch}
 @media(max-width:900px){body{padding-left:0}}
 body::before{content:"";position:fixed;inset:0;z-index:-2;background:
   radial-gradient(ellipse 60% 40% at 12% 0%,rgba(255,46,136,.10),transparent 60%),
@@ -35,7 +38,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--mag),var(--purple));border-radius:6px}
 a{color:var(--cyan);text-decoration:none}
 a:hover{text-decoration:underline}
-h1,h2,h3,.font-kuai{font-family:'ZCOOL KuaiLe','Noto Sans SC',cursive;font-weight:400;letter-spacing:.02em}
+h1,h2,h3,.font-kuai{font-family:var(--font-title);font-weight:400;letter-spacing:.02em}
 code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
 
 /* ===== 阅读进度条 ===== */
@@ -61,7 +64,7 @@ code,kbd,.mono{font-family:'JetBrains Mono','Noto Sans SC',monospace}
 
 /* —— 头部：logo + 收起键 —— */
 .nv-head{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:2px 2px 10px;border-bottom:1px solid var(--line);margin-bottom:8px;flex-shrink:0}
-.nv-logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.02rem;color:var(--lemon);text-shadow:2px 2px 0 var(--mag);white-space:nowrap;display:flex;align-items:center;gap:7px;min-width:0}
+.nv-logo{font-family:var(--font-title);font-size:1.02rem;color:var(--lemon);text-shadow:2px 2px 0 var(--mag);white-space:nowrap;display:flex;align-items:center;gap:7px;min-width:0}
 .nv-logo i{flex-shrink:0}
 .nv-logo b{font-weight:400;overflow:hidden;text-overflow:ellipsis}
 #nav-collapse{width:26px;height:26px;border-radius:9px;border:1.5px solid var(--line);background:transparent;color:var(--muted);
@@ -175,7 +178,7 @@ body.navhidden #nav-toggle{display:flex}
 .hero .stats{display:flex;gap:0;margin-top:56px;flex-wrap:wrap;justify-content:center}
 .hero .stats .stat{padding:0 34px;border-right:1px solid var(--line);text-align:center}
 .hero .stats .stat:last-child{border-right:none}
-.hero .stats b{display:block;font-family:'ZCOOL KuaiLe',cursive;font-size:2rem;
+.hero .stats b{display:block;font-family:var(--font-title);font-size:2rem;
   background:linear-gradient(90deg,var(--mag),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .stats span{color:var(--muted);font-size:.82rem}
 
@@ -184,7 +187,7 @@ body.navhidden #nav-toggle{display:flex}
 .stage-banner{position:relative;padding:34px 28px;border-radius:22px;border:3px solid;overflow:hidden;margin-bottom:34px}
 .stage-banner h2{font-size:clamp(1.6rem,4vw,2.5rem);position:relative;z-index:1}
 .stage-banner p{position:relative;z-index:1;color:var(--text);opacity:.85;margin-top:6px;max-width:640px}
-.stage-banner .stage-no{position:absolute;right:18px;top:-26px;font-family:'ZCOOL KuaiLe',cursive;
+.stage-banner .stage-no{position:absolute;right:18px;top:-26px;font-family:var(--font-title);
   font-size:7.5rem;opacity:.12;z-index:0}
 .stage-banner.b1{border-color:var(--mag);background:linear-gradient(120deg,var(--mag-soft),transparent 70%);box-shadow:6px 6px 0 rgba(255,46,136,.35)}
 .stage-banner.b1 .stage-no{color:var(--mag)}
@@ -202,7 +205,7 @@ body.navhidden #nav-toggle{display:flex}
 .module.c-lemon{border-left-color:var(--lemon)}
 .module.c-purple{border-left-color:var(--purple)}
 .mod-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:18px;flex-wrap:wrap}
-.mod-num{font-family:'ZCOOL KuaiLe',cursive;font-size:2.6rem;line-height:1;padding:4px 14px;border-radius:14px;border:3px solid}
+.mod-num{font-family:var(--font-title);font-size:2.6rem;line-height:1;padding:4px 14px;border-radius:14px;border:3px solid}
 .module.c-mag .mod-num{color:var(--mag);border-color:var(--mag);background:var(--mag-soft)}
 .module.c-cyan .mod-num{color:var(--cyan);border-color:var(--cyan);background:var(--cyan-soft)}
 .module.c-lemon .mod-num{color:var(--lemon);border-color:var(--lemon);background:var(--lemon-soft)}
@@ -255,7 +258,7 @@ kbd{display:inline-block;padding:2px 9px;border-radius:7px;background:#22224E;bo
 .steps li{counter-increment:step;position:relative;padding:0 0 16px 52px}
 .steps li::before{content:counter(step);position:absolute;left:0;top:2px;width:34px;height:34px;
   border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:900;
-  font-family:'ZCOOL KuaiLe',cursive;border:2px solid var(--cyan);color:var(--cyan);background:var(--cyan-soft);font-size:1.05rem}
+  font-family:var(--font-title);border:2px solid var(--cyan);color:var(--cyan);background:var(--cyan-soft);font-size:1.05rem}
 .steps li::after{content:"";position:absolute;left:16px;top:40px;bottom:2px;width:2px;background:var(--line)}
 .steps li:last-child::after{display:none}
 
@@ -365,7 +368,7 @@ details.refs .ref-tag{display:inline-block;font-size:.68rem;padding:1px 8px;bord
 #backtop:hover{transform:translateY(-4px)}
 
 footer{border-top:1px solid var(--line);margin-top:70px;padding:36px 20px;text-align:center;color:var(--muted);font-size:.85rem}
-footer .f-logo{font-family:'ZCOOL KuaiLe',cursive;font-size:1.4rem;color:var(--lemon);text-shadow:2px 2px 0 var(--mag);margin-bottom:8px}
+footer .f-logo{font-family:var(--font-title);font-size:1.4rem;color:var(--lemon);text-shadow:2px 2px 0 var(--mag);margin-bottom:8px}
 
 .mod-check{cursor:pointer}
 .section-divider{max-width:1080px;margin:44px auto;padding:0 20px;display:flex;align-items:center;gap:16px;color:var(--muted)}
@@ -1903,7 +1906,7 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 <style>
 /* ===== 训练场专属样式 ===== */
 .ar-xpbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:linear-gradient(135deg,rgba(255,46,136,.14),rgba(157,78,221,.14));border:1px solid var(--line);border-radius:16px;padding:14px 20px;margin-bottom:28px}
-.ar-xpbar .lv-badge{font-family:'ZCOOL KuaiLe',cursive;font-size:1.25rem;color:var(--lemon);white-space:nowrap}
+.ar-xpbar .lv-badge{font-family:var(--font-title);font-size:1.25rem;color:var(--lemon);white-space:nowrap}
 .ar-xpbar .xp-track{flex:1;min-width:180px;height:14px;background:var(--surface2);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
 .ar-xpbar .xp-track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mag),var(--purple));transition:width .6s ease;border-radius:8px}
 .ar-xpbar .xp-num{font-family:'JetBrains Mono',monospace;color:var(--cyan);white-space:nowrap}
@@ -1913,8 +1916,8 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 .kb-map .km b{color:var(--lemon)}
 .trainer-stage{background:var(--surface);border:2px dashed rgba(255,230,0,.35);border-radius:18px;padding:26px 22px;text-align:center;position:relative;margin-top:14px}
 .trainer-stage.idle{padding:44px 22px}
-.tr-task{font-family:'ZCOOL KuaiLe',cursive;font-size:1.7rem;margin:6px 0 2px}
-.tr-task small{display:block;font-family:'Noto Sans SC',sans-serif;color:var(--muted);font-size:.85rem;margin-top:4px}
+.tr-task{font-family:var(--font-title);font-size:1.7rem;margin:6px 0 2px}
+.tr-task small{display:block;font-family:var(--font-body);color:var(--muted);font-size:.85rem;margin-top:4px}
 .tr-live{min-height:64px;display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 0 4px;flex-wrap:wrap}
 .keycap{display:inline-flex;align-items:center;justify-content:center;min-width:52px;height:52px;padding:0 12px;border-radius:10px;background:var(--surface2);border:1px solid rgba(255,255,255,.22);border-bottom:3px solid rgba(255,255,255,.28);font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--text)}
 .keycap.on{background:var(--mag);border-color:var(--mag);color:#fff;box-shadow:0 0 18px rgba(255,46,136,.55)}
@@ -1936,7 +1939,7 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 .boss-card{cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;transition:.2s;position:relative;overflow:hidden}
 .boss-card:hover{transform:translateY(-4px);border-color:var(--mag);box-shadow:0 8px 26px rgba(255,46,136,.22)}
 .boss-card .bi{font-size:2.1rem;margin-bottom:6px}
-.boss-card h4{font-family:'ZCOOL KuaiLe',cursive;font-size:1.15rem;margin-bottom:4px}
+.boss-card h4{font-family:var(--font-title);font-size:1.15rem;margin-bottom:4px}
 .boss-card p{font-size:.85rem;color:var(--muted)}
 .boss-card .bstate{position:absolute;top:12px;right:12px;font-size:.75rem;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
 .boss-card.passed .bstate{color:var(--neon);border-color:var(--neon)}
@@ -1949,7 +1952,7 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 .qz-prog i.bad{background:var(--mag)}
 .qz-q{font-size:1.15rem;font-weight:700;margin-bottom:16px}
 .qz-opts{display:grid;gap:10px}
-.qz-opt{cursor:pointer;text-align:left;background:var(--surface2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.98rem;transition:.15s;font-family:'Noto Sans SC',sans-serif}
+.qz-opt{cursor:pointer;text-align:left;background:var(--surface2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.98rem;transition:.15s;font-family:var(--font-body)}
 .qz-opt:hover:not(:disabled){border-color:var(--cyan)}
 .qz-opt:disabled{cursor:default;opacity:.75}
 .qz-opt.right{background:rgba(0,255,159,.16);border-color:var(--neon);opacity:1}
@@ -1958,7 +1961,7 @@ launchctl unload -w ~/Library/LaunchAgents/com.tencent.xinWeChat.plist 2&gt;/dev
 .qz-expl.show{display:block}
 .qz-next{margin-top:16px;text-align:right}
 .qz-result{text-align:center}
-.qz-result .big{font-family:'ZCOOL KuaiLe',cursive;font-size:2.2rem;color:var(--lemon);margin:8px 0}
+.qz-result .big{font-family:var(--font-title);font-size:2.2rem;color:var(--lemon);margin:8px 0}
 .qz-review{text-align:left;margin-top:18px;border-top:1px dashed var(--line);padding-top:14px}
 .qz-review .rv{margin-bottom:10px;font-size:.88rem}
 .qz-review .rv b{color:var(--cyan)}
